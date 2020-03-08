@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+      <!-- layout:decorate="~{fragments/layout}"> -->
+<head>
+    <title>Hubapp Login</title>
+     <!-- Favicons -->
+        <link rel="shortcut icon" th:href="@{images/favicon.png}"> 
+
+        <!-- CSS -->
+        <link rel="stylesheet"  th:href="@{css/bootstrap.min.css}">
+        <link rel="stylesheet" th:href="@{css/style.css}">
+        <link rel="stylesheet" th:href="@{css/style-responsive.css}">
+        <link rel="stylesheet" th:href="@{css/animate.min.css}">
+        <link rel="stylesheet" th:href="@{css/vertical-rhythm.min.css}">
+        <link rel="stylesheet" th:href="@{css/owl.carousel.css}">
+        <link rel="stylesheet" th:href="@{css/magnific-popup.css}">  
+</head>
+<body>
+  
+   <!-- <div layout:fragment="content" th:remove="tag"> -->
+
+  
+    
+     <!-- Page Loader -->        
+        <div class="page-loader">
+            <div class="loader">Loading...</div>
+        </div>
+        <!-- End Page Loader -->
+        
+        <!-- Page Wrap -->
+        <div class="page" id="top">
+   <th:block th:replace="fragments/header :: header"/>
+  <!-- Head Section -->
+  
+  
+            <section class="small-section bg-dark-lighter">
+                <div class="relative container align-left">
+                    
+                    <div class="row">
+                        
+                        <div class="col-md-8">
+                            <h1 class="hs-line-11 font-alt mb-20 mb-xs-0">My Account</h1>
+                            <div class="hs-line-4 font-alt">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4 mt-30">
+                            <div class="mod-breadcrumbs font-alt align-right">
+                                <a href="#">Home</a>&nbsp;/&nbsp;<!-- <a href="#">Pages</a>&nbsp;/&nbsp; --><span>My Account</span>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+            </section>
+            <!-- End Head Section -->
+               <!-- Page Loader -->        
+        <div class="page-loader">
+            <div class="loader">Loading...</div>
+        </div>
+        <!-- End Page Loader -->
+        
+        <!-- Page Wrap -->
+        <div class="page" id="top">
+            
+            <!-- Section -->
+            <section class="page-section">
+                <div class="container relative">
+                    
+                    <!-- Nav Tabs -->
+                    <div class="align-center mb-40 mb-xxs-30">
+                        <ul class="nav nav-tabs tpl-minimal-tabs">
+                            
+ <!--                            <li class="active">
+                                <a href="#mini-one" data-toggle="tab">Login</a>
+                            </li>
+  -->                           
+                            <li class="active">
+                                <a href="#mini-two" data-toggle="tab">Registration</a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                    <!-- End Nav Tabs -->
+                    
+                    <!-- Tab panes -->
+                    <div class="tab-content tpl-minimal-tabs-cont section-text">
+                        
+                        
+                        <div class="tab-pane fade in active" id="mini-two">
+                            
+                            <!-- Registry Form -->                            
+                            <div class="row">
+                                <div class="col-md-4 col-md-offset-4">
+                                    
+                                    <form th:action="@{/registration}" th:object="${user}" method="post" class="form contact-form" id="contact_form">
+                                       <p class="error-message" th:if="${#fields.hasGlobalErrors()}" th:each="error : ${#fields.errors('global')}" th:text="${error}">Validation error
+                    </p>
+                                        <div class="clearfix">
+                                            
+                                            <!-- Email -->
+                                            <div class="form-group" th:classappend="${#fields.hasErrors('email')}? 'has-error':''">
+                                                <input type="text" th:field="*{email}" name="Email" id="Email" class="input-md round form-control" placeholder="Email" pattern=".{3,100}" required>
+                                            <p class="error-message"
+							th:each="error : ${#fields.errors('email')}" th:text="${error}">Validation
+							error</p>
+                                            </div>
+                                             <div class="form-group" th:classappend="${#fields.hasErrors('confirmEmail')}? 'has-error':''">
+                                                <input type="text" th:field="*{confirmEmail}" name="confirmEmail" id="confirmEmail" class="input-md round form-control" placeholder="confirmEmail" pattern=".{3,100}" required>
+                                           <p class="error-message"
+							th:each="error : ${#fields.errors('confirmEmail')}"
+							th:text="${error}">Validation error</p>
+                                            </div>
+                                            <!-- First Name -->
+                                            <div class="form-group" th:classappend="${#fields.hasErrors('firstName')}? 'has-error':''">
+                                                <input type="text" th:field="*{firstName}" name="firstName" id="firstName" class="input-md round form-control" placeholder="firstName" pattern=".{3,100}" required>
+                                                <p class="error-message"
+							th:each="error: ${#fields.errors('firstName')}"
+							th:text="${error}">Validation error</p>
+                                            </div>
+                                            <!-- Last Name  -->
+                                             <div class="form-group" th:classappend="${#fields.hasErrors('lastName')}? 'has-error':''">
+                                                <input type="text" th:field="*{lastName}" name="lastName" id="lastName" class="input-md round form-control" placeholder="lastName" pattern=".{3,100}" required>
+                                                <p class="error-message"
+							th:each="error : ${#fields.errors('lastName')}"
+							th:text="${error}">Validation error</p>
+                                            </div>
+                                            
+                                            <!-- Password -->
+                                            <div class="form-group" th:classappend="${#fields.hasErrors('password')}? 'has-error':''">
+                                                <input type="password"  th:field="*{password}" name="password" id="password" class="input-md round form-control" placeholder="Password" pattern=".{5,100}" required>
+                                                <p class="error-message"
+							th:each="error : ${#fields.errors('password')}"
+							th:text="${error}">Validation error</p>
+                                            </div>
+                                            
+                                            <!-- Re-enter Password -->
+                                            <div class="form-group" th:classappend="${#fields.hasErrors('confirmPassword')}? 'has-error':''">
+                                                <input type="password" th:field="*{confirmPassword}" name="re-password" id="re-password" class="input-md round form-control" placeholder="Re-enter Password" pattern=".{5,100}" required>
+                                                <p class="error-message"
+							th:each="error : ${#fields.errors('confirmPassword')}"
+							th:text="${error}">Validation error</p>
+                                            </div>
+                                                
+                                        </div>
+                                        <div class="form-group"
+						th:classappend="${#fields.hasErrors('terms')}? 'has-error':''">
+						<input id="terms" type="checkbox" th:field="*{terms}" />   <label
+							class="control-label" for="terms"> I agree with the <a
+							href="#">terms and conditions</a> for Registration.
+						</label>
+						<p class="error-message"
+							th:each="error : ${#fields.errors('terms')}" th:text="${error}">Validation
+							error</p>
+					</div>
+                                        
+                                        <!-- Send Button -->
+                                        <div class="pt-10">
+                                            <button class="submit_btn btn btn-mod btn-medium btn-round btn-full" id="reg-btn">Register</button>
+                                        </div>
+                                          <span>Already registered? <a href="/" th:href="@{/login}">Login
+        here</a></span> 
+                                    </form>
+                                   
+                                </div>
+                            </div>
+                            <!-- End Registry Form -->
+                            
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+            </section>
+            </div></div>
+            <!-- End Section -->
+              <th:block th:replace="fragments/footer :: footer"/>
+
+
+<!-- JS -->
+        <script type="text/javascript" th:src="@{js/jquery-1.11.2.min.js}"></script>
+        <script type="text/javascript" th:src="@{js/jquery.easing.1.3.js}"></script>
+        <script type="text/javascript" th:src="@{js/bootstrap.min.js}"></script>        
+        <script type="text/javascript" th:src="@{js/SmoothScroll.js}"></script>
+        <script type="text/javascript" th:src="@{js/jquery.scrollTo.min.js}"></script>
+        <script type="text/javascript" th:src="@{js/jquery.localScroll.min.js}"></script>
+        <script type="text/javascript" th:src="@{js/jquery.viewport.mini.js}"></script>
+        <script type="text/javascript" th:src="@{js/jquery.countTo.js}"></script>
+        <script type="text/javascript" th:src="@{js/jquery.appear.js}"></script>
+        <script type="text/javascript" th:src="@{js/jquery.sticky.js}"></script>
+        <script type="text/javascript" th:src="@{js/jquery.parallax-1.1.3.js}"></script>
+        <script type="text/javascript" th:src="@{js/jquery.fitvids.js}"></script>
+        <script type="text/javascript" th:src="@{js/owl.carousel.min.js}"></script>
+        <script type="text/javascript" th:src="@{js/isotope.pkgd.min.js}"></script>
+        <script type="text/javascript" th:src="@{js/imagesloaded.pkgd.min.js}"></script>
+        <script type="text/javascript" th:src="@{js/jquery.magnific-popup.min.js}"></script>
+        <script type="text/javascript" th:src="@{js/wow.min.js}"></script>
+        <script type="text/javascript" th:src="@{js/masonry.pkgd.min.js}"></script>
+        <script type="text/javascript" th:src="@{js/jquery.simple-text-rotator.min.js}"></script>
+        <script type="text/javascript" th:src="@{js/jquery.lazyload.min.js}"></script>
+        <script type="text/javascript" th:src="@{js/all.js}"></script>
+        <script type="text/javascript" th:src="@{js/contact-form.js}"></script>
+        <script type="text/javascript" th:src="@{js/jquery.ajaxchimp.min.js}"></script>        
+        <!--[if lt IE 10]><script type="text/javascript" src="js/placeholder.js"></script><![endif]-->
+        
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+      <!-- layout:decorate="~{fragments/layout}"> -->
+<head>
+    <title>Hubapp Login</title>
+     <!-- Favicons -->
+        <link rel="shortcut icon" th:href="@{images/favicon.png}"> 
+
+        <!-- CSS -->
+        <link rel="stylesheet"  th:href="@{css/bootstrap.min.css}">
+        <link rel="stylesheet" th:href="@{css/style.css}">
+        <link rel="stylesheet" th:href="@{css/style-responsive.css}">
+        <link rel="stylesheet" th:href="@{css/animate.min.css}">
+        <link rel="stylesheet" th:href="@{css/vertical-rhythm.min.css}">
+        <link rel="stylesheet" th:href="@{css/owl.carousel.css}">
+        <link rel="stylesheet" th:href="@{css/magnific-popup.css}">  
+</head>
+<body>
+  
+   <!-- <div layout:fragment="content" th:remove="tag"> -->
+
+  
+    
+     <!-- Page Loader -->        
+        <div class="page-loader">
+            <div class="loader">Loading...</div>
+        </div>
+        <!-- End Page Loader -->
+        
+        <!-- Page Wrap -->
+        <div class="page" id="top">
+   <th:block th:replace="fragments/header :: header"/>
+  <!-- Head Section -->
+  
+  
+            <section class="small-section bg-dark-lighter">
+                <div class="relative container align-left">
+                    
+                    <div class="row">
+                        
+                        <div class="col-md-8">
+                            <h1 class="hs-line-11 font-alt mb-20 mb-xs-0">My Account</h1>
+                            <div class="hs-line-4 font-alt">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4 mt-30">
+                            <div class="mod-breadcrumbs font-alt align-right">
+                                <a href="#">Home</a>&nbsp;/&nbsp;<!-- <a href="#">Pages</a>&nbsp;/&nbsp; --><span>My Account</span>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+            </section>
+            <!-- End Head Section -->
+               <!-- Page Loader -->        
+        <div class="page-loader">
+            <div class="loader">Loading...</div>
+        </div>
+        <!-- End Page Loader -->
+        
+        <!-- Page Wrap -->
+        <div class="page" id="top">
+            
+            <!-- Section -->
+            <section class="page-section">
+                <div class="container relative">
+                    
+                    <!-- Nav Tabs -->
+                    <div class="align-center mb-40 mb-xxs-30">
+                        <ul class="nav nav-tabs tpl-minimal-tabs">
+                            
+                            <li class="active">
+                                <a href="#mini-one" data-toggle="tab">Login</a>
+                            </li>
+                            
+                            <!-- <li>
+                                <a href="#mini-two" data-toggle="tab">Registration</a>
+                            </li> -->
+                            
+                        </ul>
+                    </div>
+                    <!-- End Nav Tabs -->
+                    
+                    <!-- Tab panes -->
+                    <div class="tab-content tpl-minimal-tabs-cont section-text">
+                        
+                        <div class="tab-pane fade in active" id="mini-one">
+                            
+                            <!-- Login Form -->                            
+                            <div class="row">
+                                <div class="col-md-4 col-md-offset-4">
+                                    
+                                    <form th:action="@{/login}" method="post" class="form contact-form" id="contact_form">
+                                      <div th:if="${param.error}">
+                        <div class="alert alert-danger">Invalid username or password.
+                        </div>
+                    </div>
+                    <div th:if="${param.logout}">
+                        <div class="alert alert-info">You have been logged out.</div>
+                    </div>
+                                        <div class="clearfix">
+                                            
+                                            <!-- Username -->
+                                            <div class="form-group">
+                                                <input type="text" name="username" id="username" class="input-md round form-control" placeholder="Username" pattern=".{3,100}" required>
+                                            </div>
+                                            
+                                            <!-- Password -->
+                                            <div class="form-group">
+                                                <input type="password" name="password" id="password" class="input-md round form-control" placeholder="Password" pattern=".{5,100}" required>
+                                            </div>
+                                                
+                                        </div>
+                                        
+                                        <div class="clearfix">
+                                            
+                                            <div class="cf-left-col">
+                                                
+                                                <!-- Inform Tip -->                                        
+                                                <div class="form-tip pt-20">
+                                                    <a href="">Forgot Password?</a>
+                                                </div>
+                                                
+                                            </div>
+                                            
+                                            <div class="cf-right-col">
+                                                
+                                                <!-- Send Button -->
+                                                <div class="align-right pt-10">
+                                                    <button class="submit_btn btn btn-mod btn-medium btn-round" id="login-btn">Login</button>
+                                                </div>
+                                                
+                                            </div>
+                                            
+                                        </div>
+                                          <span>New user? <a href="/" th:href="@{/registration}">Register
+        here</a></span>
+                                    </form>
+                                    
+                                </div>
+                            </div>
+                            <!-- End Login Form -->
+                            
+                        </div>
+                        
+                       
+                        
+                    </div>
+                    
+                </div>
+            </section>
+            </div></div>
+            <!-- End Section -->
+              <th:block th:replace="fragments/footer :: footer"/>
+
+
+<!-- JS -->
+        <script type="text/javascript" th:src="@{js/jquery-1.11.2.min.js}"></script>
+        <script type="text/javascript" th:src="@{js/jquery.easing.1.3.js}"></script>
+        <script type="text/javascript" th:src="@{js/bootstrap.min.js}"></script>        
+        <script type="text/javascript" th:src="@{js/SmoothScroll.js}"></script>
+        <script type="text/javascript" th:src="@{js/jquery.scrollTo.min.js}"></script>
+        <script type="text/javascript" th:src="@{js/jquery.localScroll.min.js}"></script>
+        <script type="text/javascript" th:src="@{js/jquery.viewport.mini.js}"></script>
+        <script type="text/javascript" th:src="@{js/jquery.countTo.js}"></script>
+        <script type="text/javascript" th:src="@{js/jquery.appear.js}"></script>
+        <script type="text/javascript" th:src="@{js/jquery.sticky.js}"></script>
+        <script type="text/javascript" th:src="@{js/jquery.parallax-1.1.3.js}"></script>
+        <script type="text/javascript" th:src="@{js/jquery.fitvids.js}"></script>
+        <script type="text/javascript" th:src="@{js/owl.carousel.min.js}"></script>
+        <script type="text/javascript" th:src="@{js/isotope.pkgd.min.js}"></script>
+        <script type="text/javascript" th:src="@{js/imagesloaded.pkgd.min.js}"></script>
+        <script type="text/javascript" th:src="@{js/jquery.magnific-popup.min.js}"></script>
+        <script type="text/javascript" th:src="@{js/wow.min.js}"></script>
+        <script type="text/javascript" th:src="@{js/masonry.pkgd.min.js}"></script>
+        <script type="text/javascript" th:src="@{js/jquery.simple-text-rotator.min.js}"></script>
+        <script type="text/javascript" th:src="@{js/jquery.lazyload.min.js}"></script>
+        <script type="text/javascript" th:src="@{js/all.js}"></script>
+        <script type="text/javascript" th:src="@{js/contact-form.js}"></script>
+        <script type="text/javascript" th:src="@{js/jquery.ajaxchimp.min.js}"></script>        
+        <!--[if lt IE 10]><script type="text/javascript" src="js/placeholder.js"></script><![endif]-->
+        
+</body>
+</html>

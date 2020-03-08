@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+      <!-- xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"> -->
+<body>
+ <!-- Favicons -->
+        <link rel="shortcut icon" th:href="@{images/favicon.png}">
+
+        <!-- CSS -->
+        <link rel="stylesheet"  th:href="@{css/bootstrap.min.css}">
+        <link rel="stylesheet" th:href="@{css/style.css}">
+        <link rel="stylesheet" th:href="@{css/style-responsive.css}">
+        <link rel="stylesheet" th:href="@{css/animate.min.css}">
+        <link rel="stylesheet" th:href="@{css/vertical-rhythm.min.css}">
+        <link rel="stylesheet" th:href="@{css/owl.carousel.css}">
+        <link rel="stylesheet" th:href="@{css/magnific-popup.css}">  
+<th:block th:fragment="footer">
+    <!-- Footer -->
+            <footer class="page-section bg-gray-lighter footer pb-60">
+                <div class="container">
+                    
+                    <!-- Footer Logo -->
+                    <div class="local-scroll mb-30 wow fadeInUp" data-wow-duration="1.5s">
+                        <a href="#top"><img th:src="@{images/logo DP-02.png}" width="78" height="36" alt="" /></a>
+                    </div>
+                    <!-- End Footer Logo -->
+                    
+                    <!-- Social Links -->
+                    <div class="footer-social-links mb-110 mb-xs-60">
+                        <a href="#" title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a>
+                        <a href="#" title="Twitter" target="_blank"><i class="fa fa-twitter"></i></a>
+                        <a href="#" title="Behance" target="_blank"><i class="fa fa-behance"></i></a>
+                        <a href="#" title="LinkedIn+" target="_blank"><i class="fa fa-linkedin"></i></a>
+                        <a href="#" title="Pinterest" target="_blank"><i class="fa fa-pinterest"></i></a>
+                    </div>
+                    <!-- End Social Links -->  
+                    
+                    <!-- Footer Text -->
+                    <div class="footer-text">
+                        
+                        <!-- Copyright -->
+                        <div class="footer-copy font-alt">
+                            <a href="http://hubapp.co.in" target="_blank">&copy; Hubapp</a>.
+                        </div>
+                        <!-- End Copyright -->
+                        
+                        <div class="footer-made">
+                            Made with love for great people.
+                        </div>
+                        
+                    </div>
+                    <!-- End Footer Text --> 
+                    
+                 </div>
+                 
+                 
+                 <!-- Top Link -->
+                 <div class="local-scroll">
+                     <a href="#top" class="link-to-top"><i class="fa fa-caret-up"></i></a>
+                 </div>
+                 <!-- End Top Link -->
+                 
+            </footer>
+            <!-- End Foter -->
+            
+
+   <!--  <script type="text/javascript" th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+ -->
+</th:block>
+</body>
+</html>
