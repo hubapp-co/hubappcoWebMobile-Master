@@ -29,7 +29,6 @@ public class HomeController {
         return "user/index";
     }
 
-	
 	@GetMapping("/login") 
     public String login(Model model)  { 
 		return "login"; 
