@@ -1,18 +1,20 @@
 package in.co.hubapp.mobile.service;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
-import javax.transaction.Transactional;
 
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import in.co.hubapp.mobile.channel.HubGenRes;
 import in.co.hubapp.mobile.channel.Login;
 import in.co.hubapp.mobile.channel.Register;
+import in.co.hubapp.mobile.repository.CategoryRepositoryMob;
+import in.co.hubapp.mobile.repository.PostsRepositoryMob;
 import in.co.hubapp.mobile.repository.UserRepositoryMob;
+import in.co.hubapp.model.Category;
+import in.co.hubapp.model.Posts;
 import in.co.hubapp.model.User;
 
 @Service
@@ -21,12 +23,14 @@ public class UserServiceMobImpl implements UserServiceMob {
 	@Autowired
 	UserRepositoryMob userRepositoryMob;
 
-	private EntityManager em;
+	@Autowired
+	CategoryRepositoryMob categoryRepositoryMob;
 
 	@Autowired
-	public UserServiceMobImpl(EntityManager theEntityManager) {
-		em = theEntityManager;
-	}
+	PostsRepositoryMob postsRepositoryMob;
+
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 
 	public HubGenRes registerUser(Register req) {
 		User user = new User();
@@ -43,21 +47,21 @@ public class UserServiceMobImpl implements UserServiceMob {
 				user.setLastName(req.getLastName());
 			}
 			if (req.getPassword() != null) {
-				user.setPassword(req.getPassword());
+				user.setPassword(passwordEncoder.encode(req.getPassword()));
 			}
 			try {
-			User user1=userRepositoryMob.findByEmailAddress(req.getEmail());
-			System.out.println(user1);
+				User user1 = userRepositoryMob.findByEmailAddress(req.getEmail());
+				System.out.println(user1);
 				user = userRepositoryMob.save(user);
 			} catch (Exception e) {
 				res.setMessage("email id is already registered");
-				res.setStatus("Failure");
+				res.setStatus("Success");
 				return res;
 			}
 
 			if (user != null) {
 				res.setMessage("user Registered Successfully");
-				res.setStatus("success");
+				res.setStatus("Success");
 				return res;
 			} else {
 				res.setMessage("user Registered Unsuccessfull");
@@ -77,26 +81,100 @@ public class UserServiceMobImpl implements UserServiceMob {
 
 	public HubGenRes login(Login req) {
 		HubGenRes res = new HubGenRes();
+		User userRes = new User();
+		String email = null;
+		String userpassword = null;
 		if (req.getUsername() != null && req.getPassword() != null) {
+			String pass = req.getPassword();
 			User user = userRepositoryMob.findByEmailAddress(req.getUsername());
-			System.out.println(user);
 			if (user != null) {
-				res.setMessage("User is Registered");
-				res.setStatus("Success");
-				res.setUser(user);
-				return res;
+				if (user.getEmail() != null) {
+					email = user.getEmail();
+
+				}
+				if (user.getPassword() != null) {
+					userpassword = user.getPassword();
+
+				}
+			}
+			if (userpassword != null) {
+				Boolean password = passwordEncoder.matches(pass, user.getPassword());
+
+				if (password) {
+					if (user != null) {
+						res.setMessage("User is Registered");
+						res.setStatus("Success");
+						if (user.getFirstName() != null) {
+							userRes.setFirstName(user.getFirstName());
+						}
+						if (user.getEmail() != null) {
+							userRes.setEmail(user.getEmail());
+						}
+						if (user.getLastName() != null) {
+							userRes.setLastName(user.getLastName());
+						}
+						if (user.getId() != null) {
+							userRes.setId(user.getId());
+						}
+						res.setUser(userRes);
+						return res;
+					}
+				} else {
+					if (email != null) {
+						res.setMessage("Please check the password");
+						res.setStatus("Failure");
+						return res;
+					}
+				}
+
 			} else {
-				res.setMessage("user is Not Registered With Us");
+
+				res.setMessage("User is Not Registered please Register");
 				res.setStatus("Failure");
 				return res;
 			}
 
 		}
-
 		res.setMessage("Please enter the credentials");
 		res.setStatus("Failure");
 		return res;
 
+	}
+
+	@Override
+	public List<Category> getCategory() {
+		List<Category> categories = categoryRepositoryMob.findAll();
+		return categories;
+	}
+
+	@Override
+	public HubGenRes post(Posts post, String path) {
+
+		HubGenRes res = new HubGenRes();
+		Posts newpost = new Posts();
+		if (post != null&&path!=null) {
+			if (post.getPostTitle() != null) {
+				newpost.setPostTitle(post.getPostTitle());
+			}
+			if (post.getPostDescription() != null) {
+				newpost.setPostDescription(post.getPostDescription());
+			}
+			if (post.getLikes() != null) {
+				newpost.setLikes(post.getLikes());
+			}
+			if (path != null) {
+				post.setPostImageUrl(path);
+			}
+			postsRepositoryMob.save(newpost);
+			
+			res.setMessage("post saved Successfully");
+			res.setStatus("Success");
+			return res;
+
+		}
+		res.setMessage("unsuccessfull in saving post");
+		res.setStatus("Failure");
+		return res;
 	}
 
 }

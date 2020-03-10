@@ -1,11 +1,13 @@
 package in.co.hubapp.mobile.service;
 
-import org.springframework.data.jpa.repository.Query;
+import java.util.List;
+
 
 import in.co.hubapp.mobile.channel.HubGenRes;
 import in.co.hubapp.mobile.channel.Login;
 import in.co.hubapp.mobile.channel.Register;
-import in.co.hubapp.model.User;
+import in.co.hubapp.model.Category;
+import in.co.hubapp.model.Posts;
 
 public interface UserServiceMob {
 	
@@ -13,6 +15,9 @@ public interface UserServiceMob {
 	
 	public HubGenRes login(Login req);
 	
+	public List<Category> getCategory();
+	
+	public HubGenRes post(Posts post,String path);
 	
 	
 	
