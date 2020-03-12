@@ -26,7 +26,7 @@ public class CategoryChild {
 	private String categoryChildName;
 
 	@Column(name = "category_id")
-	private String categoryId;
+	private Long categoryId;
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "category_child_id", referencedColumnName = "id")
@@ -35,18 +35,17 @@ public class CategoryChild {
 	public CategoryChild() {
 	}
 
-	public CategoryChild(String categoryChildName) {
+	
+
+	public CategoryChild(String categoryChildName, Long categoryId) {
+		super();
 		this.categoryChildName = categoryChildName;
+		this.categoryId = categoryId;
 	}
 
-	public Long getId() {
-		return id;
-	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
 
+	
 	public String getCategoryChildName() {
 		return categoryChildName;
 	}
@@ -55,11 +54,11 @@ public class CategoryChild {
 		this.categoryChildName = categoryChildName;
 	}
 
-	public String getCategoryId() {
+	public Long getCategoryId() {
 		return categoryId;
 	}
 
-	public void setCategoryId(String categoryId) {
+	public void setCategoryId(Long categoryId) {
 		this.categoryId = categoryId;
 	}
 

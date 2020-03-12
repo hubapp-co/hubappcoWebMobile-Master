@@ -1,6 +1,5 @@
 package in.co.hubapp.mobile.service;
 
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +38,7 @@ public class UserServiceMobImpl implements UserServiceMob {
 		if (req != null) {
 			if (req.getEmail() != null) {
 				user.setEmail(req.getEmail());
+				
 			}
 			if (req.getFirstName() != null) {
 				user.setFirstName(req.getFirstName());
@@ -47,12 +47,27 @@ public class UserServiceMobImpl implements UserServiceMob {
 				user.setLastName(req.getLastName());
 			}
 			if (req.getPassword() != null) {
+				try
+				{
 				user.setPassword(passwordEncoder.encode(req.getPassword()));
+				}
+				catch (Exception e)
+				{
+					res.setMessage("user Registered Unsuccessfull");
+					res.setStatus("Failure");
+					return res;
+				}
 			}
 			try {
+				if(req.getEmail()!=null)
+				{
 				User user1 = userRepositoryMob.findByEmailAddress(req.getEmail());
-				System.out.println(user1);
+				
+				if(user1!=null)
+				{
 				user = userRepositoryMob.save(user);
+				}
+				}
 			} catch (Exception e) {
 				res.setMessage("email id is already registered");
 				res.setStatus("Success");
@@ -152,7 +167,7 @@ public class UserServiceMobImpl implements UserServiceMob {
 
 		HubGenRes res = new HubGenRes();
 		Posts newpost = new Posts();
-		if (post != null&&path!=null) {
+		if (post != null && path != null) {
 			if (post.getPostTitle() != null) {
 				newpost.setPostTitle(post.getPostTitle());
 			}
@@ -165,16 +180,24 @@ public class UserServiceMobImpl implements UserServiceMob {
 			if (path != null) {
 				post.setPostImageUrl(path);
 			}
-			postsRepositoryMob.save(newpost);
-			
-			res.setMessage("post saved Successfully");
-			res.setStatus("Success");
-			return res;
 
+			try {
+				postsRepositoryMob.save(newpost);
+
+				res.setMessage("post saved Successfully");
+				res.setStatus("Success");
+				return res;
+			} catch (Exception e) {
+				res.setMessage("unsuccessfull in saving post");
+				res.setStatus("Failure");
+				return res;
+			}
 		}
-		res.setMessage("unsuccessfull in saving post");
+
+		res.setMessage("Enter the details");
 		res.setStatus("Failure");
 		return res;
+
 	}
 
 }

@@ -30,11 +30,16 @@ public class Category {
     
     public Category() {}
 
-    public Category(String categoryName) {
-        this.categoryName = categoryName;
-    }
+    
 
-    public Long getId() {
+    public Category(String categoryName) {
+		super();
+		this.categoryName = categoryName;
+	}
+
+
+
+	public Long getId() {
         return id;
     }
 
