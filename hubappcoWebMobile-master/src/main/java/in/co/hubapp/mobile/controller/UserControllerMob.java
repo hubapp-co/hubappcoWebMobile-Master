@@ -47,7 +47,7 @@ public class UserControllerMob {
 	 * @RequestMapping(value = "/post", method = RequestMethod.POST, consumes = {
 	 * "multipart/form-data" }) public HubGenRes posts(@RequestPart("file")
 	 * MultipartFile file, @RequestBody Posts req) throws IOException { File
-	 * convertFile = new File("/home/rajesh/Desktop/" + file.getOriginalFilename());
+	 * convertFile = new File("/home/rakesh/Desktop/" + file.getOriginalFilename());
 	 * convertFile.createNewFile(); FileOutputStream fos = new
 	 * FileOutputStream(convertFile); fos.write(file.getBytes()); fos.close();
 	 * String path = convertFile.getAbsolutePath();
