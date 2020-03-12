@@ -1,53 +1,31 @@
 
-package in.co.hubapp.model;
+package in.co.hubapp.mobile.channel;
 
 import java.util.Arrays;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Transient;
 
 
-@Entity
+public class Post {
 
-@Table(name = "post")
-public class Posts {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id")
 	private Long id;
 
-	@Column(name = "post_title")
 	private String postTitle;
 
-	@Column(name = "post_description")
 	private String postDescription;
 
-	@Column(name = "post_img_url")
 	private String postImageUrl;
 
-	@Column(name = "likes")
 	private String likes;
-	
-	@Transient
+
 	private byte[] postImage;
 
-	@Column(name="post_user_id")
 	private Long postUserId;
-	
 
-	public Posts() {
+	public Post() {
 		super();
 	}
-	
-	
 
-	public Posts(String postTitle, String postDescription, String postImageUrl, String likes, Long postUserId) {
+	public Post(String postTitle, String postDescription, String postImageUrl, String likes, Long postUserId) {
 		super();
 		this.postTitle = postTitle;
 		this.postDescription = postDescription;
@@ -55,8 +33,6 @@ public class Posts {
 		this.likes = likes;
 		this.postUserId = postUserId;
 	}
-
-
 
 	public String getPostTitle() {
 		return postTitle;
@@ -112,7 +88,5 @@ public class Posts {
 				+ ", postImageUrl=" + postImageUrl + ", likes=" + likes + ", postImage=" + Arrays.toString(postImage)
 				+ ", postUserId=" + postUserId + "]";
 	}
-		
-	
 
 }
