@@ -182,8 +182,7 @@ public class UserServiceMobImpl implements UserServiceMob {
 			if (post.getLikes() != null) {
 				newpost.setLikes(post.getLikes());
 			}
-			if(post.getPostUserId()!=null)
-			{
+			if (post.getPostUserId() != null) {
 				newpost.setPostUserId(post.getPostUserId());
 			}
 			if (post.getPostImage() != null) {
@@ -204,12 +203,11 @@ public class UserServiceMobImpl implements UserServiceMob {
 				}
 
 				newpost.setPostImageUrl(filePath);
-				
 
 			}
 
 			try {
-				
+
 				postsRepositoryMob.save(newpost);
 
 				res.setMessage("post saved Successfully");
@@ -231,78 +229,85 @@ public class UserServiceMobImpl implements UserServiceMob {
 	public List<Post> getPost(HubGenReq req) throws FileNotFoundException {
 
 		List<Post> res = new ArrayList<>();
-		List<Posts> allPosts=new ArrayList<>();
-		Post addPost=new Post();
-		
-		if(req.getSecureKey()!=null)
-		{
-			try
-			{
-				allPosts= (List<Posts>) postsRepositoryMob.findByPostByUSer(req.getSecureKey());
-			}
-			catch (Exception e) {
+		List<Posts> allPosts = new ArrayList<>();
+		Post addPost = new Post();
+
+		if (req.getSecureKey() != null) {
+			try {
+				allPosts = (List<Posts>) postsRepositoryMob.findByPostByUSer(req.getSecureKey());
+			} catch (Exception e) {
 				return res;
 
 			}
-		
-		
-		if(allPosts!=null)
-		{
-			for (Posts posts : allPosts) {
-				
-				if(posts.getPostTitle()!=null)
-				{
-					addPost.setPostTitle(posts.getPostTitle());
-				}
-				if(posts.getPostDescription()!=null)
-				{
-					addPost.setPostDescription(posts.getPostDescription());
-				}
-				if(posts.getLikes()!=null)
-				{
-					addPost.setLikes(posts.getLikes());
-				}
-				if(posts.getPostImageUrl()!=null)
-				{
-					File convertFile = new File(posts.getPostImageUrl());
-					byte[] bArray = readFileToByteArray(convertFile);
-					
-					
-					addPost.setPostImage(bArray);;
-				}
-				
-				res.add(addPost);
 
-				
+			if (allPosts != null) {
+				for (Posts posts : allPosts) {
+
+					if (posts.getPostTitle() != null) {
+						addPost.setPostTitle(posts.getPostTitle());
+					}
+					if (posts.getPostDescription() != null) {
+						addPost.setPostDescription(posts.getPostDescription());
+					}
+					if (posts.getLikes() != null) {
+						addPost.setLikes(posts.getLikes());
+					}
+					if (posts.getPostImageUrl() != null) {
+						File convertFile = new File(posts.getPostImageUrl());
+						byte[] bArray = readFileToByteArray(convertFile);
+
+						addPost.setPostImage(bArray);
+					}
+					if (posts.getCategoryId().getId() != null) {
+						addPost.setCategoryId(Integer.valueOf(String.valueOf(posts.getCategoryId().getId())));
+						if (posts.getCategoryId().getCategoryName() != null) {
+							addPost.setCategoryName(posts.getCategoryId().getCategoryName());
+						}
+
+					}
+
+					if (posts.getCategoryChildId() != null) {
+						addPost.setCategoryChildId(Integer.valueOf(
+								String.valueOf(posts.getCategoryId().getSubCategories().get(0).getCategoryId())));
+						if (posts.getCategoryChildId().getCategoryChildName() != null) {
+							addPost.setCategoryChildName(posts.getCategoryChildId().getCategoryChildName());
+						}
+					}
+
+					if (posts.getCategorySubChildId() != null) {
+						addPost.setCategorySubChildId(Integer.valueOf(String.valueOf(posts.getCategoryId()
+								.getSubCategories().get(0).getSubCategoriesChild().get(0).getCategoryChildId())));
+						if (posts.getCategorySubChildId().getCategorySubChildName() != null) {
+							addPost.setCategorySubChildName(posts.getCategorySubChildId().getCategorySubChildName());
+						}
+					}
+
+					res.add(addPost);
+
+				}
+
 			}
 			return res;
 
 		}
-		}
+		
 		return res;
-
 	}
-	
-	
-	private static byte[] readFileToByteArray(File file){
-        FileInputStream fis = null;
-        // Creating a byte array using the length of the file
-        // file.length returns long which is cast to int
-        byte[] bArray = new byte[(int) file.length()];
-        try{
-            fis = new FileInputStream(file);
-            fis.read(bArray);
-            fis.close();        
-            
-        }catch(IOException ioExp){
-            ioExp.printStackTrace();
-        }
-        return bArray;
-    }
-	
-	
-	
-	
-	
-	
+
+	private static byte[] readFileToByteArray(File file) {
+		FileInputStream fis = null;
+		// Creating a byte array using the length of the file
+		// file.length returns long which is cast to int
+		byte[] bArray = new byte[(int) file.length()];
+		try {
+			fis = new FileInputStream(file);
+			fis.read(bArray);
+			fis.close();
+
+		} catch (IOException ioExp) {
+			ioExp.printStackTrace();
+		}
+		return bArray;
+	}
+
 }

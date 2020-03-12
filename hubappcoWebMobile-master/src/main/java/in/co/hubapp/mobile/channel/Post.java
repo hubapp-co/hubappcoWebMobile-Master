@@ -3,8 +3,6 @@ package in.co.hubapp.mobile.channel;
 
 import java.util.Arrays;
 
-
-
 public class Post {
 
 	private Long id;
@@ -21,17 +19,24 @@ public class Post {
 
 	private Long postUserId;
 
+	private Integer categoryId;
+
+	private String categoryName;
+
+	private Integer categoryChildId;
+
+	private String categoryChildName;
+
+	private Integer categorySubChildId;
+
+	private String categorySubChildName;
+
+	private Integer categoryFinalChildId;
+
+	private String categoryFinalChildName;
+
 	public Post() {
 		super();
-	}
-
-	public Post(String postTitle, String postDescription, String postImageUrl, String likes, Long postUserId) {
-		super();
-		this.postTitle = postTitle;
-		this.postDescription = postDescription;
-		this.postImageUrl = postImageUrl;
-		this.likes = likes;
-		this.postUserId = postUserId;
 	}
 
 	public String getPostTitle() {
@@ -82,11 +87,79 @@ public class Post {
 		this.postUserId = postUserId;
 	}
 
+	public Integer getCategoryId() {
+		return categoryId;
+	}
+
+	public void setCategoryId(Integer categoryId) {
+		this.categoryId = categoryId;
+	}
+
+	public String getCategoryName() {
+		return categoryName;
+	}
+
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
+
+	public Integer getCategoryChildId() {
+		return categoryChildId;
+	}
+
+	public void setCategoryChildId(Integer categoryChildId) {
+		this.categoryChildId = categoryChildId;
+	}
+
+	public String getCategoryChildName() {
+		return categoryChildName;
+	}
+
+	public void setCategoryChildName(String categoryChildName) {
+		this.categoryChildName = categoryChildName;
+	}
+
+	public Integer getCategorySubChildId() {
+		return categorySubChildId;
+	}
+
+	public void setCategorySubChildId(Integer categorySubChildId) {
+		this.categorySubChildId = categorySubChildId;
+	}
+
+	public String getCategorySubChildName() {
+		return categorySubChildName;
+	}
+
+	public void setCategorySubChildName(String categorySubChildName) {
+		this.categorySubChildName = categorySubChildName;
+	}
+
+	public Integer getCategoryFinalChildId() {
+		return categoryFinalChildId;
+	}
+
+	public void setCategoryFinalChildId(Integer categoryFinalChildId) {
+		this.categoryFinalChildId = categoryFinalChildId;
+	}
+
+	public String getCategoryFinalChildName() {
+		return categoryFinalChildName;
+	}
+
+	public void setCategoryFinalChildName(String categoryFinalChildName) {
+		this.categoryFinalChildName = categoryFinalChildName;
+	}
+
 	@Override
 	public String toString() {
-		return "Posts [id=" + id + ", postTitle=" + postTitle + ", postDescription=" + postDescription
+		return "Post [id=" + id + ", postTitle=" + postTitle + ", postDescription=" + postDescription
 				+ ", postImageUrl=" + postImageUrl + ", likes=" + likes + ", postImage=" + Arrays.toString(postImage)
-				+ ", postUserId=" + postUserId + "]";
+				+ ", postUserId=" + postUserId + ", categoryId=" + categoryId + ", categoryName=" + categoryName
+				+ ", categoryChildId=" + categoryChildId + ", categoryChildName=" + categoryChildName
+				+ ", categorySubChildId=" + categorySubChildId + ", categorySubChildName=" + categorySubChildName
+				+ ", categoryFinalChildId=" + categoryFinalChildId + ", categoryFinalChildName="
+				+ categoryFinalChildName + "]";
 	}
 
 }
