@@ -3,7 +3,7 @@ package in.co.hubapp.mobile.channel;
 
 import java.util.Arrays;
 
-public class Post {
+public class PostRes {
 
 	private Long id;
 
@@ -35,7 +35,7 @@ public class Post {
 
 	private String categoryFinalChildName;
 
-	public Post() {
+	public PostRes() {
 		super();
 	}
 

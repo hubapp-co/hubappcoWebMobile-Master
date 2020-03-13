@@ -19,7 +19,7 @@ public class CategorySubChild {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id")
+	@Column(name = "id")
 	private Long id;
 
 	@Column(name = "category_sub_child_name")
@@ -27,7 +27,7 @@ public class CategorySubChild {
 
 	@Column(name = "category_child_id")
 	private Long categoryChildId;
-	
+
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "category_sub_child_id", referencedColumnName = "id")
 	private List<CategoryFinalChild> finalCategoriesChild;
@@ -35,7 +35,13 @@ public class CategorySubChild {
 	public CategorySubChild() {
 	}
 
-	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public CategorySubChild(String categorySubChildName, Long categoryChildId) {
 		super();
@@ -43,20 +49,13 @@ public class CategorySubChild {
 		this.categoryChildId = categoryChildId;
 	}
 
-
-
-	
 	public List<CategoryFinalChild> getFinalCategoriesChild() {
 		return finalCategoriesChild;
 	}
 
-
-
 	public void setFinalCategoriesChild(List<CategoryFinalChild> finalCategoriesChild) {
 		this.finalCategoriesChild = finalCategoriesChild;
 	}
-
-
 
 	public String getCategorySubChildName() {
 		return categorySubChildName;

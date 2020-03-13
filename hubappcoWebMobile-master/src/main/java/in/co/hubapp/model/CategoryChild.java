@@ -35,17 +35,20 @@ public class CategoryChild {
 	public CategoryChild() {
 	}
 
-	
-
 	public CategoryChild(String categoryChildName, Long categoryId) {
 		super();
 		this.categoryChildName = categoryChildName;
 		this.categoryId = categoryId;
 	}
 
+	public Long getId() {
+		return id;
+	}
 
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-	
 	public String getCategoryChildName() {
 		return categoryChildName;
 	}
@@ -75,9 +78,5 @@ public class CategoryChild {
 		return "CategoryChild [id=" + id + ", categoryChildName=" + categoryChildName + ", categoryId=" + categoryId
 				+ ", subCategoriesChild=" + subCategoriesChild + "]";
 	}
-	
-	
-
-	
 
 }
