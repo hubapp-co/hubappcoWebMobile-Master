@@ -55,7 +55,10 @@ public class PostServiceMobImpl implements PostServiceMob {
 				LocalDateTime current = LocalDateTime.now();
 
 				try {
-					File convertFile = new File("/home/rajesh/Desktop/" + current);
+//					File convertFile = new File("/home/rajesh/Desktop/" + current);
+//					File convertFile = new File("/public_html/Deployment/Deployed/uploads" + current);
+					final String dir = System.getProperty("user.dir") + "/uploads/";
+					File convertFile = new File(dir + current);
 					convertFile.createNewFile();
 					FileOutputStream fos = new FileOutputStream(convertFile);
 					fos.write(post.getPostImage());
@@ -122,13 +125,14 @@ public class PostServiceMobImpl implements PostServiceMob {
 
 						addPost.setPostImage(bArray);
 					}
-					if (posts.getCategoryId()!= null) {
-						
+					if (posts.getCategoryId() != null) {
+
 						addPost.setCategory(posts.getCategoryId());
 					}
 
 					if (posts.getCategoryChildId() != null) {
-						addPost.setCategoryChild(posts.getCategoryChildId());					}
+						addPost.setCategoryChild(posts.getCategoryChildId());
+					}
 
 					if (posts.getCategorySubChildId() != null) {
 						addPost.setCategorySubChild(posts.getCategorySubChildId());
@@ -165,7 +169,8 @@ public class PostServiceMobImpl implements PostServiceMob {
 	private static String writeByteToFile(byte[] bytes) throws IOException {
 		LocalDateTime current = LocalDateTime.now();
 		String filePath = null;
-		File convertFile = new File("/home/rajesh/Desktop/" + current);
+		final String dir = System.getProperty("user.dir") + "/uploads/";
+		File convertFile = new File(dir + current);
 		convertFile.createNewFile();
 		FileOutputStream fos = null;
 		try {

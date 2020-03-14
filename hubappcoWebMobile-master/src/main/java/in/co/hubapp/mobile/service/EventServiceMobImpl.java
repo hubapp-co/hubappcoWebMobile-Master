@@ -106,7 +106,8 @@ public class EventServiceMobImpl implements EventServiceMob {
 	private static String writeByteToFile(byte[] bytes) throws IOException {
 		LocalDateTime current = LocalDateTime.now();
 		String filePath = null;
-		File convertFile = new File("/home/rajesh/Desktop/" + current);
+		final String dir = System.getProperty("user.dir") + "/uploads/";
+		File convertFile = new File(dir + current);
 		convertFile.createNewFile();
 		FileOutputStream fos = null;
 		try {
