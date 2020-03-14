@@ -2,7 +2,6 @@ package in.co.hubapp.mobile.service;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -16,23 +15,16 @@ import org.springframework.stereotype.Service;
 import in.co.hubapp.mobile.channel.CategoryChildList;
 import in.co.hubapp.mobile.channel.CategoryList;
 import in.co.hubapp.mobile.channel.CategorySubChildList;
-import in.co.hubapp.mobile.channel.EventRes;
-import in.co.hubapp.mobile.channel.HubGenReq;
 import in.co.hubapp.mobile.channel.HubGenRes;
 import in.co.hubapp.mobile.channel.Login;
-import in.co.hubapp.mobile.channel.PostRes;
 import in.co.hubapp.mobile.channel.Register;
 import in.co.hubapp.mobile.repository.CategoryChildRepositoryMob;
 import in.co.hubapp.mobile.repository.CategoryRepositoryMob;
 import in.co.hubapp.mobile.repository.CategorySubChildRepositoryMob;
-import in.co.hubapp.mobile.repository.EventRepositoryMob;
-import in.co.hubapp.mobile.repository.PostsRepositoryMob;
 import in.co.hubapp.mobile.repository.UserRepositoryMob;
 import in.co.hubapp.model.Category;
 import in.co.hubapp.model.CategoryChild;
 import in.co.hubapp.model.CategorySubChild;
-import in.co.hubapp.model.Events;
-import in.co.hubapp.model.Posts;
 import in.co.hubapp.model.User;
 
 @Service
@@ -45,16 +37,10 @@ public class UserServiceMobImpl implements UserServiceMob {
 	CategoryRepositoryMob categoryRepositoryMob;
 
 	@Autowired
-	PostsRepositoryMob postsRepositoryMob;
-
-	@Autowired
 	CategoryChildRepositoryMob categoryChildRepositoryMob;
 
 	@Autowired
 	CategorySubChildRepositoryMob categorySubChildRepositoryMob;
-
-	@Autowired
-	EventRepositoryMob eventRepositoryMob;
 
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
@@ -66,7 +52,6 @@ public class UserServiceMobImpl implements UserServiceMob {
 		if (req != null) {
 			if (req.getEmail() != null) {
 				user.setEmail(req.getEmail());
-
 			}
 			if (req.getFirstName() != null) {
 				user.setFirstName(req.getFirstName());
@@ -185,135 +170,6 @@ public class UserServiceMobImpl implements UserServiceMob {
 		return categories;
 	}
 
-	@Override
-	public HubGenRes post(Posts post) {
-
-		HubGenRes res = new HubGenRes();
-		Posts newpost = new Posts();
-		String filePath;
-		if (post != null) {
-			if (post.getPostTitle() != null) {
-				newpost.setPostTitle(post.getPostTitle());
-			}
-			if (post.getPostDescription() != null) {
-				newpost.setPostDescription(post.getPostDescription());
-			}
-			if (post.getLikes() != null) {
-				newpost.setLikes(post.getLikes());
-			}
-			if (post.getPostUserId() != null) {
-				newpost.setPostUserId(post.getPostUserId());
-				;
-			}
-			if (post.getPostImage() != null) {
-
-				LocalDateTime current = LocalDateTime.now();
-
-				try {
-					File convertFile = new File("/home/rajesh/Desktop/" + current);
-					convertFile.createNewFile();
-					FileOutputStream fos = new FileOutputStream(convertFile);
-					fos.write(post.getPostImage());
-					fos.close();
-					filePath = convertFile.getAbsolutePath();
-				} catch (IOException e) {
-					res.setMessage("Error uploading image");
-					res.setStatus("Failure");
-					return res;
-				}
-
-				newpost.setPostImageUrl(filePath);
-
-			}
-
-			try {
-
-				postsRepositoryMob.save(newpost);
-
-				res.setMessage("post saved Successfully");
-				res.setStatus("Success");
-				return res;
-			} catch (Exception e) {
-				res.setMessage("unsuccessfull in saving post");
-				res.setStatus("Failure");
-				return res;
-			}
-		}
-
-		res.setMessage("Enter the details");
-		res.setStatus("Failure");
-		return res;
-
-	}
-
-	public List<PostRes> getPostByUserId(HubGenReq req) throws FileNotFoundException {
-
-		List<PostRes> res = new ArrayList<>();
-		List<Posts> allPosts = new ArrayList<>();
-		PostRes addPost = new PostRes();
-
-		if (req.getSecureKey() != null) {
-			try {
-				allPosts = (List<Posts>) postsRepositoryMob.findByPostByUSer(req.getSecureKey());
-			} catch (Exception e) {
-				return res;
-
-			}
-
-			if (allPosts != null) {
-				for (Posts posts : allPosts) {
-
-					if (posts.getPostTitle() != null) {
-						addPost.setPostTitle(posts.getPostTitle());
-					}
-					if (posts.getPostDescription() != null) {
-						addPost.setPostDescription(posts.getPostDescription());
-					}
-					if (posts.getLikes() != null) {
-						addPost.setLikes(posts.getLikes());
-					}
-					if (posts.getPostImageUrl() != null) {
-						File convertFile = new File(posts.getPostImageUrl());
-						byte[] bArray = readFileToByteArray(convertFile);
-
-						addPost.setPostImage(bArray);
-					}
-					if (posts.getCategoryId().getId() != null) {
-						addPost.setCategoryId(Integer.valueOf(String.valueOf(posts.getCategoryId().getId())));
-						if (posts.getCategoryId().getCategoryName() != null) {
-							addPost.setCategoryName(posts.getCategoryId().getCategoryName());
-						}
-
-					}
-
-					if (posts.getCategoryChildId() != null) {
-						addPost.setCategoryChildId(Integer.valueOf(
-								String.valueOf(posts.getCategoryId().getSubCategories().get(0).getCategoryId())));
-						if (posts.getCategoryChildId().getCategoryChildName() != null) {
-							addPost.setCategoryChildName(posts.getCategoryChildId().getCategoryChildName());
-						}
-					}
-
-					if (posts.getCategorySubChildId() != null) {
-						addPost.setCategorySubChildId(Integer.valueOf(String.valueOf(posts.getCategoryId()
-								.getSubCategories().get(0).getSubCategoriesChild().get(0).getCategoryChildId())));
-						if (posts.getCategorySubChildId().getCategorySubChildName() != null) {
-							addPost.setCategorySubChildName(posts.getCategorySubChildId().getCategorySubChildName());
-						}
-					}
-
-					res.add(addPost);
-
-				}
-
-			}
-			return res;
-
-		}
-
-		return res;
-	}
-
 	public List<CategoryList> getCategoryList() {
 		List<Category> req = new ArrayList<Category>();
 
@@ -400,69 +256,6 @@ public class UserServiceMobImpl implements UserServiceMob {
 
 	}
 
-	@Override
-	public HubGenRes postEvents(Events req) {
-		String finalFilePath = null;
-		HubGenRes res = new HubGenRes();
-		Events newEvent = new Events();
-		if (req != null) {
-			if (req.getEventName() != null) {
-				newEvent.setEventName(req.getEventName());
-			}
-			if (req.getEventDecription() != null) {
-				newEvent.setEventDecription(req.getEventDecription());
-			}
-			if (req.getLikes() != null) {
-				newEvent.setLikes(req.getLikes());
-			}
-			if (req.getEventUserId()!= null) {
-				newEvent.setEventUserId(req.getEventUserId());
-			}
-			if (req.getEventDate() != null) {
-				newEvent.setEventDate(req.getEventDate());
-			}
-			if (req.getEvenTime() != null) {
-				newEvent.setEvenTime(req.getEvenTime());
-			}
-			if (req.getMemberName() != null) {
-				newEvent.setMemberName(req.getMemberName());
-			}
-			if (req.getEventImageInBytes() != null) {
-
-				try {
-
-					finalFilePath = writeByteToFile(req.getEventImageInBytes());
-
-				} catch (IOException e) {
-					res.setMessage("Error uploading image");
-					res.setStatus("Failure");
-					return res;
-				}
-
-				newEvent.setEventImg(finalFilePath);
-
-			}
-
-			try {
-
-				eventRepositoryMob.save(newEvent);
-
-				res.setMessage("event saved Successfully");
-				res.setStatus("Success");
-				return res;
-			} catch (Exception e) {
-				res.setMessage("unsuccessfull in saving event");
-				res.setStatus("Failure");
-				return res;
-			}
-		}
-
-		res.setMessage("Enter the details");
-		res.setStatus("Failure");
-		return res;
-
-	}
-
 	private static byte[] readFileToByteArray(File file) {
 		FileInputStream fis = null;
 		// Creating a byte array using the length of the file
@@ -495,63 +288,6 @@ public class UserServiceMobImpl implements UserServiceMob {
 			ioExp.printStackTrace();
 		}
 		return filePath;
-	}
-
-	@Override
-	public List<EventRes> getEventByUserId(HubGenReq req) throws FileNotFoundException {
-
-		List<EventRes> res = new ArrayList<>();
-		List<Events> allEvents = new ArrayList<>();
-		EventRes addEvent = new EventRes();
-
-		if (req.getSecureKey() != null) {
-			try {
-				allEvents = (List<Events>) eventRepositoryMob.findEventById(req.getSecureKey());
-			} catch (Exception e) {
-				return res;
-
-			}
-
-			if (allEvents != null) {
-				for (Events events : allEvents) {
-
-					if (events.getEventName() != null) {
-						addEvent.setEventName(events.getEventName());
-					}
-					if (events.getEventDecription() != null) {
-						addEvent.setEventDecription(events.getEventDecription());
-					}
-					if (events.getLikes() != null) {
-						addEvent.setLikes(events.getLikes());
-					}
-					if (events.getEventImg() != null) {
-						File convertFile = new File(events.getEventImg());
-						byte[] bArray = readFileToByteArray(convertFile);
-
-						addEvent.setEventImageInBytes(bArray);
-					}
-					if (events.getEventDate() != null) {
-						addEvent.setEventDate(events.getEventDate());
-					}
-					if (events.getEvenTime() != null) {
-						addEvent.setEvenTime(events.getEvenTime());
-					}
-
-					if (events.getEventUserId()!= null) {
-
-						addEvent.setEventUserId(events.getEventUserId());
-					}
-
-					res.add(addEvent);
-
-				}
-
-			}
-			return res;
-
-		}
-
-		return res;
 	}
 
 }

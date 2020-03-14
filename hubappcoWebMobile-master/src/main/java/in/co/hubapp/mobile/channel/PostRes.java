@@ -3,6 +3,11 @@ package in.co.hubapp.mobile.channel;
 
 import java.util.Arrays;
 
+import in.co.hubapp.model.Category;
+import in.co.hubapp.model.CategoryChild;
+import in.co.hubapp.model.CategoryFinalChild;
+import in.co.hubapp.model.CategorySubChild;
+
 public class PostRes {
 
 	private Long id;
@@ -19,21 +24,21 @@ public class PostRes {
 
 	private Long postUserId;
 
-	private Integer categoryId;
+	private Category category;
 
-	private String categoryName;
+//	private String categoryName;
 
-	private Integer categoryChildId;
+	private CategoryChild categoryChild;
 
-	private String categoryChildName;
+//	private String categoryChildName;
 
-	private Integer categorySubChildId;
+	private CategorySubChild categorySubChild;
 
-	private String categorySubChildName;
+//	private String categorySubChildName;
 
-	private Integer categoryFinalChildId;
+	private CategoryFinalChild categoryFinalChild;
 
-	private String categoryFinalChildName;
+//	private String categoryFinalChildName;
 
 	public PostRes() {
 		super();
@@ -87,79 +92,52 @@ public class PostRes {
 		this.postUserId = postUserId;
 	}
 
-	public Integer getCategoryId() {
-		return categoryId;
+	public Long getId() {
+		return id;
 	}
 
-	public void setCategoryId(Integer categoryId) {
-		this.categoryId = categoryId;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public String getCategoryName() {
-		return categoryName;
+	public Category getCategory() {
+		return category;
 	}
 
-	public void setCategoryName(String categoryName) {
-		this.categoryName = categoryName;
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 
-	public Integer getCategoryChildId() {
-		return categoryChildId;
+	public CategoryChild getCategoryChild() {
+		return categoryChild;
 	}
 
-	public void setCategoryChildId(Integer categoryChildId) {
-		this.categoryChildId = categoryChildId;
+	public void setCategoryChild(CategoryChild categoryChild) {
+		this.categoryChild = categoryChild;
 	}
 
-	public String getCategoryChildName() {
-		return categoryChildName;
+	public CategorySubChild getCategorySubChild() {
+		return categorySubChild;
 	}
 
-	public void setCategoryChildName(String categoryChildName) {
-		this.categoryChildName = categoryChildName;
+	public void setCategorySubChild(CategorySubChild categorySubChild) {
+		this.categorySubChild = categorySubChild;
 	}
 
-	public Integer getCategorySubChildId() {
-		return categorySubChildId;
+	public CategoryFinalChild getCategoryFinalChild() {
+		return categoryFinalChild;
 	}
 
-	public void setCategorySubChildId(Integer categorySubChildId) {
-		this.categorySubChildId = categorySubChildId;
-	}
-
-	public String getCategorySubChildName() {
-		return categorySubChildName;
-	}
-
-	public void setCategorySubChildName(String categorySubChildName) {
-		this.categorySubChildName = categorySubChildName;
-	}
-
-	public Integer getCategoryFinalChildId() {
-		return categoryFinalChildId;
-	}
-
-	public void setCategoryFinalChildId(Integer categoryFinalChildId) {
-		this.categoryFinalChildId = categoryFinalChildId;
-	}
-
-	public String getCategoryFinalChildName() {
-		return categoryFinalChildName;
-	}
-
-	public void setCategoryFinalChildName(String categoryFinalChildName) {
-		this.categoryFinalChildName = categoryFinalChildName;
+	public void setCategoryFinalChild(CategoryFinalChild categoryFinalChild) {
+		this.categoryFinalChild = categoryFinalChild;
 	}
 
 	@Override
 	public String toString() {
-		return "Post [id=" + id + ", postTitle=" + postTitle + ", postDescription=" + postDescription
+		return "PostRes [id=" + id + ", postTitle=" + postTitle + ", postDescription=" + postDescription
 				+ ", postImageUrl=" + postImageUrl + ", likes=" + likes + ", postImage=" + Arrays.toString(postImage)
-				+ ", postUserId=" + postUserId + ", categoryId=" + categoryId + ", categoryName=" + categoryName
-				+ ", categoryChildId=" + categoryChildId + ", categoryChildName=" + categoryChildName
-				+ ", categorySubChildId=" + categorySubChildId + ", categorySubChildName=" + categorySubChildName
-				+ ", categoryFinalChildId=" + categoryFinalChildId + ", categoryFinalChildName="
-				+ categoryFinalChildName + "]";
+				+ ", postUserId=" + postUserId + ", category=" + category + ", categoryChild=" + categoryChild
+				+ ", categorySubChild=" + categorySubChild + ", categoryFinalChild=" + categoryFinalChild + "]";
 	}
 
 }
