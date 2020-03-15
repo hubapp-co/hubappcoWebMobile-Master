@@ -28,6 +28,14 @@ public class HomeController {
     public String userIndex() {
         return "user/index";
     }
+    @GetMapping("/user/event")
+    public String userEvent() {
+        return "user/event";
+    }
+    @GetMapping("/user/profile")
+    public String userProfile() {
+        return "user/profile";
+    }
 
 	@GetMapping("/login") 
     public String login(Model model)  { 
@@ -36,6 +44,10 @@ public class HomeController {
 	 
     @GetMapping("/access-denied")
     public String accessDenied() {
+        return "/error/access-denied";
+    }
+    @GetMapping( "/error")
+    public String error() {
         return "/error/access-denied";
     }
 
