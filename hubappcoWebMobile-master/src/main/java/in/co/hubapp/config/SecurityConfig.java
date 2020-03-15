@@ -41,11 +41,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 						/* "/user/**", */
                             "/registration**",
                             "/api/**").permitAll()
+                    .antMatchers("user/").hasAnyRole("USER")
+                    .antMatchers("user/event").hasAnyRole("USER")
+                    .antMatchers("user/profile").hasAnyRole("USER")
                     .anyRequest().authenticated()
                 .and()
                 .formLogin()
                     .loginPage("/login")
-                    .defaultSuccessUrl("/user/**")
+                    .defaultSuccessUrl("/user/")
                     .permitAll()
                 .and()
                 .logout()
