@@ -11,17 +11,21 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import in.co.hubapp.mobile.channel.CategoryChildList;
 import in.co.hubapp.mobile.channel.CategoryList;
 import in.co.hubapp.mobile.channel.CategorySubChildList;
+import in.co.hubapp.mobile.channel.DocumentDetails;
 import in.co.hubapp.mobile.channel.HubGenRes;
 import in.co.hubapp.mobile.channel.Login;
 import in.co.hubapp.mobile.channel.Register;
 import in.co.hubapp.mobile.repository.CategoryChildRepositoryMob;
 import in.co.hubapp.mobile.repository.CategoryRepositoryMob;
 import in.co.hubapp.mobile.repository.CategorySubChildRepositoryMob;
+import in.co.hubapp.mobile.repository.DocumentRepositoryMob;
 import in.co.hubapp.mobile.repository.UserRepositoryMob;
+import in.co.hubapp.mobile.util.Document;
 import in.co.hubapp.model.Category;
 import in.co.hubapp.model.CategoryChild;
 import in.co.hubapp.model.CategorySubChild;
@@ -44,6 +48,9 @@ public class UserServiceMobImpl implements UserServiceMob {
 
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
+
+	@Autowired
+	DocumentRepositoryMob documentRepositoryMob;
 
 	public HubGenRes registerUser(Register req) {
 		User user = new User();
@@ -256,6 +263,51 @@ public class UserServiceMobImpl implements UserServiceMob {
 
 	}
 
+	public HubGenRes uploadDocument(MultipartFile file) {
+		HubGenRes res = new HubGenRes();
+		Document doc = new Document();
+		DocumentDetails docRes = new DocumentDetails();
+		LocalDateTime current = LocalDateTime.now();
+
+		try {
+			String dir = System.getProperty("user.dir") + "/uploads/";
+			File convertFile = new File(dir + file.getOriginalFilename()+" " + current);
+			convertFile.createNewFile();
+			FileOutputStream fos = new FileOutputStream(convertFile);
+			fos.write(file.getBytes());
+			fos.close();
+			String filePath = convertFile.getAbsolutePath();
+			String fileName = convertFile.getName();
+			try {
+				doc.setFilePath(filePath);
+				doc.setFileName(fileName);
+				Document docDetails = documentRepositoryMob.save(doc);
+				if (docDetails != null) {
+					docRes.setDocId(docDetails.getId());
+					res.setStatus("Success");
+					res.setMessage("Document uploaded Successfuly");
+					res.setDoc(docRes);					
+					return res;
+				}
+
+			} catch (Exception e) {
+
+				res.setStatus("Failure");
+				res.setMessage("Error in uploading document");
+				return res;
+			}
+		} catch (Exception e) {
+			res.setStatus("Failure");
+			res.setMessage("Error in uploading document");
+			return res;
+
+		}
+		
+		
+		return res;
+
+	}
+
 	private static byte[] readFileToByteArray(File file) {
 		FileInputStream fis = null;
 		// Creating a byte array using the length of the file
@@ -275,7 +327,8 @@ public class UserServiceMobImpl implements UserServiceMob {
 	private static String writeByteToFile(byte[] bytes) throws IOException {
 		LocalDateTime current = LocalDateTime.now();
 		String filePath = null;
-		File convertFile = new File("/home/rajesh/Desktop/" + current);
+		final String dir = System.getProperty("user.dir") + "/uploads/";
+		File convertFile = new File(dir + current);
 		convertFile.createNewFile();
 		FileOutputStream fos = null;
 		try {

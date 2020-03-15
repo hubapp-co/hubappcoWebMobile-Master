@@ -34,9 +34,9 @@ public class PostsController {
 
 	@RequestMapping(value = RequestType.USER_POST, method = RequestMethod.GET, consumes = { "application/json",
 			"multipart/form-data" })
-	public List<PostRes> getPosts(@RequestBody HubGenReq req) throws IOException {
+	public HubGenRes getPosts(@RequestBody HubGenReq req) throws IOException {
 
-		List<PostRes> res = postServiceMob.getPostByUserId(req);
+		HubGenRes res = postServiceMob.getPostByUserId(req);
 
 		return res;
 	}

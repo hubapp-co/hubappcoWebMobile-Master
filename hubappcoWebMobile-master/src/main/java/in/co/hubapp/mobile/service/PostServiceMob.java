@@ -12,6 +12,6 @@ public interface PostServiceMob {
 
 	public HubGenRes post(PostReq post);
 
-	public List<PostRes> getPostByUserId(HubGenReq req) throws FileNotFoundException;
+	public HubGenRes getPostByUserId(HubGenReq req) throws FileNotFoundException;
 
 }

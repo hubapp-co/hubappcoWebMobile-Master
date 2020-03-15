@@ -2,6 +2,8 @@ package in.co.hubapp.mobile.service;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import in.co.hubapp.mobile.channel.CategoryChildList;
 import in.co.hubapp.mobile.channel.CategoryList;
 import in.co.hubapp.mobile.channel.CategorySubChildList;
@@ -23,6 +25,8 @@ public interface UserServiceMob {
 	public List<CategoryChildList> getCategoryChildList(Long id);
 	
 	public List<CategorySubChildList> getCategorySubChildList(Long id);
+	
+	public HubGenRes uploadDocument(MultipartFile file);
 	
 	
 	

@@ -25,5 +25,9 @@ public class RequestType {
 	public static final String EVENT = "/event";
 
 	public static final String USER = "/user";
+	
+	public static final String UPDATE_PROFILE ="/update-profile";
+	
+	public static final String DOC_UPLOAD ="/doc-upload";
 
 }

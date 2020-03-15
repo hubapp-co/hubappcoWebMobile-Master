@@ -3,15 +3,11 @@ package in.co.hubapp.model;
 
 import java.util.Arrays;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -37,31 +33,37 @@ public class Posts {
 	@Column(name = "likes")
 	private String likes;
 
+	@Column(name = "post_image_id")
+	private Long imageId;
+
 	@Transient
 	private byte[] postImage;
 
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "post_user_id", referencedColumnName = "id")
-	private User postUserId;
+	@Column(name = "post_user_id")
+	private Long postUserId;
 
-	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "category_id", referencedColumnName = "id")
-	private Category categoryId;
+	@Column(name = "category_id")
+	private Long categoryId;
 
-	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "category_child_id", referencedColumnName = "id")
-	private CategoryChild categoryChildId;
+	@Column(name = "category_child_id")
+	private Long categoryChildId;
 
-	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = " 	category_sub_child_id ", referencedColumnName = "id")
-	private CategorySubChild categorySubChildId;
+	@Column(name = "category_sub_child_id ")
+	private Long categorySubChildId;
 
-	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "category_final_child_id", referencedColumnName = "id", nullable = true)
-	private CategoryFinalChild categoryFinalChildId;
+	@Column(name = "category_final_child_id")
+	private Long categoryFinalChildId;
 
 	public Posts() {
 		super();
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getPostTitle() {
@@ -96,6 +98,14 @@ public class Posts {
 		this.likes = likes;
 	}
 
+	public Long getImageId() {
+		return imageId;
+	}
+
+	public void setImageId(Long imageId) {
+		this.imageId = imageId;
+	}
+
 	public byte[] getPostImage() {
 		return postImage;
 	}
@@ -104,52 +114,53 @@ public class Posts {
 		this.postImage = postImage;
 	}
 
-	public User getPostUserId() {
+	public Long getPostUserId() {
 		return postUserId;
 	}
 
-	public void setPostUserId(User postUserId) {
+	public void setPostUserId(Long postUserId) {
 		this.postUserId = postUserId;
 	}
 
-	public Category getCategoryId() {
+	public Long getCategoryId() {
 		return categoryId;
 	}
 
-	public void setCategoryId(Category categoryId) {
+	public void setCategoryId(Long categoryId) {
 		this.categoryId = categoryId;
 	}
 
-	public CategoryChild getCategoryChildId() {
+	public Long getCategoryChildId() {
 		return categoryChildId;
 	}
 
-	public void setCategoryChildId(CategoryChild categoryChildId) {
+	public void setCategoryChildId(Long categoryChildId) {
 		this.categoryChildId = categoryChildId;
 	}
 
-	public CategorySubChild getCategorySubChildId() {
+	public Long getCategorySubChildId() {
 		return categorySubChildId;
 	}
 
-	public void setCategorySubChildId(CategorySubChild categorySubChildId) {
+	public void setCategorySubChildId(Long categorySubChildId) {
 		this.categorySubChildId = categorySubChildId;
 	}
 
-	public CategoryFinalChild getCategoryFinalChildId() {
+	public Long getCategoryFinalChildId() {
 		return categoryFinalChildId;
 	}
 
-	public void setCategoryFinalChildId(CategoryFinalChild categoryFinalChildId) {
+	public void setCategoryFinalChildId(Long categoryFinalChildId) {
 		this.categoryFinalChildId = categoryFinalChildId;
 	}
 
 	@Override
 	public String toString() {
 		return "Posts [id=" + id + ", postTitle=" + postTitle + ", postDescription=" + postDescription
-				+ ", postImageUrl=" + postImageUrl + ", likes=" + likes + ", postImage=" + Arrays.toString(postImage)
-				+ ", postUserId=" + postUserId + ", categoryId=" + categoryId + ", categoryChildId=" + categoryChildId
-				+ ", categorySubChildId=" + categorySubChildId + ", categoryFinalChildId=" + categoryFinalChildId + "]";
+				+ ", postImageUrl=" + postImageUrl + ", likes=" + likes + ", imageId=" + imageId + ", postImage="
+				+ Arrays.toString(postImage) + ", postUserId=" + postUserId + ", categoryId=" + categoryId
+				+ ", categoryChildId=" + categoryChildId + ", categorySubChildId=" + categorySubChildId
+				+ ", categoryFinalChildId=" + categoryFinalChildId + "]";
 	}
 
 }

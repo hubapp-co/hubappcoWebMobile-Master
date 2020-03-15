@@ -15,7 +15,7 @@ import in.co.hubapp.model.User;
 public interface CategoryRepositoryMob extends JpaRepository < Category, Long > {
 
 	@Query(value = "SELECT * FROM category WHERE id = ?1", nativeQuery = true)
-	  User findByCategoryId(Long id);
+	Category findByCategoryId(Long id);
 	
 	
 	@Query(value = "SELECT * FROM category", nativeQuery = true)

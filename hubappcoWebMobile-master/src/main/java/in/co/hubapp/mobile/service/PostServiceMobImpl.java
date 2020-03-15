@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,8 +17,16 @@ import in.co.hubapp.mobile.channel.HubGenReq;
 import in.co.hubapp.mobile.channel.HubGenRes;
 import in.co.hubapp.mobile.channel.PostReq;
 import in.co.hubapp.mobile.channel.PostRes;
+import in.co.hubapp.mobile.repository.CategoryChildRepositoryMob;
+import in.co.hubapp.mobile.repository.CategoryRepositoryMob;
+import in.co.hubapp.mobile.repository.CategorySubChildRepositoryMob;
+import in.co.hubapp.mobile.repository.DocumentRepositoryMob;
 import in.co.hubapp.mobile.repository.PostsRepositoryMob;
 import in.co.hubapp.mobile.repository.UserRepositoryMob;
+import in.co.hubapp.mobile.util.Document;
+import in.co.hubapp.model.Category;
+import in.co.hubapp.model.CategoryChild;
+import in.co.hubapp.model.CategorySubChild;
 import in.co.hubapp.model.Posts;
 import in.co.hubapp.model.User;
 
@@ -30,12 +39,23 @@ public class PostServiceMobImpl implements PostServiceMob {
 	@Autowired
 	UserRepositoryMob userRepositoryMob;
 
+	@Autowired
+	CategoryRepositoryMob categoryRepositoryMob;
+
+	@Autowired
+	CategoryChildRepositoryMob categoryChildRepositoryMob;
+
+	@Autowired
+	CategorySubChildRepositoryMob categorySubChildRepositoryMob;
+
+	@Autowired
+	DocumentRepositoryMob documentRepositoryMob;
+
 	@Override
 	public HubGenRes post(PostReq post) {
 
 		HubGenRes res = new HubGenRes();
 		Posts newpost = new Posts();
-		String filePath;
 		if (post != null) {
 			if (post.getPostTitle() != null) {
 				newpost.setPostTitle(post.getPostTitle());
@@ -47,29 +67,35 @@ public class PostServiceMobImpl implements PostServiceMob {
 				newpost.setLikes(post.getLikes());
 			}
 			if (post.getPostUserId() != null) {
-				User userpost = userRepositoryMob.getOne(post.getPostUserId());
-				newpost.setPostUserId(userpost);
+				newpost.setPostUserId(post.getPostUserId());
 			}
-			if (post.getPostImage() != null) {
+			if (post.getDocId() != null) {
 
-				LocalDateTime current = LocalDateTime.now();
+				/*
+				 * LocalDateTime current = LocalDateTime.now();
+				 * 
+				 * try { // File convertFile = new File("/home/rajesh/Desktop/" + current); //
+				 * File convertFile = new File("/public_html/Deployment/Deployed/uploads" +
+				 * current); final String dir = System.getProperty("user.dir") + "/uploads/";
+				 * File convertFile = new File(dir + current); convertFile.createNewFile();
+				 * FileOutputStream fos = new FileOutputStream(convertFile);
+				 * fos.write(post.getPostImage()); fos.close(); filePath =
+				 * convertFile.getAbsolutePath(); } catch (IOException e) {
+				 * res.setMessage("Error uploading image"); res.setStatus("Failure"); return
+				 * res; }
+				 */
+				newpost.setImageId(post.getDocId());
+			}
+			if (post.getCategoryId() != null) {
+				newpost.setCategoryId(post.getCategoryId());
+			}
 
-				try {
-//					File convertFile = new File("/home/rajesh/Desktop/" + current);
-//					File convertFile = new File("/public_html/Deployment/Deployed/uploads" + current);
-					final String dir = System.getProperty("user.dir") + "/uploads/";
-					File convertFile = new File(dir + current);
-					convertFile.createNewFile();
-					FileOutputStream fos = new FileOutputStream(convertFile);
-					fos.write(post.getPostImage());
-					fos.close();
-					filePath = convertFile.getAbsolutePath();
-				} catch (IOException e) {
-					res.setMessage("Error uploading image");
-					res.setStatus("Failure");
-					return res;
-				}
-				newpost.setPostImageUrl(filePath);
+			if (post.getCategoryChildId() != null) {
+				newpost.setCategoryChildId(post.getCategoryChildId());
+
+			}
+			if (post.getCategorySubChildId() != null) {
+				newpost.setCategorySubChildId(post.getCategorySubChildId());
 
 			}
 
@@ -93,16 +119,20 @@ public class PostServiceMobImpl implements PostServiceMob {
 
 	}
 
-	public List<PostRes> getPostByUserId(HubGenReq req) throws FileNotFoundException {
+	public HubGenRes getPostByUserId(HubGenReq req) throws FileNotFoundException {
 
-		List<PostRes> res = new ArrayList<>();
+		HubGenRes res = new HubGenRes();
+		List<PostRes> postRes = new ArrayList<>();
 		List<Posts> allPosts = new ArrayList<>();
 		PostRes addPost = new PostRes();
+		Document doc = new Document();
 
 		if (req.getSecureKey() != null) {
 			try {
 				allPosts = (List<Posts>) postsRepositoryMob.findByPostByUSer(req.getSecureKey());
 			} catch (Exception e) {
+				res.setMessage("Failure");
+				res.setMessage("Not able to fetch post details");
 				return res;
 
 			}
@@ -119,34 +149,61 @@ public class PostServiceMobImpl implements PostServiceMob {
 					if (posts.getLikes() != null) {
 						addPost.setLikes(posts.getLikes());
 					}
-					if (posts.getPostImageUrl() != null) {
-						File convertFile = new File(posts.getPostImageUrl());
-						byte[] bArray = readFileToByteArray(convertFile);
+					if (posts.getImageId() != null) {
+						try {
+							doc = documentRepositoryMob.findDocumentById(posts.getImageId());
+							addPost.setPostImageUrl(doc.getFilePath());
+						}
 
-						addPost.setPostImage(bArray);
+						catch (Exception e) {
+
+							res.setStatus("Failure");
+							res.setMessage("Not able to fetch Document Details");
+							return res;
+						}
 					}
-					if (posts.getCategoryId() != null) {
+					try {
+						if (posts.getCategoryId() != null) {
+							Category cat = categoryRepositoryMob.findByCategoryId(posts.getCategoryId());
+							addPost.setCategoryName(cat.getCategoryName());
+						}
 
-						addPost.setCategory(posts.getCategoryId());
+						if (posts.getCategoryChildId() != null) {
+
+							CategoryChild child = categoryChildRepositoryMob
+									.findOneChildById(posts.getCategoryChildId());
+							addPost.setCategoryChildName(child.getCategoryChildName());
+						}
+
+						if (posts.getCategorySubChildId() != null) {
+
+							CategorySubChild subChild = categorySubChildRepositoryMob
+									.findOneSubChildById(posts.getCategorySubChildId());
+							addPost.setCategorySubChildName(subChild.getCategorySubChildName());
+						}
+
+					} catch (Exception e) {
+						// TODO: handle exception
 					}
 
-					if (posts.getCategoryChildId() != null) {
-						addPost.setCategoryChild(posts.getCategoryChildId());
-					}
-
-					if (posts.getCategorySubChildId() != null) {
-						addPost.setCategorySubChild(posts.getCategorySubChildId());
-					}
-
-					res.add(addPost);
+					postRes.add(addPost);
 
 				}
 
+				res.setStatus("Success");
+				res.setMessage("POst details of the user");
+				res.setPosts(postRes);
+				return res;
+
 			}
+			res.setStatus("Failure");
+			res.setMessage("No Posts for this user");
 			return res;
 
 		}
 
+		res.setStatus("Failure");
+		res.setMessage("Please enter the post userID");
 		return res;
 	}
 

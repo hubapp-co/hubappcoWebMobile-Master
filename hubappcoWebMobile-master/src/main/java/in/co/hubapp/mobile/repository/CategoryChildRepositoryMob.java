@@ -11,8 +11,12 @@ import in.co.hubapp.model.CategoryChild;
 @Repository
 public interface CategoryChildRepositoryMob extends JpaRepository<CategoryChild, Long> {
 	
-	@Query(value = "SELECT * FROM category_child where id = ?1", nativeQuery = true)
+	@Query(value = "SELECT * FROM category_child where category_id = ?1", nativeQuery = true)
 	List<CategoryChild> findCategoryChildById(Long id);	
+	
+	
+	@Query(value = "SELECT * FROM category_child where id = ?1", nativeQuery = true)
+	CategoryChild findOneChildById(Long id);	
 	
 	
 
