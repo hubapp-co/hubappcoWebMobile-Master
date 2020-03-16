@@ -32,6 +32,10 @@ public class HomeController {
     public String userEvent() {
         return "user/event";
     }
+    @GetMapping("/user/posts")
+    public String userPosts() {
+        return "user/posts";
+    }
     @GetMapping("/user/profile")
     public String userProfile() {
         return "user/profile";

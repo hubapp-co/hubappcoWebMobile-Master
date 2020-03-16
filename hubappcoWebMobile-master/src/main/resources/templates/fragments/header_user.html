@@ -35,7 +35,7 @@
                             
                             <!-- Item With Sub -->
                             <li>
-                                <a href="/" th:href="@{/home}" class="mn-has-sub active">Home <!-- <i class="fa fa-angle-down"></i> --></a>
+                                <a href="/" th:href="@{/user/}" class="mn-has-sub active">Home <!-- <i class="fa fa-angle-down"></i> --></a>
                                 
                               
                                 
@@ -43,10 +43,10 @@
                             <!-- End Item With Sub -->
                             
                             <!-- Item With Sub -->
-                            
+                             <li> <a href="/" th:href="@{/user/posts}">Posts</a></li>
                             <li> <a href="/" th:href="@{/user/event}">Events</a></li>
                             <li><a href="/" th:href="@{/user/profile}">Profile</a></li>
-                            <li><a href="/" th:href="@{/login}">Logout</a></li>
+                            <li sec:authorize="isAuthenticated()"><a href="/" th:href="@{/logout}">Logout</a></li>
                             
                            
                             <!-- Divider -->
