@@ -32,7 +32,7 @@
         <!-- End Page Loader -->
         
         <!-- Page Wrap -->
-        <div class="page" id="top">
+        <div class="page" id="top"><span sec:authentication="principal.username" class="page" id="top">User</span>
             
             <!-- Navigation panel -->
            <th:block th:replace="fragments/header_user :: header"/>
