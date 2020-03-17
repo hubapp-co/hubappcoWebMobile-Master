@@ -54,6 +54,7 @@ public class UserServiceMobImpl implements UserServiceMob {
 
 	public HubGenRes registerUser(Register req) {
 		User user = new User();
+		User user2 = new User();
 		HubGenRes res = new HubGenRes();
 
 		if (req != null) {
@@ -79,8 +80,8 @@ public class UserServiceMobImpl implements UserServiceMob {
 				if (req.getEmail() != null) {
 					User user1 = userRepositoryMob.findByEmailAddress(req.getEmail());
 
-					if (user1 != null) {
-						user = userRepositoryMob.save(user);
+					if (user1== null) {
+						user2 = userRepositoryMob.save(user);
 					}
 				}
 			} catch (Exception e) {
@@ -89,7 +90,7 @@ public class UserServiceMobImpl implements UserServiceMob {
 				return res;
 			}
 
-			if (user != null) {
+			if (user2 != null) {
 				res.setMessage("user Registered Successfully");
 				res.setStatus("Success");
 				return res;
@@ -271,7 +272,7 @@ public class UserServiceMobImpl implements UserServiceMob {
 
 		try {
 			String dir = System.getProperty("user.dir") + "/uploads/";
-			File convertFile = new File(dir + file.getOriginalFilename()+" " + current);
+			File convertFile = new File(dir + file.getOriginalFilename());
 			convertFile.createNewFile();
 			FileOutputStream fos = new FileOutputStream(convertFile);
 			fos.write(file.getBytes());

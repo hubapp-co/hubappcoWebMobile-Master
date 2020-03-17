@@ -123,13 +123,12 @@ public class PostServiceMobImpl implements PostServiceMob {
 
 		HubGenRes res = new HubGenRes();
 		List<PostRes> postRes = new ArrayList<>();
-		List<Posts> allPosts = new ArrayList<>();
-		PostRes addPost = new PostRes();
+		List<Posts> allPost = new ArrayList<>();
 		Document doc = new Document();
 
 		if (req.getSecureKey() != null) {
 			try {
-				allPosts = (List<Posts>) postsRepositoryMob.findByPostByUSer(req.getSecureKey());
+				allPost =  postsRepositoryMob.findByPostByUSer(req.getSecureKey());
 			} catch (Exception e) {
 				res.setMessage("Failure");
 				res.setMessage("Not able to fetch post details");
@@ -137,8 +136,9 @@ public class PostServiceMobImpl implements PostServiceMob {
 
 			}
 
-			if (allPosts != null) {
-				for (Posts posts : allPosts) {
+			if (allPost != null) {
+				for (Posts posts : allPost) {
+					PostRes addPost = new PostRes();
 
 					if (posts.getPostTitle() != null) {
 						addPost.setPostTitle(posts.getPostTitle());
@@ -191,7 +191,7 @@ public class PostServiceMobImpl implements PostServiceMob {
 				}
 
 				res.setStatus("Success");
-				res.setMessage("POst details of the user");
+				res.setMessage("Post details of the user");
 				res.setPosts(postRes);
 				return res;
 

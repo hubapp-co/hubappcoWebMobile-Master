@@ -1,7 +1,5 @@
 package in.co.hubapp.mobile.controller;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
@@ -17,15 +15,11 @@ import org.springframework.web.multipart.MultipartFile;
 import in.co.hubapp.mobile.channel.CategoryChildList;
 import in.co.hubapp.mobile.channel.CategoryList;
 import in.co.hubapp.mobile.channel.CategorySubChildList;
-import in.co.hubapp.mobile.channel.DocumentDetails;
 import in.co.hubapp.mobile.channel.HubGenRes;
 import in.co.hubapp.mobile.channel.Login;
 import in.co.hubapp.mobile.channel.Register;
-import in.co.hubapp.mobile.repository.DocumentRepositoryMob;
-import in.co.hubapp.mobile.repository.UserRepositoryMob;
 import in.co.hubapp.mobile.service.UserServiceMob;
 import in.co.hubapp.mobile.types.RequestType;
-import in.co.hubapp.mobile.util.Document;
 import in.co.hubapp.model.Category;
 
 @RestController
