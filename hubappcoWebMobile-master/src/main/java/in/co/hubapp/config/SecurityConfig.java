@@ -40,10 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                             "/webjars/**",
 						/* "/user/**", */
                             "/registration**",
-                            "/api/**",
-                            "/v2/api-docs/**",
-                            "/swagger-resources",
-                            "//swagger-ui.html").permitAll()
+                            "/api/**").permitAll()
                     .antMatchers("user/").hasAnyRole("USER")
                     .antMatchers("user/posts").hasAnyRole("USER")
                     .antMatchers("user/event").hasAnyRole("USER")
