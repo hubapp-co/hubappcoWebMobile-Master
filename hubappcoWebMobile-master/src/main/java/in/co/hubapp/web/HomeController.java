@@ -20,6 +20,10 @@ public class HomeController {
     public String about() {
         return "about_us";
     }
+    @GetMapping("/services")
+    public String services() {
+        return "services";
+    }
     @GetMapping("/contact_us")
     public String contact() {
         return "contact_us";
