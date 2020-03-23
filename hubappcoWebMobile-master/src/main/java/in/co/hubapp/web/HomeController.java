@@ -1,12 +1,24 @@
 package in.co.hubapp.web;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import in.co.hubapp.mobile.service.UserServiceMob;
+import in.co.hubapp.model.Category;
 
 @Controller
 public class HomeController {
 
+	
+	@Autowired
+	private UserServiceMob userServiceMob;
+	
     @GetMapping("/")
     public String root() {
         return "index";
@@ -28,10 +40,23 @@ public class HomeController {
     public String contact() {
         return "contact_us";
     }
+	/*
+	 * @GetMapping("/user") public String userIndex() { return "user/index"; }
+	 */
+    
+    
+
+	
     @GetMapping("/user")
-    public String userIndex() {
-        return "user/index";
-    }
+	public String userIndex(Model model) {
+		List<Category> catogories = userServiceMob.getCategory();
+	   
+	    model.addAttribute("catogories", catogories );
+
+	    return "user/index";
+	}
+	
+	
     @GetMapping("/user/event")
     public String userEvent() {
         return "user/event";

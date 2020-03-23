@@ -2382,11 +2382,11 @@ a.logo:hover{
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    
-    padding: 140px 0;
+    padding: 70px 0;
+    /*padding: 140px 0;*/
 }
 .small-section{
-    padding: 70px 0;
+    padding: 60px 0;
 }
 .small-title{
     padding: 0;
