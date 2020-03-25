@@ -1,8 +1,6 @@
 package in.co.hubapp.config;
 
 import in.co.hubapp.service.UserService;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -16,7 +14,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
  
 
 @EnableWebSecurity
-@EnableSwagger2
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
  
 	 @Autowired
