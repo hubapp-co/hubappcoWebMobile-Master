@@ -1,21 +1,19 @@
 package in.co.hubapp.mobile.service;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import in.co.hubapp.mobile.channel.EventReq;
 import in.co.hubapp.mobile.channel.EventRes;
 import in.co.hubapp.mobile.channel.HubGenReq;
 import in.co.hubapp.mobile.channel.HubGenRes;
+import in.co.hubapp.mobile.repository.DocumentRepositoryMob;
 import in.co.hubapp.mobile.repository.EventRepositoryMob;
+import in.co.hubapp.mobile.util.Document;
 import in.co.hubapp.model.Events;
 
 @Service
@@ -24,9 +22,11 @@ public class EventServiceMobImpl implements EventServiceMob {
 	@Autowired
 	EventRepositoryMob eventRepositoryMob;
 
+	@Autowired
+	DocumentRepositoryMob documentRepositoryMob;
+
 	@Override
-	public HubGenRes postEvents(Events req) {
-		String finalFilePath = null;
+	public HubGenRes postEvents(EventReq req) {
 		HubGenRes res = new HubGenRes();
 		Events newEvent = new Events();
 		if (req != null) {
@@ -51,20 +51,9 @@ public class EventServiceMobImpl implements EventServiceMob {
 			if (req.getMemberName() != null) {
 				newEvent.setMemberName(req.getMemberName());
 			}
-			if (req.getEventImageInBytes() != null) {
+			if (req.getEventImgId() != null) {
 
-				try {
-
-					finalFilePath = writeByteToFile(req.getEventImageInBytes());
-
-				} catch (IOException e) {
-					res.setMessage("Error uploading image");
-					res.setStatus("Failure");
-					return res;
-				}
-
-				newEvent.setEventImg(finalFilePath);
-
+				newEvent.setEventImgId(req.getEventImgId());
 			}
 
 			try {
@@ -87,59 +76,24 @@ public class EventServiceMobImpl implements EventServiceMob {
 
 	}
 
-	private static byte[] readFileToByteArray(File file) {
-		FileInputStream fis = null;
-		// Creating a byte array using the length of the file
-		// file.length returns long which is cast to int
-		byte[] bArray = new byte[(int) file.length()];
-		try {
-			fis = new FileInputStream(file);
-			fis.read(bArray);
-			fis.close();
-
-		} catch (IOException ioExp) {
-			ioExp.printStackTrace();
-		}
-		return bArray;
-	}
-
-	private static String writeByteToFile(byte[] bytes) throws IOException {
-		LocalDateTime current = LocalDateTime.now();
-		String filePath = null;
-		final String dir = System.getProperty("user.dir") + "/uploads/";
-		File convertFile = new File(dir + current);
-		convertFile.createNewFile();
-		FileOutputStream fos = null;
-		try {
-			fos = new FileOutputStream(convertFile);
-			fos.write(bytes);
-			fos.close();
-			filePath = convertFile.getAbsolutePath();
-
-		} catch (IOException ioExp) {
-			ioExp.printStackTrace();
-		}
-		return filePath;
-	}
-
 	@Override
-	public List<EventRes> getEventByUserId(HubGenReq req) throws FileNotFoundException {
+	public HubGenRes getEventByUserId(HubGenReq req) throws FileNotFoundException {
 
-		List<EventRes> res = new ArrayList<>();
+		HubGenRes res = new HubGenRes();
 		List<Events> allEvents = new ArrayList<>();
-		EventRes addEvent = new EventRes();
+		List<EventRes> eventRes = new ArrayList<>();
+		Document doc = new Document();
 
 		if (req.getSecureKey() != null) {
 			try {
-				allEvents = (List<Events>) eventRepositoryMob.findEventById(req.getSecureKey());
+				allEvents = eventRepositoryMob.findEventById(req.getSecureKey());
 			} catch (Exception e) {
 				return res;
 
 			}
-
 			if (allEvents != null) {
 				for (Events events : allEvents) {
-
+					EventRes addEvent = new EventRes();
 					if (events.getEventName() != null) {
 						addEvent.setEventName(events.getEventName());
 					}
@@ -149,11 +103,19 @@ public class EventServiceMobImpl implements EventServiceMob {
 					if (events.getLikes() != null) {
 						addEvent.setLikes(events.getLikes());
 					}
-					if (events.getEventImg() != null) {
-						File convertFile = new File(events.getEventImg());
-						byte[] bArray = readFileToByteArray(convertFile);
+					if (events.getEventImgId() != null) {
+						try {
+							doc = documentRepositoryMob.findDocumentById(events.getEventImgId());
+							addEvent.setEventImgUrl(doc.getFilePath());
+						}
 
-						addEvent.setEventImageInBytes(bArray);
+						catch (Exception e) {
+
+							res.setStatus("Failure");
+							res.setMessage("Not able to fetch Document Details");
+							return res;
+						}
+
 					}
 					if (events.getEventDate() != null) {
 						addEvent.setEventDate(events.getEventDate());
@@ -167,15 +129,20 @@ public class EventServiceMobImpl implements EventServiceMob {
 						addEvent.setEventUserId(events.getEventUserId());
 					}
 
-					res.add(addEvent);
+					eventRes.add(addEvent);
 
 				}
 
 			}
+			res.setStatus("Success");
+			res.setMessage("Events for this user");
+			res.setEvents(eventRes);
 			return res;
 
 		}
 
+		res.setStatus("Failure");
+		res.setMessage("Please enter the post userID");
 		return res;
 	}
 

@@ -13,21 +13,21 @@ import in.co.hubapp.mobile.channel.Register;
 import in.co.hubapp.model.Category;
 
 public interface UserServiceMob {
-	
+
 	public HubGenRes registerUser(Register req);
-	
+
 	public HubGenRes login(Login req);
-	
-	public List<Category> getCategory();	
-	
+
+	public List<Category> getCategory();
+
 	public List<CategoryList> getCategoryList();
-	
+
 	public List<CategoryChildList> getCategoryChildList(Long id);
-	
+
 	public List<CategorySubChildList> getCategorySubChildList(Long id);
-	
+
 	public HubGenRes uploadDocument(MultipartFile file);
-	
-	
-	
+
+	public HubGenRes updateProfile(Register req);
+
 }

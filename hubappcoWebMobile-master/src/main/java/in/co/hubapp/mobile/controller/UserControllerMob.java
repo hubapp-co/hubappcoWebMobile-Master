@@ -74,8 +74,8 @@ public class UserControllerMob {
 	}
 
 	@RequestMapping(value = RequestType.UPDATE_PROFILE, method = RequestMethod.POST, consumes = "application/json")
-	public HubGenRes update_profile(@RequestBody Register req) {
-		HubGenRes res = userServiceMob.registerUser(req);
+	public HubGenRes updateProfile(@RequestBody Register req) {
+		HubGenRes res = userServiceMob.updateProfile(req);
 		return res;
 	}
 

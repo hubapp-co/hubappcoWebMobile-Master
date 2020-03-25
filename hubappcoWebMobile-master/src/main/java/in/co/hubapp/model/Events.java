@@ -1,6 +1,5 @@
 package in.co.hubapp.model;
 
-import java.time.LocalDate;
 import java.util.Arrays;
 
 import javax.persistence.Column;
@@ -26,17 +25,17 @@ public class Events {
 	@Column(name = "event_decription")
 	private String eventDecription;
 
-	@Column(name = "event_img")
-	private String eventImg;
+	@Column(name = "event_img_id")
+	private Long eventImgId;
 
 	@Transient
 	private byte[] eventImageInBytes;
 
 	@Column(name = "event_date")
-	private LocalDate eventDate;
+	private String eventDate;
 
 	@Column(name = "event_time")
-	private LocalDate evenTime;
+	private String evenTime;
 
 	@Column(name = "members")
 	private String memberName;
@@ -81,12 +80,12 @@ public class Events {
 		this.eventDecription = eventDecription;
 	}
 
-	public String getEventImg() {
-		return eventImg;
+	public Long getEventImgId() {
+		return eventImgId;
 	}
 
-	public void setEventImg(String eventImg) {
-		this.eventImg = eventImg;
+	public void setEventImgId(Long eventImgId) {
+		this.eventImgId = eventImgId;
 	}
 
 	public byte[] getEventImageInBytes() {
@@ -97,19 +96,19 @@ public class Events {
 		this.eventImageInBytes = eventImageInBytes;
 	}
 
-	public LocalDate getEventDate() {
+	public String getEventDate() {
 		return eventDate;
 	}
 
-	public void setEventDate(LocalDate eventDate) {
+	public void setEventDate(String eventDate) {
 		this.eventDate = eventDate;
 	}
 
-	public LocalDate getEvenTime() {
+	public String getEvenTime() {
 		return evenTime;
 	}
 
-	public void setEvenTime(LocalDate evenTime) {
+	public void setEvenTime(String evenTime) {
 		this.evenTime = evenTime;
 	}
 
@@ -139,10 +138,10 @@ public class Events {
 
 	@Override
 	public String toString() {
-		return "Events [id=" + id + ", eventName=" + eventName + ", eventDecription=" + eventDecription + ", eventImg="
-				+ eventImg + ", eventImageInBytes=" + Arrays.toString(eventImageInBytes) + ", eventDate=" + eventDate
-				+ ", evenTime=" + evenTime + ", memberName=" + memberName + ", likes=" + likes + ", eventUserId="
-				+ eventUserId + "]";
+		return "Events [id=" + id + ", eventName=" + eventName + ", eventDecription=" + eventDecription
+				+ ", eventImgId=" + eventImgId + ", eventImageInBytes=" + Arrays.toString(eventImageInBytes)
+				+ ", eventDate=" + eventDate + ", evenTime=" + evenTime + ", memberName=" + memberName + ", likes="
+				+ likes + ", eventUserId=" + eventUserId + "]";
 	}
 
 }

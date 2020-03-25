@@ -80,7 +80,7 @@ public class UserServiceMobImpl implements UserServiceMob {
 				if (req.getEmail() != null) {
 					User user1 = userRepositoryMob.findByEmailAddress(req.getEmail());
 
-					if (user1== null) {
+					if (user1 == null) {
 						user2 = userRepositoryMob.save(user);
 					}
 				}
@@ -264,6 +264,11 @@ public class UserServiceMobImpl implements UserServiceMob {
 
 	}
 
+	public HubGenRes updateProfile(Register req) {
+		HubGenRes res = new HubGenRes();
+		return res;
+	}
+
 	public HubGenRes uploadDocument(MultipartFile file) {
 		HubGenRes res = new HubGenRes();
 		Document doc = new Document();
@@ -287,7 +292,7 @@ public class UserServiceMobImpl implements UserServiceMob {
 					docRes.setDocId(docDetails.getId());
 					res.setStatus("Success");
 					res.setMessage("Document uploaded Successfuly");
-					res.setDoc(docRes);					
+					res.setDoc(docRes);
 					return res;
 				}
 
@@ -303,8 +308,7 @@ public class UserServiceMobImpl implements UserServiceMob {
 			return res;
 
 		}
-		
-		
+
 		return res;
 
 	}

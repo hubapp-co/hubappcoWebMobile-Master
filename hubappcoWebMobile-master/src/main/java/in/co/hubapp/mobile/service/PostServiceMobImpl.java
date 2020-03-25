@@ -207,39 +207,22 @@ public class PostServiceMobImpl implements PostServiceMob {
 		return res;
 	}
 
-	private static byte[] readFileToByteArray(File file) {
-		FileInputStream fis = null;
-		// Creating a byte array using the length of the file
-		// file.length returns long which is cast to int
-		byte[] bArray = new byte[(int) file.length()];
-		try {
-			fis = new FileInputStream(file);
-			fis.read(bArray);
-			fis.close();
-
-		} catch (IOException ioExp) {
-			ioExp.printStackTrace();
-		}
-		return bArray;
-	}
-
-	private static String writeByteToFile(byte[] bytes) throws IOException {
-		LocalDateTime current = LocalDateTime.now();
-		String filePath = null;
-		final String dir = System.getProperty("user.dir") + "/uploads/";
-		File convertFile = new File(dir + current);
-		convertFile.createNewFile();
-		FileOutputStream fos = null;
-		try {
-			fos = new FileOutputStream(convertFile);
-			fos.write(bytes);
-			fos.close();
-			filePath = convertFile.getAbsolutePath();
-
-		} catch (IOException ioExp) {
-			ioExp.printStackTrace();
-		}
-		return filePath;
-	}
-
+	/*
+	 * private static byte[] readFileToByteArray(File file) { FileInputStream fis =
+	 * null; // Creating a byte array using the length of the file // file.length
+	 * returns long which is cast to int byte[] bArray = new byte[(int)
+	 * file.length()]; try { fis = new FileInputStream(file); fis.read(bArray);
+	 * fis.close();
+	 * 
+	 * } catch (IOException ioExp) { ioExp.printStackTrace(); } return bArray; }
+	 * 
+	 * private static String writeByteToFile(byte[] bytes) throws IOException {
+	 * LocalDateTime current = LocalDateTime.now(); String filePath = null; final
+	 * String dir = System.getProperty("user.dir") + "/uploads/"; File convertFile =
+	 * new File(dir + current); convertFile.createNewFile(); FileOutputStream fos =
+	 * null; try { fos = new FileOutputStream(convertFile); fos.write(bytes);
+	 * fos.close(); filePath = convertFile.getAbsolutePath();
+	 * 
+	 * } catch (IOException ioExp) { ioExp.printStackTrace(); } return filePath; }
+	 */
 }

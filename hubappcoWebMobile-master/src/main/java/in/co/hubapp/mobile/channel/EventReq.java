@@ -1,16 +1,5 @@
 package in.co.hubapp.mobile.channel;
 
-import java.time.LocalDate;
-import java.util.Arrays;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Transient;
-
 public class EventReq {
 
 	private Long id;
@@ -19,28 +8,17 @@ public class EventReq {
 
 	private String eventDecription;
 
-	private String eventImg;
+	private Long eventImgId;
 
-	private LocalDate eventDate;
+	private String eventDate;
 
-	private LocalDate evenTime;
+	private String evenTime;
 
 	private String memberName;
 
 	private Long likes;
 
-	/*
-	 * @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	 * 
-	 * @JoinColumn(name = "event_user_id", referencedColumnName = "id") private User
-	 * eventUserId;
-	 */
-
 	private Long eventUserId;
-
-	public EventReq() {
-		super();
-	}
 
 	public Long getId() {
 		return id;
@@ -66,27 +44,27 @@ public class EventReq {
 		this.eventDecription = eventDecription;
 	}
 
-	public String getEventImg() {
-		return eventImg;
+	public Long getEventImgId() {
+		return eventImgId;
 	}
 
-	public void setEventImg(String eventImg) {
-		this.eventImg = eventImg;
+	public void setEventImgId(Long eventImgId) {
+		this.eventImgId = eventImgId;
 	}
 
-	public LocalDate getEventDate() {
+	public String getEventDate() {
 		return eventDate;
 	}
 
-	public void setEventDate(LocalDate eventDate) {
+	public void setEventDate(String eventDate) {
 		this.eventDate = eventDate;
 	}
 
-	public LocalDate getEvenTime() {
+	public String getEvenTime() {
 		return evenTime;
 	}
 
-	public void setEvenTime(LocalDate evenTime) {
+	public void setEvenTime(String evenTime) {
 		this.evenTime = evenTime;
 	}
 
@@ -116,9 +94,9 @@ public class EventReq {
 
 	@Override
 	public String toString() {
-		return "Events [id=" + id + ", eventName=" + eventName + ", eventDecription=" + eventDecription + ", eventImg="
-				+ eventImg + ", eventDate=" + eventDate + ", evenTime=" + evenTime + ", memberName=" + memberName
-				+ ", likes=" + likes + ", eventUserId=" + eventUserId + "]";
+		return "EventReq [id=" + id + ", eventName=" + eventName + ", eventDecription=" + eventDecription
+				+ ", eventImgId=" + eventImgId + ", eventDate=" + eventDate + ", evenTime=" + evenTime + ", memberName="
+				+ memberName + ", likes=" + likes + ", eventUserId=" + eventUserId + "]";
 	}
 
 }
