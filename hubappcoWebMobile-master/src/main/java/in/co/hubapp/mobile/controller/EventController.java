@@ -29,7 +29,7 @@ public class EventController {
 		return res;
 	}
 
-	@RequestMapping(value = RequestType.USER_EVENT, method = RequestMethod.GET, produces = { "application/json",
+	@RequestMapping(value = RequestType.GET_USER_EVENT, method = RequestMethod.POST, produces = { "application/json",
 			"multipart/form-data" })
 	public HubGenRes getEventsById(@RequestBody HubGenReq req) throws IOException {
 

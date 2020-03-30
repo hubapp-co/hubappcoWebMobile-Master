@@ -32,7 +32,7 @@ public class PostsController {
 		return res;
 	}
 
-	@RequestMapping(value = RequestType.USER_POST, method = RequestMethod.GET, consumes = { "application/json",
+	@RequestMapping(value = RequestType.GET_USER_POST, method = RequestMethod.POST, produces = { "application/json",
 			"multipart/form-data" })
 	public HubGenRes getPosts(@RequestBody HubGenReq req) throws IOException {
 
