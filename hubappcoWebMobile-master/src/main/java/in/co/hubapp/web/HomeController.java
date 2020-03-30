@@ -36,6 +36,10 @@ public class HomeController {
     public String services() {
         return "services";
     }
+    @GetMapping("/subscription")
+    public String subscription() {
+        return "subscription";
+    }
     @GetMapping("/contact_us")
     public String contact() {
         return "contact_us";

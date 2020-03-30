@@ -100,7 +100,7 @@
                                         
                                        
                                          <div class="mb-20 mb-md-10">
-                                    <select id="categoryName" class="input-md form-control">
+                                    <select id="categoryName" class="input-md form-control" th:field="*{categoryName}">
                                             <option th:each="category : ${catogories}" th:value="${category.id}" th:text="${category.categoryName}"></option>
     </select>
                                 </div>
