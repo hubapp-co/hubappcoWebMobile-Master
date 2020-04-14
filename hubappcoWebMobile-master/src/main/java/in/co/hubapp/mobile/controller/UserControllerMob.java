@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -54,7 +55,7 @@ public class UserControllerMob {
 
 		return res;
 	}
-
+	@ResponseBody
 	@RequestMapping(path = RequestType.CATEGORIES_CHILD
 			+ "/{id}", method = RequestMethod.GET, produces = "application/json")
 	public List<CategoryChildList> getChildById(@PathVariable("id") Long childId) {
@@ -63,7 +64,7 @@ public class UserControllerMob {
 
 		return res;
 	}
-
+	@ResponseBody
 	@RequestMapping(path = RequestType.CATEGORIES_SUB_CHILD
 			+ "/{id}", method = RequestMethod.GET, produces = "application/json")
 	public List<CategorySubChildList> getsubChildById(@PathVariable("id") Long childId) {

@@ -47,19 +47,13 @@ public class HomeController {
 	/*
 	 * @GetMapping("/user") public String userIndex() { return "user/index"; }
 	 */
-    
-    
-
 	
     @GetMapping("/user")
 	public String userIndex(Model model) {
-		List<Category> catogories = userServiceMob.getCategory();
-	   
-	    model.addAttribute("catogories", catogories );
-
+		List<Category> categories = userServiceMob.getCategory();
+	    model.addAttribute("categories", categories );
 	    return "user/index";
 	}
-	
 	
     @GetMapping("/user/event")
     public String userEvent() {

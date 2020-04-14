@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>Hubapp - Posts</title>
         <meta name="description" content="">
@@ -13,13 +12,14 @@
         <link rel="shortcut icon" th:href="@{../images/favicon.png}"> 
 
         <!-- CSS -->
-        <link rel="stylesheet"  th:href="@{../css/bootstrap.min.css}">
+        <link rel="stylesheet" th:href="@{../css/bootstrap.min.css}">
         <link rel="stylesheet" th:href="@{../css/style.css}">
         <link rel="stylesheet" th:href="@{../css/style-responsive.css}">
         <link rel="stylesheet" th:href="@{../css/animate.min.css}">
         <link rel="stylesheet" th:href="@{../css/vertical-rhythm.min.css}">
         <link rel="stylesheet" th:href="@{../css/owl.carousel.css}">
-        <link rel="stylesheet" th:href="@{../css/magnific-popup.css}">        
+        <link rel="stylesheet" th:href="@{../css/magnific-popup.css}">  
+             
         
     </head>
     <body class="appear-animate">
@@ -66,11 +66,12 @@
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2">
                              <h1 class="hs-line-11 font-alt mb-20 mb-xs-0">Want to Post something!!</h1>
-                            <form   th:action="@{/posts}" method="POST" enctype="multipart/form-data" class="form contact-form" id="contact_form">
+                            <form  action="#" th:action="@{/user/postweb}" th:object="${postReq}" method="POST" enctype="multipart/form-data" class="form contact-form" id="contact_form">
                                 <div class="clearfix">
                                     
+                                    <input type="hidden" name="categoryFinalChildId" id="categoryFinalChildId" value="1" class="input-md round form-control" placeholder="Name" pattern=".{3,100}" >
                                     <div class="cf-left-col">
-                                        
+                                        <input type="hidden" name="postUserId" id="postUserId" value="1" class="input-md round form-control" placeholder="Name" pattern=".{3,100}">
                                         <!-- Name -->
                                         <div class="form-group">
                                             <input type="text" name="postTitle" id="postTitle" class="input-md round form-control" placeholder="Name" pattern=".{3,100}" required>
@@ -79,16 +80,11 @@
                                         <div class="form-group">                                            
                                             <textarea name="postDescription" id="postDescription" class="input-md round form-control" style="height: 84px;" placeholder="Description"></textarea>
                                         </div>
-                                         <!-- Message -->
-                                        <!-- Email -->
-                                        <!-- <div class="form-group">
-                                            <input type="text" name="email" id="email" class="input-md round form-control" placeholder="Email" pattern=".{5,100}" required>
-                                        </div> -->
                                         <div class="mb-20 mb-md-10">
                                     <label for="exampleInputFile">
                                         Image
                                     </label>
-                                    <input type="file" id="postImageUrl">
+                                    <input type="file" id="postImage"> <!-- id="postImageUrl"> -->
                                     <p class="help-block">
                                         Upload an Image...
                                     </p>
@@ -100,22 +96,21 @@
                                         
                                        
                                          <div class="mb-20 mb-md-10">
-                                    <select id="categoryName" class="input-md form-control" th:field="*{categoryName}">
-                                            <option th:each="category : ${catogories}" th:value="${category.id}" th:text="${category.categoryName}"></option>
-    </select>
+                                    <select id="categoryId" name="categoryId" class="input-md form-control">
+                                            <option value="">Select Category</option>
+              								<option th:each="category : ${categories}"
+             									       th:value="${category.id}"
+              									       th:text="${category.categoryName}"></option>
+   									</select>
                                 </div>
                                  <div class="mb-20 mb-md-10">
-                                    <select class="input-md form-control">
-                                        <option value=1> One</option>
-                                        <option value=2>Two</option>
-                                        <option value=3>Three</option>
+                                    <select id="categoryChildId" name="categoryChildId" class="input-md form-control">
+                                        <option value="">Select Child Category </option>
                                     </select>
                                 </div>
                                  <div class="mb-20 mb-md-10">
-                                    <select class="input-md form-control">
-                                        <option value=1>One</option>
-                                        <option value=2>Two</option>
-                                        <option value=3>Three</option>
+                                    <select id="categorySubChildId" name="categorySubChildId" class="input-md form-control">
+                                       <option value="">Select Child Sub Category </option>
                                     </select>
                                 </div>
                                     </div>
@@ -587,8 +582,7 @@
         
         </div>
         <!-- End Page Wrap -->
-        
-        
+       
        <!-- JS -->
         <script type="text/javascript" th:src="@{../js/jquery-1.11.2.min.js}"></script>
         <script type="text/javascript" th:src="@{../js/jquery.easing.1.3.js}"></script>
@@ -612,7 +606,70 @@
         <script type="text/javascript" th:src="@{../js/jquery.lazyload.min.js}"></script>
         <script type="text/javascript" th:src="@{../js/all.js}"></script>
         <script type="text/javascript" th:src="@{../js/contact-form.js}"></script>
-        <script type="text/javascript" th:src="@{../js/jquery.ajaxchimp.min.js}"></script>        
+        <script type="text/javascript" th:src="@{../js/jquery.ajaxchimp.min.js}"></script> 
+        
+        
+       <!--  <script th:src="@{../services/childCategory.js}"></script>
+        <script th:src="@{../services/childSubCategory.js}"></script>  -->
+        <!-- <script type="text/javascript" th:src="@{../js/jquery-3.4.1.js}"></script>  -->
+       <!--  <script type="text/javascript" th:src="@{../js/jquery.min.js}"></script>  -->
        <!--[if lt IE 10]><script type="text/javascript" src="js/placeholder.js"></script><![endif]--> 
+       
+       
+       
+        <!-- Script for dynamic drop down -->
+        <script th:inline="javascript">
+ $(document).ready(function(){
+	$('#categoryId').on('change', function(){
+		
+		var id = $(this).val();
+		var urichild = window.location+"/childCategory/" + id;
+		$.ajax({
+			type: "GET",
+			url:urichild ,
+			 
+			success: function(result) {
+				console.log(result);
+				if(result != null){
+					console.log(result);
+				//var result = JSON.parse(result);
+				
+				var s = '<option>Select Child Category</option>';
+				for(var i = 0; i < result.length; i++) {
+					s += '<option value="' + result[i].id + '">' + result[i].categoryChildName + '</option>';
+				}
+				console.log("test");
+				$('#categoryChildId').html(s);
+			}else{
+				console.log("result data empty");
+			}
+			}
+		
+		}); 
+	});
+
+
+	$('#categoryChildId').on('change', function(){
+		var id = $(this).val();
+		var uriSubChild = window.location+"/childSubCategory/" + id;
+		console.log(uriSubChild);
+		$.ajax({
+			type: "GET",
+			url:uriSubChild ,
+			success: function(result) {
+				//var result = JSON.parse(result);
+				var s = '<option>Select Child Sub Category</option>';
+				for(var i = 0; i < result.length; i++) {
+					s += '<option value="' + result[i].id + '">' + result[i].categorySubChildName + '</option>';
+				}
+				$('#categorySubChildId').html(s);
+			}
+		});
+	});
+
+
+
+}); 
+</script>
     </body>
 </html>

@@ -941,7 +941,7 @@ a.btn-mod:focus{
 .form textarea{
     font-size: 12px;
     font-weight: 400;
-    text-transform: uppercase !important;
+    /* text-transform: uppercase !important; */
     letter-spacing: 1px;
     color: #777;
     border-color: rgba(0,0,0, .1);
