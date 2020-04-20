@@ -45,13 +45,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                             "/swagger**",
                             "/api/**",
                             "/v2/**",
-                            "/posts/**",
-                            "/childCategory/**",
-                            "/childSubCategory/**").permitAll()
-                    .antMatchers("user/**").hasAnyRole("USER")
-                    .antMatchers("user/postweb").hasAnyRole("USER")
-                    .antMatchers("user/event").hasAnyRole("USER")
-                    .antMatchers("user/profile").hasAnyRole("USER")
+                            "/posts/**").permitAll()
+                    .antMatchers("/user/**").hasAnyRole("USER")
+                    .antMatchers("/user/postweb").hasAnyRole("USER")
+                    .antMatchers("/user/event").hasAnyRole("USER")
+                    .antMatchers("/user/profile").hasAnyRole("USER")
                     .anyRequest().authenticated()
                 .and()
                 .formLogin()

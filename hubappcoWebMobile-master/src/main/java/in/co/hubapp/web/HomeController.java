@@ -1,16 +1,27 @@
 package in.co.hubapp.web;
 
+import java.io.IOException;
 import java.util.List;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import in.co.hubapp.mobile.channel.HubGenRes;
+import in.co.hubapp.mobile.channel.PostReq;
+import in.co.hubapp.mobile.service.PostServiceMob;
 import in.co.hubapp.mobile.service.UserServiceMob;
 import in.co.hubapp.model.Category;
+import in.co.hubapp.model.User;
+import in.co.hubapp.service.UserService;
 
 @Controller
 public class HomeController {
@@ -18,6 +29,13 @@ public class HomeController {
 	
 	@Autowired
 	private UserServiceMob userServiceMob;
+	
+	@Autowired
+	PostServiceMob postService;
+	
+	 @Autowired
+	    private UserService userService;
+
 	
     @GetMapping("/")
     public String root() {
@@ -59,6 +77,12 @@ public class HomeController {
     public String userEvent() {
         return "user/event";
     }
+    @GetMapping("/user/addposts")
+    public String addPosts(Model model) {
+    	List<Category> categories = userServiceMob.getCategory();
+	    model.addAttribute("categories", categories );
+        return "user/addposts";
+    }
     @GetMapping("/user/posts")
     public String userPosts() {
         return "user/posts";
@@ -67,7 +91,7 @@ public class HomeController {
     public String userProfile() {
         return "user/profile";
     }
-
+    
 	@GetMapping("/login") 
     public String login(Model model)  { 
 		return "login"; 

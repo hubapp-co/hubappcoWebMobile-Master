@@ -32,51 +32,31 @@
         
         <!-- Page Wrap -->
         <div class="page" id="top">
-            <span sec:authentication="principal.username" class="page" id="top">User</span>
+            <span sec:authentication="principal.username" class="userId_name" id="userId_name">User</span>
             <!-- Navigation panel -->
              <th:block th:replace="fragments/header_user :: header"/>
             <!-- End Navigation panel -->
-            <!-- Head Section -->
-            <!-- <section class="small-section bg-gray-lighter">
-                <div class="relative container align-left">
-                    
-                    <div class="row">
-                        
-                        <div class="col-md-8">
-                            <h1 class="hs-line-11 font-alt mb-20 mb-xs-0">Blog</h1>
-                            <div class="hs-line-4 font-alt black">
-                                We share our best ideas in our blog
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-4 mt-30">
-                            <div class="mod-breadcrumbs font-alt align-right">
-                                <a href="#">Home</a>&nbsp;/&nbsp;<a href="#">Blog</a>&nbsp;/&nbsp;<span>Classic</span>
-                            </div>
-                            
-                        </div>
-                    </div>
-                    
-                </div>
-            </section> -->
+            
             <!-- End Head Section -->
             <section class="small-section bg-gray-lighter">
                 <div class="container relative">
                    <!-- Post Form -->                            
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2">
-                             <h1 class="hs-line-11 font-alt mb-20 mb-xs-0">Want to Post something!!</h1>
-                            <form  action="#" th:action="@{/user/postweb}" th:object="${postReq}" method="POST" enctype="multipart/form-data" class="form contact-form" id="contact_form">
+                             <h2 class="blog-item-title font-alt">Want to Post something!! <a href="/" th:href="@{/user/addposts}">Click Here</a></h2>
+                             
+                             
+                           <!--  <form  th:action="@{user/postweb}" th:object="${postReq}" method="POST" enctype="multipart/form-data" class="form contact-form" id="contact_form">
                                 <div class="clearfix">
-                                    
+                                    <input type="hidden" name="docId" id="docId" value="1" class="input-md round form-control" placeholder="Name" pattern=".{3,100}" >
                                     <input type="hidden" name="categoryFinalChildId" id="categoryFinalChildId" value="1" class="input-md round form-control" placeholder="Name" pattern=".{3,100}" >
                                     <div class="cf-left-col">
                                         <input type="hidden" name="postUserId" id="postUserId" value="1" class="input-md round form-control" placeholder="Name" pattern=".{3,100}">
-                                        <!-- Name -->
+                                        Name
                                         <div class="form-group">
                                             <input type="text" name="postTitle" id="postTitle" class="input-md round form-control" placeholder="Name" pattern=".{3,100}" required>
                                         </div>
-                                         <!-- Message -->
+                                         Message
                                         <div class="form-group">                                            
                                             <textarea name="postDescription" id="postDescription" class="input-md round form-control" style="height: 84px;" placeholder="Description"></textarea>
                                         </div>
@@ -84,7 +64,7 @@
                                     <label for="exampleInputFile">
                                         Image
                                     </label>
-                                    <input type="file" id="postImage"> <!-- id="postImageUrl"> -->
+                                    <input type="file" id="postImage"> id="postImageUrl">
                                     <p class="help-block">
                                         Upload an Image...
                                     </p>
@@ -121,7 +101,7 @@
                                     
                                     <div class="cf-left-col">
                                         
-                                        <!-- Inform Tip -->                                        
+                                        Inform Tip                                        
                                         <div class="form-tip pt-20">
                                             <i class="fa fa-info-circle"></i> All the fields are required
                                         </div>
@@ -130,9 +110,9 @@
                                     
                                     <div class="cf-right-col">
                                         
-                                        <!-- Send Button -->
+                                        Send Button
                                         <div class="align-right pt-10">
-                                            <button class="submit_btn btn btn-mod btn-medium btn-round" id="submit_btn">Save Post</button>
+                                            <button type="submit" class="submit_btn btn btn-mod btn-medium btn-round" id="submit_btn">Save Post</button>
                                         </div>
                                         
                                     </div>
@@ -142,7 +122,7 @@
                                 
                                 
                                 <div id="result"></div>
-                            </form>
+                            </form> -->
                             
                         </div>
                     </div>
@@ -620,25 +600,64 @@
         <!-- Script for dynamic drop down -->
         <script th:inline="javascript">
  $(document).ready(function(){
+	 
+	/*  $("#contact_form").submit(function(event){
+			alert("form submit jquery");
+			        // get the form data
+			        // there are many ways to get this data using jQuery (you can use the class or id also)
+			        var formData = {
+			            'postTitle'              : $('input[name=postTitle]').val(),
+			            'postDescription'             : $('input[name=postDescription]').val(),
+			            'postImage'    : $('input[name=postImage]').val(),
+			            'categoryId'    : $('input[name=categoryId]').val(),
+			            'categoryChildId'    : $('input[name=categoryChildId]').val(),
+			            'categorySubChildId'    : $('input[name=categorySubChildId]').val(),
+			            'categoryFinalChildId' :$('input[name=categoryFinalChildId]').val,
+			            'postUserId' :$('input[name=postUserId]').val,
+			            'docId' :$('input[name=docId]').val
+			        };
+			        console.log(formData); 
+					var uriPost = window.location +"postrestweb";
+			        // process the form
+			        $.ajax({
+			            type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+			            url         : uriPost, // the url where we want to POST
+			            data        : formData, // our data object
+			            dataType    : 'json', // what type of data do we expect back from the server
+			                        encode          : true
+			        })
+			            // using the done promise callback
+			            .done(function(data) {
+
+			                // log data to the console so we can see
+			                console.log(data); 
+
+			                // here we will handle errors and validation messages
+			            });
+
+			        // stop the form from submitting the normal way and refreshing the page
+			        event.preventDefault();
+			    }); */
+
+	 
+	 
 	$('#categoryId').on('change', function(){
 		
 		var id = $(this).val();
-		var urichild = window.location+"/childCategory/" + id;
+		var urichild = window.location+"childCategory/" + id;
+		//console.log("URLLLLLLLLLLLLLL"+urichild);
 		$.ajax({
 			type: "GET",
 			url:urichild ,
-			 
 			success: function(result) {
-				console.log(result);
+				//console.log(result);
 				if(result != null){
-					console.log(result);
-				//var result = JSON.parse(result);
-				
+					//console.log(result);
 				var s = '<option>Select Child Category</option>';
 				for(var i = 0; i < result.length; i++) {
 					s += '<option value="' + result[i].id + '">' + result[i].categoryChildName + '</option>';
 				}
-				console.log("test");
+				//console.log("test");
 				$('#categoryChildId').html(s);
 			}else{
 				console.log("result data empty");
@@ -649,10 +668,11 @@
 	});
 
 
+
 	$('#categoryChildId').on('change', function(){
 		var id = $(this).val();
-		var uriSubChild = window.location+"/childSubCategory/" + id;
-		console.log(uriSubChild);
+		var uriSubChild = window.location+"childSubCategory/" + id;
+		//console.log(uriSubChild);
 		$.ajax({
 			type: "GET",
 			url:uriSubChild ,
@@ -666,10 +686,34 @@
 			}
 		});
 	});
-
-
+	/* $('#userId_name').on('load', function(){
+	
+	}); */
 
 }); 
+ 
+ jQuery(document).ready(function($){
+	 
+		var username = $('#userId_name').text();
+		var uriUserName = window.location+"userId_name/"+ username;
+		//console.log(uriUserName);
+		$.ajax({
+			type: "GET",
+			url:uriUserName,
+			success: function(result) {
+				//var result = JSON.parse(result);
+				//console.log(result);
+				var s = '';
+					s +=result[i].id;
+					//console.log(s);
+				$('#postUserId').html(s);
+			}
+		});
+	 
+ });
+ 
+ 
+
 </script>
     </body>
 </html>
