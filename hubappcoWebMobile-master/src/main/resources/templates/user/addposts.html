@@ -216,13 +216,14 @@
 			        event.preventDefault();
 			    }); */
 
-	 
+	// var localhost ="localhost";
+	 var localhost ="hubapp.co.in";
 	 
 	$('#categoryId').on('change', function(){
 		
 		var id = $(this).val();
 		//var urichild = window.location+"childCategory/" + id;
-		var urichild ="http://localhost:8080/user/childCategory/" + id;
+		var urichild ="http://"+localhost+":8080/user/childCategory/" + id;
 		console.log("URLLLLLLLLLLLLLL"+urichild);
 		$.ajax({
 			type: "GET",
@@ -249,7 +250,7 @@
 
 	$('#categoryChildId').on('change', function(){
 		var id = $(this).val();
-		var uriSubChild = "http://localhost:8080/user/childSubCategory/" + id;
+		var uriSubChild = "http://"+localhost+":8080/user/childSubCategory/" + id;
 		//console.log(uriSubChild);
 		$.ajax({
 			type: "GET",
@@ -273,7 +274,7 @@
  jQuery(document).ready(function($){
 	 
 		var username = $('#userId_name').text();
-		var uriUserName = window.location+"userId_name/"+ username;
+		var uriUserName = "http://"+localhost+":8080/user/userId_name/"+ username;
 		//console.log(uriUserName);
 		$.ajax({
 			type: "GET",

@@ -31,6 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                             "/about_us",
                             "/services",
                             "/subscription",
+                            "/sapling_foundation",
                             "/contact_us",
                             "/js/**",
                             "/css/**",
@@ -45,7 +46,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                             "/swagger**",
                             "/api/**",
                             "/v2/**",
-                            "/posts/**").permitAll()
+                            "/posts/**",
+                            "/error/access-denied").permitAll()
                     .antMatchers("/user/**").hasAnyRole("USER")
                     .antMatchers("/user/postweb").hasAnyRole("USER")
                     .antMatchers("/user/event").hasAnyRole("USER")

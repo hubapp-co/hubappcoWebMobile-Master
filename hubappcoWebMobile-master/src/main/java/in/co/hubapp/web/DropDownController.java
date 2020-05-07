@@ -13,12 +13,15 @@ import org.springframework.web.bind.annotation.RestController;
 import in.co.hubapp.mobile.channel.CategoryChildList;
 import in.co.hubapp.mobile.channel.CategorySubChildList;
 import in.co.hubapp.mobile.service.UserServiceMob;
+import in.co.hubapp.mobile.types.RequestType;
 import in.co.hubapp.model.User;
 import in.co.hubapp.service.UserService;
 
 
 @RestController
 public class DropDownController {
+	
+	
 	
 	@Autowired
 	private UserService userService;
@@ -27,7 +30,7 @@ public class DropDownController {
 	@Autowired
 	private UserServiceMob userServiceMob;
 
-	@CrossOrigin(origins = "http://localhost:8080")
+	@CrossOrigin(origins = RequestType.DOMAIN)
 	@RequestMapping(path = "/user/childCategory/{id}", method = RequestMethod.GET, produces = "application/json")
 	public List<CategoryChildList> getChildById(@PathVariable("id") Long childId) {
 
@@ -35,7 +38,7 @@ public class DropDownController {
 		return res;
 	}
 	
-	@CrossOrigin(origins = "http://localhost:8080")
+	@CrossOrigin(origins = RequestType.DOMAIN)
 	@RequestMapping(path ="/user/childSubCategory/{id}", method = RequestMethod.GET, produces = "application/json")
 	public List<CategorySubChildList> getsubChildById(@PathVariable("id") Long childId) {
 
@@ -43,7 +46,7 @@ public class DropDownController {
 		return res;
 	}
 	
-	@CrossOrigin(origins = "http://localhost:8080")
+	@CrossOrigin(origins = RequestType.DOMAIN)
 	@GetMapping("/user/userId_name/{username}")
 	public User userId(@PathVariable("id") String username) {
 	    	

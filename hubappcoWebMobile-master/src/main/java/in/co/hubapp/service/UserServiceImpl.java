@@ -1,5 +1,8 @@
 package in.co.hubapp.service;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.stream.Collectors;
@@ -11,11 +14,16 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import in.co.hubapp.model.Role;
 import in.co.hubapp.model.User;
 import in.co.hubapp.repository.UserRepository;
 import in.co.hubapp.dto.UserRegistrationDto;
+import in.co.hubapp.mobile.channel.DocumentDetails;
+import in.co.hubapp.mobile.channel.HubGenRes;
+import in.co.hubapp.mobile.repository.DocumentRepositoryMob;
+import in.co.hubapp.mobile.util.Document;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -25,6 +33,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
+    
+    @Autowired
+	DocumentRepositoryMob documentRepositoryMob;
 
     public User findByEmail(String email) {
         return userRepository.findByEmail(email);
@@ -56,4 +67,49 @@ public class UserServiceImpl implements UserService {
             .map(role -> new SimpleGrantedAuthority(role.getName()))
             .collect(Collectors.toList());
     }
+    
+    public HubGenRes uploadDocument(MultipartFile file) {
+		HubGenRes res = new HubGenRes();
+		Document doc = new Document();
+		DocumentDetails docRes = new DocumentDetails();
+		LocalDateTime current = LocalDateTime.now();
+
+		try {
+			String dir = System.getProperty("user.dir") + "/uploads/";
+			File convertFile = new File(dir + file.getOriginalFilename());
+			convertFile.createNewFile();
+			FileOutputStream fos = new FileOutputStream(convertFile);
+			fos.write(file.getBytes());
+			fos.close();
+			String filePath = convertFile.getAbsolutePath();
+			String fileName = convertFile.getName();
+			try {
+				doc.setFilePath(filePath);
+				doc.setFileName(fileName);
+				Document docDetails = documentRepositoryMob.save(doc);
+				if (docDetails != null) {
+					docRes.setDocId(docDetails.getId());
+					res.setStatus("Success");
+					res.setMessage("Document uploaded Successfuly");
+					res.setDoc(docRes);
+					return res;
+				}
+
+			} catch (Exception e) {
+
+				res.setStatus("Failure");
+				res.setMessage("Error in uploading document");
+				return res;
+			}
+		} catch (Exception e) {
+			res.setStatus("Failure");
+			res.setMessage("Error in uploading document");
+			return res;
+
+		}
+
+		return res;
+
+	}
+
 }

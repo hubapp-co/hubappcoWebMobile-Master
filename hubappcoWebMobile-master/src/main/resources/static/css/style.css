@@ -65,6 +65,7 @@ Primary use:    MultiPurpose Template
     27.9. Intro page
 28. Special demos
 29. Bootstrap multicolumn grid
+30. Sapling What we do tiles
 
 
 /*------------------------------------------------------------------
@@ -471,6 +472,12 @@ hr.black{
     font-size: 140%;
     line-height: 1.6;
 }
+.text-1{        
+    font-size: 16px;
+    font-weight: 300;
+    color: #fff;
+    line-height: 1.8;
+}
 .text{        
     font-size: 16px;
     font-weight: 300;
@@ -833,7 +840,7 @@ a.btn-mod:focus{
     vertical-align: middle;
     font-size: 11px;
     font-weight: 400;
-    text-transform: uppercase;
+  /*  text-transform: uppercase; */
     letter-spacing: 1px;
     color: #777;
     border: 1px solid rgba(0,0,0, .1);
@@ -1518,6 +1525,7 @@ a.logo:hover{
     -webkit-box-shadow: 0 1px 0 rgba(0,0,0,.05);
     -moz-box-shadow: 0 1px 0 rgba(0,0,0,.05);
     box-shadow:  0 1px 0 rgba(0,0,0,.05);
+    border-radius: 0 0 25px 25px;
     
     z-index: 1030;
     
@@ -2363,7 +2371,50 @@ a.logo:hover{
 /*
  * Common
  */
-
+.page-section-1,
+.small-section-1{
+    width: 100%;
+    display: block;    
+    position: relative;
+    overflow: hidden;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center center;
+    
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0px;
+    /*padding: 140px 0;*/
+}
+.small-section-1{
+    padding: 0px 0;
+}
+.small-title-1{
+    padding: 0;
+    margin: 0 0 30px 0;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 300;
+    letter-spacing: 0.3em;
+}
+.section-icon-1{
+    margin-bottom: 7px;
+    text-align: center;
+    font-size: 32px;
+}
+.small-title-1 .serif{
+    text-transform: none;
+    font-weight: 400;
+}
+.small-title-1.white{
+    color: #fff;
+}
 .page-section,
 .small-section{
     width: 100%;
@@ -2408,6 +2459,8 @@ a.logo:hover{
 .small-title.white{
     color: #fff;
 }
+
+
 .bg-scroll{
     background-attachment: scroll !important;
 }
@@ -3150,6 +3203,54 @@ a.logo:hover{
     font-weight: 300;
     line-height: 1.86
 }
+.tileborder1{
+	/* border-bottom-right-radius: 25px; border-top-right-radius: 25px; */
+	
+	border-bottom-left-radius:25px;
+	border-top-left-radius:25px;
+	text-align: center;
+	width:360px;
+	color:#fff;
+	height:260px;
+	font-size: 14px;
+
+font-weight: 300;
+
+line-height: 1.86;
+	background-color: gray;
+	padding: 20px;
+	/* background : url(images/larm-rmah-AEaTUnvneik-unsplash.png); */
+}
+.tileborder2{
+	width:360px;
+	height:260px;
+	color:#fff;
+	text-align: center;
+	font-size: 14px;
+
+font-weight: 300;
+
+line-height: 1.86;
+	background-color: gray;
+	padding: 20px;
+	/* background : url(images/larm-rmah-AEaTUnvneik-unsplash.png); */
+}
+.tileborder3{
+	border-bottom-right-radius: 25px;
+	border-top-right-radius: 25px;
+	width:360px;
+	height:260px;
+	color:#fff;
+	text-align: center;
+	font-size: 14px;
+
+font-weight: 300;
+
+line-height: 1.86;
+	background-color: gray;
+	padding: 20px;
+	/* background : url(images/larm-rmah-AEaTUnvneik-unsplash.png); */
+}
 
 
 /* ==============================
@@ -3788,6 +3889,22 @@ a.logo:hover{
 }
 .post-prev-img{
     margin-bottom: 23px;
+    position: relative;
+}
+.post-prev-img_black{
+	margin-bottom: 23px;
+    position: relative;
+    margin-right:-16px;
+}
+.post-prev-img-gold{
+right: 15%;
+top: 50%;
+position: absolute;
+margin-top: 90px;
+margin-right: -1px;
+float: right;
+}
+.post-prev-img-grey{
     position: relative;
 }
 .post-prev-img a{
@@ -6467,6 +6584,8 @@ section:hover .small-item-carousel .owl-next{
 }
 
 
+
+
 /* ==============================
    Bootstrap multicolumn grid
    ============================== */
@@ -6522,4 +6641,72 @@ section:hover .small-item-carousel .owl-next{
     .multi-columns-row .col-lg-3:nth-child(4n + 5) { clear: left; }
     .multi-columns-row .col-lg-2:nth-child(6n + 7) { clear: left; }
     .multi-columns-row .col-lg-1:nth-child(12n + 13) { clear: left; }
+}
+
+.rcorners1 {
+  border-radius: 25px 0 0 25px;
+  padding: 20px; 
+  width: 200px;
+  height: 150px;  
+  align: center;
+}
+.rcorners2 {
+  padding: 20px; 
+  width: 200px;
+  height: 150px;  
+}
+.rcorners3 {
+  border-radius: 0 25px 25px 0;
+  padding: 20px; 
+  width: 200px;
+  height: 150px;  
+}
+
+
+
+.login_type{
+	position: relative;
+    display: block;
+}
+.imagesLogin{
+	background-image: url("images/loginImages/rightArc.jpg");
+}
+.onoverImage{
+ max-width: 100%;
+    height: auto;	
+}
+.product-holder {
+    position: relative;
+    display: block;
+}
+
+.plus-image {
+left: 5%;
+top: 12%;
+position: absolute;
+margin-top: -120px;
+margin-left: -30px;
+margin-right: 14px;
+}
+.logo-image {
+left: 47%;
+top: 35%;
+position: absolute;
+margin-top: auto;
+margin-left: auto;
+margin-right: auto;
+height: 20%;
+width: 20%;
+}
+.plus-right-image{
+left: 57%;
+
+
+position: absolute;
+
+
+
+height: 50%;
+
+width: 49%;
 }

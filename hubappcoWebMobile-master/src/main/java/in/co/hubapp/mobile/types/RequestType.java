@@ -33,5 +33,8 @@ public class RequestType {
 	public static final String UPDATE_PROFILE = "/update-profile";
 
 	public static final String DOC_UPLOAD = "/doc-upload";
+	
+	//public static final String DOMAIN ="http://localhost:8080";
+	public static final String DOMAIN ="http://hubapp.co.in:8080";
 
 }
