@@ -14,4 +14,6 @@ public interface UserService extends UserDetailsService {
     User save(UserRegistrationDto registration);
     
     public HubGenRes uploadDocument(MultipartFile file);
+
+	User findUserByUserName(String name);
 }

@@ -17,5 +17,6 @@ public interface PostsRepositoryMob extends JpaRepository < Posts, Long > {
 	
 	@Query(value = "SELECT * FROM post WHERE post_user_id = ?1", nativeQuery = true)
 	  List<Posts> findByPostByUSer(Long userId);
+
 	
 }

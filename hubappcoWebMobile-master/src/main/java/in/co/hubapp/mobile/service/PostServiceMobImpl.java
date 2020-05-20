@@ -207,6 +207,12 @@ public class PostServiceMobImpl implements PostServiceMob {
 		return res;
 	}
 
+	@Override
+	public List<Posts> getPostsByUserId(Long id) {
+		// TODO Auto-generated method stub
+		return postsRepositoryMob.findByPostByUSer(id);
+	}
+
 	/*
 	 * private static byte[] readFileToByteArray(File file) { FileInputStream fis =
 	 * null; // Creating a byte array using the length of the file // file.length
