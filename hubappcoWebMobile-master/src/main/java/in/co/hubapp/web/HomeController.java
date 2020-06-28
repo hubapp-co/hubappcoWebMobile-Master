@@ -53,7 +53,20 @@ public class HomeController {
 	public String about() {
 		return "about_us";
 	}
+	
+	@GetMapping("/registration_success")
+	public String registration_success() {
+		
+		
+		
+		return "registration_success";
+	}
 
+	@GetMapping("/otp_verify")
+	public String otp_verify() {
+		return "otp_verify";
+	}
+	
 	@GetMapping("/services")
 	public String services() {
 		return "services";
@@ -112,6 +125,11 @@ public class HomeController {
 		model.addAttribute("categories", categories);
 		return "user/addposts";
 	}
+	@GetMapping("/user/categories")
+	public String categories() {
+		return "user/categories";
+	}
+
 
 	@GetMapping("/user/posts")
 	public String userPosts() {

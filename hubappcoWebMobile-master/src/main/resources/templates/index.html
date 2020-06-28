@@ -1,553 +1,287 @@
 <!DOCTYPE html>
 <html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	xmlns:th="http://www.thymeleaf.org">
-<!-- layout:decorate="~{fragments/layout}"> -->
-<head>
-<title>Hubapp</title>
-<meta name="description" content="">
-<meta name="keywords" content="">
-<meta charset="utf-8">
-<!--  <meta name="author" content="https://themeforest.net/user/bestlooker/portfolio"> -->
-<!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-<!-- Favicons -->
-<link rel="shortcut icon" href="images/favicon.png">
-<!--  th:href="@{images/favicon.png}"> -->
-
-<!-- CSS -->
-<link rel="stylesheet" th:href="@{css/bootstrap.min.css}">
-<link rel="stylesheet" th:href="@{css/style.css}">
-<link rel="stylesheet" th:href="@{css/style-responsive.css}">
-<link rel="stylesheet" th:href="@{css/animate.min.css}">
-<link rel="stylesheet" th:href="@{css/vertical-rhythm.min.css}">
-<link rel="stylesheet" th:href="@{css/owl.carousel.css}">
-<link rel="stylesheet" th:href="@{css/magnific-popup.css}">
-
-</head>
-<body class="appear-animate">
-
-	<!-- Page Loader -->
-	<div class="page-loader">
-		<div class="loader">Loading...</div>
-	</div>
-	<!-- End Page Loader -->
-
-	<!-- Page Wrap -->
-	<div class="page" id="top">
-
-
-		<th:block th:replace="fragments/header :: header" />
-
-
-
-
-
-		<div class="home-section fullwidth-slider bg-dark" id="home">
-
-
-
-
-			<!-- Slide Item -->
-			<!--  <section class="home-section bg-scroll fixed-height-small bg-dark-alfa-90" data-background="images/full-width-images/HUB-01.jpg"> -->
-			<!-- <section class="home-section bg-scroll fixed-height-small bg-dark-alfa-50" data-background="images/full-width-images/HUB-01.jpg"> -->
-			<section
-				class="home-section bg-scroll fixed-height-home bg-dark-alfa-50"
-				data-background="images/img/web/dome_img.png">
-				<!--  <div class="js-height-parent container"> -->
-
-				<!-- Hero Content -->
-				<div class="home-content">
-					<div class="home-text">
-
-						<div class="hs-line-8 no-transp font-alt mb-40 mb-xs-10"></div>
-
-						<div class="hs-line-14 font-alt mb-50 mb-xs-10"></div>
-						<h2 class="hs-line-14-1 font-alt mb-140 mb-xs-30 gold">YOUR HOPE
-							<b>OUR HELP</b></h2>
-
-						<hr />
-						<div class="hs-line-11 no-transp font-alt mb-40 mb-xs-10 gold">
-							ABOUT</div>
-						<div class="local-scroll">
-							<!-- <a href="pages-pricing-1.html" class="btn btn-mod btn-border-w btn-circle btn-small">Get Pricing</a> -->
-							<span class="hidden-xs">&nbsp;</span>
-							<!-- <a href="#about" class="btn btn-mod btn-border-w btn-circle btn-small">Learn More</a> -->
-						</div>
-						<div class="hs-line-8 no-transp font-alt mb-40 mb-xs-10 gold">
-							Hub offers a digital platform, i.e. both virtual and real stage
-							for artists to showcase their talents to the world. It gives a
-							chance to high potential and fresh talents an attractive career
-							opportunity to develop a professional career into the
-							entertainment industry.Hub provides an online platform for
-							students and teachers to interact with each other virtually. It
-							has created an open space to share knowledge with each other and
-							flow of information to all the students who are eager to learn. A
-							collection of wide range of e-books and audiobooks for students
-							are available in the Hub library, which can be subscribed to, by
-							students as per teacher ' s advice.</div>
-						<hr />
-						<div class="hs-line-11 no-transp font-alt mb-40 mb-xs-10 gold">
-							CATEGORIES</div>
-
-						<div class="container relative">
-
-							<!-- Nav tabs -->
-							<ul class="nav nav-tabs tpl-alt-tabs font-alt pb-30 pb-sm-0">
-								<li>
-									<!-- class="active" -->
-									<div class="alt-tabs-icon-1 padding-mot-dan-Padding">
-										MOTIVATION</div> <a href="#service-branding" data-toggle="tab">
-
-										<div class="alt-tabs-icon white-bgcolor mot-dan-Padding">
-											<!-- <span class="icon-strategy"></span> -->
-											<img class="imageBackground" alt="#"
-												src="images/img/categories/motivation.png">
-										</div>
-
-
-								</a>
-								</li>
-								<li>
-									<div class="alt-tabs-icon-1 padding-ino-art-Padding">INNOVATION</div>
-									<a href="#service-web-design" data-toggle="tab">
-
-										<div class="alt-tabs-icon white-bgcolor ino-art-Padding">
-											<!-- <span class="icon-desktop"></span> -->
-											<img class="imageBackground" alt=""
-												src="images/img/categories/innovation.png">
-										</div>
-
-
-								</a>
-								</li>
-								<li>
-									<div class="alt-tabs-icon-1 padding-music">MUSIC</div> <a
-									href="#service-graphic" data-toggle="tab">
-
-										<div class="alt-tabs-icon white-bgcolor music-padding">
-											<!--   <span class="icon-tools"></span> -->
-											<img class="imageBackground" alt=""
-												src="images/img/categories/music.png">
-										</div>
-
-
-								</a>
-								</li>
-								<li>
-									<div class="alt-tabs-icon-1 padding-ino-art-Padding">ART</div>
-									<a href="#service-development" data-toggle="tab">
-
-										<div class="alt-tabs-icon white-bgcolor ino-art-Padding">
-											<!-- <span class="icon-gears"></span> -->
-											<img class="imageBackground" alt=""
-												src="images/img/categories/art.png">
-										</div>
-
-
-								</a>
-								</li>
-								<li>
-									<div class="alt-tabs-icon-1 padding-mot-dan-Padding">DANCE</div>
-									<a href="#service-photography" data-toggle="tab">
-
-										<div class="alt-tabs-icon white-bgcolor mot-dan-Padding">
-											<!-- <span class="icon-camera"></span> -->
-
-											<img class="imageBackground" alt=""
-												src="images/img/categories/dance.png">
-										</div>
-
-
-								</a>
-								</li>
-							</ul>
-							<!-- End Nav tabs -->
-
-							<!-- Tab panes -->
-
-							<!-- End Tab panes -->
-
-
-
-						</div>
-					</div>
-
-				</div>
-				<!-- End Hero Content -->
-
-				<!-- </div> -->
-			</section>
-			<!-- End Slide Item -->
-
-
-
-		</div>
-		<!-- End Fullwidth Slider -->
-		<div
-			class="home-section fullwidth-slider bg-dark fixed-height-between"
-			id="home">
-
-
-
-
-			<!-- Slide Item -->
-			<!--  <section class="home-section bg-scroll fixed-height-small bg-dark-alfa-90" data-background="images/full-width-images/HUB-01.jpg"> -->
-			<!-- <section class="home-section bg-scroll fixed-height-small bg-dark-alfa-50" data-background="images/full-width-images/HUB-01.jpg"> -->
-			<section
-				class="home-section bg-scroll bg-dark-alfa-20 fixed-height-between"
-				data-background="images/img/postsfeed/Group_235.png">
-				<!--  <div class="js-height-parent container"> -->
-
-				<!-- Hero Content -->
-				<div class="home-content">
-					<div class="home-text black-text">
-
-
-						<div class="hs-line-11 no-transp font-alt mt-50 mb-40 mb-xs-10">
-							LOOKING FOR EXCLUSIVE CATEGORIES</div>
-						<div class="local-scroll">
-							<!-- <a href="pages-pricing-1.html" class="btn btn-mod btn-border-w btn-circle btn-small">Get Pricing</a> -->
-							<span class="hidden-xs">&nbsp;</span>
-							<!-- <a href="#about" class="btn btn-mod btn-border-w btn-circle btn-small">Learn More</a> -->
-						</div>
-						<div class="hs-line-8 no-transp font-alt mb-40 mb-xs-10">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-							eiusmod tempor incididunt ut labore et dolore magna aliqua.
-							Tellus in metus vulputate eu scelerisque felis. Ac turpis egestas
-							sed tempus urna et pharetra pharetra. Suspendisse faucibus
-							interdum posuere lorem ipsum. Consequat id porta nibh venenatis
-							cras sed felis. A cras semper auctor neque vitae tempus quam.
-							Auctor neque vitae tempus quam pellentesque.</div>
-						<div class="hs-line-11 no-transp font-alt mb-40 mb-xs-10">
-							<a href="#"> <img class="" alt=""
-								src="images/img/postsfeed/register_button.png"></a>
-						</div>
-
-					</div>
-
-				</div>
-				<!-- End Hero Content -->
-
-				<!-- </div> -->
-			</section>
-			<!-- End Slide Item -->
-
-
-
-		</div>
-
-
-		<div class="home-section fullwidth-slider bg-dark fixed-height-after"
-			id="home"></div>
-
-		<!-- Divider -->
-		<hr class="mt-0 mb-0 " />
-		<!-- End Divider -->
-
-
-		<div class="home-section  bg-dark fixed-height-later" id="home">
-
-
-
-
-			<!-- Slide Item -->
-			<section
-				class="home-section bg-scroll bg-dark-alfa-20 fixed-height-between"
-				data-background="images/img/postsfeed/Mask_Group.png">
-				<!--  <div class="js-height-parent container"> -->
-
-				<!-- Hero Content -->
-				<div class="home-content">
-					<div class="home-text black-text">
-
-						<div class="row mb-70 mb-xs-40 pl">
-							<img src="images/img/postsfeed/Group_236.png">
-						</div>
-						<div class="hs-line-11 no-transp font-alt mt-50 mb-40 mb-xs-10">
-						</div>
-						
-						
-						<div class="container relative">
-
-							<!-- Nav tabs -->
-							<ul class="nav nav-tabs tpl-alt-tabs font-alt pb-30 pb-sm-0 pl-20">
-								<li>
-									<!-- class="active" -->
-									<div class="alt-tabs-icon ">
-										</div> <a href="#service-branding" data-toggle="tab">
-
-											<!-- <span class="icon-strategy"></span> -->
-											<img alt="#"
-												src="images/img/postsfeed/buynow.png">
-
-									</a>
-									</li>
-									<li>
-									<!-- class="active" -->
-									<div class="alt-tabs-icon ">
-										</div> <a href="#" data-toggle="tab">
-
-											<!-- <span class="icon-strategy"></span> -->
-											<img alt="#"
-												src="images/img/postsfeed/buynow.png">
-
-
-									</a>
-									</li>
-									<li>
-									<!-- class="active" -->
-									<div class="alt-tabs-icon ">
-										</div> <a href="#" data-toggle="tab">
-
-											<!-- <span class="icon-strategy"></span> -->
-											<img alt="#"
-												src="images/img/postsfeed/buynow.png">
-
-
-									</a>
-									</li>
-								</ul>
-							</div>
-						<div class="container relative">
-
-				<form class="form align-center" id="mailchimp">
-					<div class="row">
-						<div class="col-md-8 col-md-offset-2">
-
-							<div class="newsletter-label font-alt">Stay informed with
-								our newsletter</div>
-
-							<div class="mb-20">
-								<input placeholder="Enter Your Email"
-									class="newsletter-field form-control input-md round mb-xs-10"
-									type="email" pattern=".{5,100}" required />
-
-								<button type="submit"
-									class="btn btn-mod btn-medium btn-round mb-xs-10">
-									Subscribe</button>
-							</div>
-
-							
-
-							<div id="subscribe-result"></div>
-
-						</div>
-					</div>
-				</form>
-
-			</div>
-						
-						<div class="local-scroll">
-							<!-- <a href="pages-pricing-1.html" class="btn btn-mod btn-border-w btn-circle btn-small">Get Pricing</a> -->
-							<span class="hidden-xs">&nbsp;</span>
-							<!-- <a href="#about" class="btn btn-mod btn-border-w btn-circle btn-small">Learn More</a> -->
-						</div>
-						<div class="hs-line-8 no-transp font-alt mb-40 mb-xs-10"></div>
-						<div class="hs-line-11 no-transp font-alt mb-40 mb-xs-10">
-							<a href="#">
-						</div>
-
-					</div>
-
-				</div>
-				<!-- End Hero Content -->
-
-				<!-- </div> -->
-			</section>
-			<!-- End Slide Item -->
-
-
-
-		</div>
-
-
-		
-
-
-
-
-
-
-		<!-- Divider -->
-		<hr class="mt-0 mb-0 " />
-		<!-- End Divider -->
-
-
-		<!-- Section -->
-		<!-- <section class="page-section">
-                <div class="container relative">
+    <head>
+        <title>HUB - Welcome</title>
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <meta charset="utf-8">
+        <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
+        <!-- Favicons -->
+    <link rel="shortcut icon" th:href="@{images/favicon.png}">
+
+    <!-- CSS -->
+    <link rel="stylesheet" th:href="@{css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{css/style.css}">
+    <link rel="stylesheet" th:href="@{css/style-responsive.css}">
+    <link rel="stylesheet" th:href="@{css/animate.min.css}">
+    <link rel="stylesheet" th:href="@{css/vertical-rhythm.min.css}">
+    <link rel="stylesheet" th:href="@{css/owl.carousel.css}">
+    <link rel="stylesheet" th:href="@{css/magnific-popup.css}">       
+        
+    </head>
+    <body class="appear-animate">
+        
+        <!-- Page Loader -->        
+        <div class="page-loader">
+            <div class="loader">Loading...</div>
+        </div>
+        <!-- End Page Loader -->
+        
+        <!-- Page Wrap -->
+        <div class="page" id="top">
+            <th:block th:replace="fragments/header :: header" />
+            
+            <!-- Navigation panel -->
+         
+            <!-- End Navigation panel -->
+            
+            
+            <!-- Home Section -->
+            <section class="home-section">
+                <div class="home-section-bg ">
+                <div class="container">
                     
-                    <div class="row">
-                        
-                        <div class="col-md-7 mb-sm-40">
+                    <!-- Hero Content -->
+                    <div class="home-content">
+                        <div class="home-text">
                             
-                            Gallery
-                            <div class="work-full-media mt-0 white-shadow wow fadeInUp">
-                                <ul class="clearlist work-full-slider owl-carousel">
-                                    <li>
-                                        <img src="images/promo-3.png" alt="" />
-                                    </li>
-                                    <li>
-                                        <img src="images/portfolio/full-project-2.jpg" alt="" />
-                                    </li>
-                                </ul>
-                            </div>
-                            End Gallery
-                            
-                        </div>
-                        
-                        <div class="col-md-5 col-lg-4 col-lg-offset-1">
-                            
-                            About Project
-                            <div class="text">
-                                
-                                <h3 class="font-alt mb-30 mb-xxs-10">Awesome Template</h3>
-                                
-                                <p>
-                                    Phasellus facilisis mauris vel velit molestie pellentesque. Donec rutrum, tortor ut elementum venenatis, purus magna bibendum nisl, ut accumsan ipsum erat eu sapien. 
-                                </p>
-                                
-                                <div class="mt-40">
-                                    <a href="http://themeforest.net/user/theme-guru/portfolio" class="btn btn-mod btn-border btn-round btn-medium" target="_blank">Buy Now</a>
-                                </div>
-                                
-                            </div>
-                            End About Project
+                            <h1 class="hs-line-1 font-alt mb-80 mb-xs-30 mt-sm-0 main-heading">
+                                YOUR HOPE <b>OUR HELP</b>
+                            </h1>
+                            <hr>
+                            <h1 class="hs-line-1 font-alt mb-80 mb-xs-30 mt-70 mt-sm-0">
+                               ABOUT US
+                            </h1>
+
+                            <p>
+                                Hub offers a digital platform, i.e. both virtual and real stage for artists to showcase their talents to the world. It gives a chance to high
+                                potential and fresh talents an attractive career opportunity to develop a professional career into the entertainment industry.Hub
+                                provides an online platform for students and teachers to interact with each other virtually. It has created an open space to share
+                                knowledge with each other and flow of information to all the students who are eager to learn. A collection of wide range of e-books
+                                and audiobooks for students are available in the Hub library, which can be subscribed to, by students as per teacher's advice.
+                            </p>
+
+                            <h1 class="hs-line-1 font-alt mb-20 mb-xs-30 mt-70 mt-sm-0">
+                                CATEGORIES
+                            </h1>
+
+                             <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tpl-alt-tabs font-alt pt-0 pt-sm-0 pb-30 pb-sm-0">
+                                <li>
+                                    <span>Motivation</span>
+                                    <a href="#" data-toggle="tab">
+                                        <div class="alt-tabs-icon">
+                                        <img src="/images/landing/sport-team.png">
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <span>Innovation</span>
+                                    <a href="#" data-toggle="tab">
+                                        <div class="alt-tabs-icon">
+                                        <img src="/images/landing/project.png">
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <span>Music</span>
+                                    <a href="#" data-toggle="tab">
+                                        <div class="alt-tabs-icon">
+                                        <img src="/images/landing/music.png">
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <span>Art</span>
+                                    <a href="#" data-toggle="tab">
+                                        <div class="alt-tabs-icon">
+                                        <img class="art" src="/images/landing/Out line.png">
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <span>Dance</span>
+                                    <a href="#" data-toggle="tab">
+                                        <div class="alt-tabs-icon">
+                                        <img class="dance" src="/images/landing/gymnast.png">
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                            <!-- End Nav tabs -->
                             
                         </div>
                     </div>
+                    <!-- End Hero Content -->
+                    
+                    <!-- Scroll Down -->
+                    <div class="local-scroll">
+                        <a href="#about" class="scroll-down"><i class="fa fa-angle-down scroll-down-icon"></i></a>
+                    </div>
+                    <!-- End Scroll Down -->
+                    <br><br>
+                    
                 </div>
-            </section> -->
-		<!-- End Section -->
-
-
-		<!-- Divider -->
-		<hr class="mt-0 mb-0 " />
-		<!-- End Divider -->
-
-
-
-
-
-
-
-
-
-
-		<!-- Contact Section -->
-		<section class="page-section" id="contact">
-			<div class="container relative">
-<!-- <h2 class="hs-line-14-1 font-alt mb-140 mb-xs-30"></h2> -->
-				<h2 class="section-title-1 font-alt mb-70 mb-xs-40">Find Us</h2>
-
-				<div class="row">
-
-					<div class="col-md-8 col-md-offset-2">
-						<div class="row">
-
-							<!-- Phone -->
-							<div class="col-sm-6 col-lg-4 pt-20 pb-20 pb-xs-0">
-								<div class="contact-item">
-									<div class="ci-icon">
-										<i class="fa fa-phone"></i>
-									</div>
-									<div class="ci-title font-alt">Call Us</div>
-									<div class="ci-text">+91 8023141717</div>
-								</div>
-							</div>
-							<!-- End Phone -->
-
-							<!-- Address -->
-							<div class="col-sm-6 col-lg-4 pt-20 pb-20 pb-xs-0">
-								<div class="contact-item">
-									<div class="ci-icon">
-										<i class="fa fa-map-marker"></i>
-									</div>
-									<div class="ci-title font-alt">Address</div>
-									<div class="ci-text">HUB APP 537 ,53 Cross, 3rd, 12th
-										Main Rd, 3rd Block, Rajajinagar, Bengaluru, Karnataka 560010</div>
-								</div>
-							</div>
-							<!-- End Address -->
-
-							<!-- Email -->
-							<div class="col-sm-6 col-lg-4 pt-20 pb-20 pb-xs-0">
-								<div class="contact-item">
-									<div class="ci-icon">
-										<i class="fa fa-envelope"></i>
-									</div>
-									<div class="ci-title font-alt">Email</div>
-									<div class="ci-text">
-										<a href="mailto:info@hubapp.co.in">info@hubapp.co.in</a>
-									</div>
-								</div>
-							</div>
-							<!-- End Email -->
-
-						</div>
-					</div>
-
-				</div>
-				
-				
-		</section>
-		<!-- End Contact Section -->
- <!-- Call Action Section -->
-            <section class="small-section bg-dark">
-                <div class="container relative">
-                    
-                    <div class="align-center">
-                        <h3 class="banner-heading font-alt">Want to discuss your new project?</h3>
-                            <a href="" class="btn btn-mod btn-w btn-medium btn-round">Check Out</a>
-                    </div>
-                    
                 </div>
             </section>
-            <!-- End Call Action Section -->
+            <!-- End Home Section -->
+            <!-- Home Section -->
+            <section class="home-section">
+                <div class="about-section-bg ">
+                <div class="container">
+                    
+                    <!-- Hero Content -->
+                    <div class="home-content">
+                        <div class="home-text">
+                            
+                            <h1 class="hs-line-1 lookup font-alt mb-xs-30 mt-70 mt-sm-0">
+                                LOOKING FOR EXCLUSIVE CATEGORIES
+                            </h1>
 
-		<!-- Call Action Section -->
-		<!-- End Call Action Section -->
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                                magna aliqua. Tellus in metus vulputate eu scelerisque felis. Ac turpis egestas sed tempus urna et pharetra
+                                pharetra. Suspendisse faucibus interdum posuere lorem ipsum. Consequat id porta nibh venenatis cras sed
+                                felis. A cras semper auctor neque vitae tempus quam. Auctor neque vitae tempus quam pellentesque.
+                            </p>
 
-		<th:block th:replace="fragments/footer :: footer" />
-		<!-- Footer Section -->
+                            <div class="form-group">
+                                <button class="submit_btn btn btn-mod btn-medium btn-round">
+                                    Register with us
+                                </button>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <!-- End Hero Content -->
+                    
+                    <!-- Scroll Down -->
+                    <div class="local-scroll">
+                        <a href="#about" class="scroll-down"><i class="fa fa-angle-down scroll-down-icon"></i></a>
+                    </div>
+                    <!-- End Scroll Down -->
+                    <br><br><br><br><br><br>
+                    <br><br><br><br><br><br><br>
+                    <div class="container relative">
+                    
+                    <!-- Features Grid -->
+                    <div class="item-carousel owl-carousel">
+                        
+                        <!-- Features Item -->
+                        <div class="features-item">
+                            <div class="features-icon">
+                                <img src="./images/landing/img-1.png">
+                            </div>
+                        </div>
+                        <!-- End Features Item -->
+                        
+                        <!-- Features Item -->
+                        <div class="features-item">
+                            <div class="features-icon">
+                                <img src="./images/landing/img-2.png">
+                            </div>
+                        </div>
+                        <!-- End Features Item -->
+                        
+                        <!-- Features Item -->
+                        <div class="features-item">
+                            <div class="features-icon">
+                                <img src="./images/landing/img-3.png">
+                            </div>
+                        </div>
+                        <!-- End Features Item -->
+                        
+                        <!-- Features Item -->
+                        <div class="features-item">
+                            <div class="features-icon">
+                                <img src="./images/landing/img-1.png">
+                            </div>
+                        </div>
+                        <!-- End Features Item -->
+                        
+                        <!-- Features Item -->
+                        <div class="features-item">
+                            <div class="features-icon">
+                                <img src="./images/landing/img-2.png">
+                            </div>
+                        </div>
+                        <!-- End Features Item -->
+                        
+                        <!-- Features Item -->
+                        <div class="features-item">
+                            <div class="features-icon">
+                                <img src="./images/landing/img-3.png">
+                            </div>
+                        </div>
+                        <!-- End Features Item -->
+                        
+                        <!-- Features Item -->
+                        <div class="features-item">
+                            <div class="features-icon">
+                                <img src="./images/landing/img-1.png">
+                            </div>
+                        </div>
+                        <!-- End Features Item -->
+                        
+                        <!-- Features Item -->
+                        <div class="features-item">
+                            <div class="features-icon">
+                                <img src="./images/landing/img-2.png">
+                            </div>
+                        </div>
+                        <!-- End Features Item -->
+                        
+                        <!-- Features Item -->
+                        <div class="features-item">
+                            <div class="features-icon">
+                                <img src="./images/landing/img-3.png">
+                            </div>
+                        </div>
+                        <!-- End Features Item -->
+                        
+                    </div>
+                    <!-- Features Grid -->
+                
+                </div>
+                <br>
+                </div>
+                </div>
 
-		<!-- Buy Button -->
-		<!--   <a href="https://themeforest.net/item/rhythm-multipurpose-onemulti-page-template/10140354" target="_blank" class="buy-button"><i class="fa fa-shopping-cart" aria-hidden="true"></i> <span>Buy</span></a> -->
-		<!-- End Buy Button -->
-
-
-	</div>
-	<!-- End Page Wrap -->
-
-
-	<!-- JS -->
-	<script type="text/javascript" th:src="@{js/jquery-1.11.2.min.js}"></script>
-	<script type="text/javascript" th:src="@{js/jquery.easing.1.3.js}"></script>
-	<script type="text/javascript" th:src="@{js/bootstrap.min.js}"></script>
-	<script type="text/javascript" th:src="@{js/SmoothScroll.js}"></script>
-	<script type="text/javascript" th:src="@{js/jquery.scrollTo.min.js}"></script>
-	<script type="text/javascript" th:src="@{js/jquery.localScroll.min.js}"></script>
-	<script type="text/javascript" th:src="@{js/jquery.viewport.mini.js}"></script>
-	<script type="text/javascript" th:src="@{js/jquery.countTo.js}"></script>
-	<script type="text/javascript" th:src="@{js/jquery.appear.js}"></script>
-	<script type="text/javascript" th:src="@{js/jquery.sticky.js}"></script>
-	<script type="text/javascript" th:src="@{js/jquery.parallax-1.1.3.js}"></script>
-	<script type="text/javascript" th:src="@{js/jquery.fitvids.js}"></script>
-	<script type="text/javascript" th:src="@{js/owl.carousel.min.js}"></script>
-	<script type="text/javascript" th:src="@{js/isotope.pkgd.min.js}"></script>
-	<script type="text/javascript" th:src="@{js/imagesloaded.pkgd.min.js}"></script>
-	<script type="text/javascript"
-		th:src="@{js/jquery.magnific-popup.min.js}"></script>
-	<script type="text/javascript" th:src="@{js/wow.min.js}"></script>
-	<script type="text/javascript" th:src="@{js/masonry.pkgd.min.js}"></script>
-	<script type="text/javascript"
-		th:src="@{js/jquery.simple-text-rotator.min.js}"></script>
-	<script type="text/javascript" th:src="@{js/jquery.lazyload.min.js}"></script>
-	<script type="text/javascript" th:src="@{js/all.js}"></script>
-	<script type="text/javascript" th:src="@{js/contact-form.js}"></script>
-	<script type="text/javascript" th:src="@{js/jquery.ajaxchimp.min.js}"></script>
-	<!--[if lt IE 10]><script type="text/javascript" src="js/placeholder.js"></script><![endif]-->
-
-</body>
+            </section>
+            <!-- End Home Section -->
+         
+        </div>
+        <!-- End Page Wrap -->
+        
+        
+         <!-- JS -->
+    <script type="text/javascript" th:src="@{js/jquery-1.11.2.min.js}"></script>
+    <script type="text/javascript" th:src="@{js/jquery.easing.1.3.js}"></script>
+    <script type="text/javascript" th:src="@{js/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{js/SmoothScroll.js}"></script>
+    <script type="text/javascript" th:src="@{js/jquery.scrollTo.min.js}"></script>
+    <script type="text/javascript" th:src="@{js/jquery.localScroll.min.js}"></script>
+    <script type="text/javascript" th:src="@{js/jquery.viewport.mini.js}"></script>
+    <script type="text/javascript" th:src="@{js/jquery.countTo.js}"></script>
+    <script type="text/javascript" th:src="@{js/jquery.appear.js}"></script>
+    <script type="text/javascript" th:src="@{js/jquery.sticky.js}"></script>
+    <script type="text/javascript" th:src="@{js/jquery.parallax-1.1.3.js}"></script>
+    <script type="text/javascript" th:src="@{js/jquery.fitvids.js}"></script>
+    <script type="text/javascript" th:src="@{js/owl.carousel.min.js}"></script>
+    <script type="text/javascript" th:src="@{js/isotope.pkgd.min.js}"></script>
+    <script type="text/javascript" th:src="@{js/imagesloaded.pkgd.min.js}"></script>
+    <script type="text/javascript" th:src="@{js/jquery.magnific-popup.min.js}"></script>
+    <script type="text/javascript" th:src="@{js/wow.min.js}"></script>
+    <script type="text/javascript" th:src="@{js/masonry.pkgd.min.js}"></script>
+    <script type="text/javascript" th:src="@{js/jquery.simple-text-rotator.min.js}"></script>
+    <script type="text/javascript" th:src="@{js/jquery.lazyload.min.js}"></script>
+    <script type="text/javascript" th:src="@{js/all.js}"></script>
+    <script type="text/javascript" th:src="@{js/contact-form.js}"></script>
+    <script type="text/javascript" th:src="@{js/jquery.ajaxchimp.min.js}"></script>
+    <!--[if lt IE 10]><script type="text/javascript" src="js/placeholder.js"></script><![endif]-->
+        
+    </body>
 </html>

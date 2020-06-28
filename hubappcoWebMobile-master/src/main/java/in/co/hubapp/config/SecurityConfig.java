@@ -43,15 +43,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                             "/webjars/**",
 						/* "/user/**", */
                             "/registration**",
+                            "/registration_success",
                             "/swagger**",
                             "/api/**",
+                            "/otp_verify",
                             "/v2/**",
                             "/posts/**",
+                            "/mobilenumbers/**",
                             "/error/access-denied").permitAll()
                     .antMatchers("/user/**").hasAnyRole("USER")
                     .antMatchers("/user/postweb").hasAnyRole("USER")
                     .antMatchers("/user/event").hasAnyRole("USER")
                     .antMatchers("/user/profile").hasAnyRole("USER")
+                    .antMatchers("/user/categories").hasAnyRole("USER")
                     .anyRequest().authenticated()
                 .and()
                 .formLogin()

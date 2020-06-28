@@ -8,7 +8,7 @@
   overflow: hidden;
   position: fixed;
   background: #0b0b0b;
-  opacity: 0.8;
+  opacity: 0.96;
   filter: alpha(opacity=80); }
 
 .mfp-wrap {
@@ -47,7 +47,7 @@
   display: inline-block;
   vertical-align: middle;
   margin: 0 auto;
-  text-align: left;
+  /* text-align: center; */
   z-index: 1045; }
 
 .mfp-inline-holder .mfp-content, .mfp-ajax-holder .mfp-content {
@@ -124,7 +124,7 @@ button::-moz-focus-inner {
   height: 44px;
   line-height: 44px;
   position: absolute;
-  right: 0;
+  right: 100px;
   top: 0;
   text-decoration: none;
   text-align: center;
@@ -142,7 +142,7 @@ button::-moz-focus-inner {
     top: 1px; }
 
 .mfp-close-btn-in .mfp-close {
-  color: #333; }
+  color: #fff; position: relative;}
 
 .mfp-image-holder .mfp-close, .mfp-iframe-holder .mfp-close {
   color: #FFF;
