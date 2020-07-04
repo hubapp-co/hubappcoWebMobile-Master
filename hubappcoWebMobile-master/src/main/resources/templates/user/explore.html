@@ -1,30 +1,29 @@
 <!DOCTYPE html>
 <html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      xmlns:th="http://www.thymeleaf.org">
+	xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>Hubapp - Home</title>
+        <title>HUB - Explore</title>
         <meta name="description" content="">
         <meta name="keywords" content="">
         <meta charset="utf-8">
-        <!-- <meta name="author" content="https://themeforest.net/user/bestlooker/portfolio"> -->
         <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         
         <!-- Favicons -->
-        <link rel="shortcut icon" th:href="@{../images/favicon.png}"> 
+    <link rel="shortcut icon" th:href="@{../images/favicon.png}">
 
-        <!-- CSS -->
-        <link rel="stylesheet"  th:href="@{../css/bootstrap.min.css}">
-        <link rel="stylesheet" th:href="@{../css/style.css}">
-        <link rel="stylesheet" th:href="@{../css/style-responsive.css}">
-        <link rel="stylesheet" th:href="@{../css/animate.min.css}">
-        <link rel="stylesheet" th:href="@{../css/vertical-rhythm.min.css}">
-        <link rel="stylesheet" th:href="@{../css/owl.carousel.css}">
-        <link rel="stylesheet" th:href="@{../css/magnific-popup.css}">        
+    <!-- CSS -->
+    <link rel="stylesheet" th:href="@{../css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{../css/style.css}">
+    <link rel="stylesheet" th:href="@{../css/style-responsive.css}">
+    <link rel="stylesheet" th:href="@{../css/animate.min.css}">
+    <link rel="stylesheet" th:href="@{../css/vertical-rhythm.min.css}">
+    <link rel="stylesheet" th:href="@{../css/owl.carousel.css}">
+    <link rel="stylesheet" th:href="@{../css/magnific-popup.css}">      
         
     </head>
     <body class="appear-animate">
-        
+         
         <!-- Page Loader -->        
         <div class="page-loader">
             <div class="loader">Loading...</div>
@@ -32,574 +31,212 @@
         <!-- End Page Loader -->
         
         <!-- Page Wrap -->
-        <div><!-- <span sec:authentication="principal.username" class="page" id="top">User</span> -->
+        <div class="page" id="top">
             
-            <!-- Navigation panel -->
-        <!--  <th:block th:replace="fragments/header :: header"/> -->
-         <th:block th:replace="fragments/header_user :: header"/>
-            <!-- End Navigation panel -->
-            
-            
-            <!-- Head Section -->
-          <!--   <section class="small-section bg-gray-lighter">
-                <div class="relative container align-left">
+             <th:block th:replace="fragments/header_ui :: header"/>
+                       
+            <!-- Services Section -->
+            <section class="page-section challange-section">
+                <div class="container relative challange-wrapper">
                     
-                    <div class="row">
-                        
-                        <div class="col-md-8">
-                            <h1 class="hs-line-11 font-alt mb-20 mb-xs-0">Blog</h1>
-                            <div class="hs-line-4 font-alt black">
-                                We share our best ideas in our blog
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-4 mt-30">
-                            <div class="mod-breadcrumbs font-alt align-right">
-                                <a href="#">Home</a>&nbsp;/&nbsp;<a href="#">Blog</a>&nbsp;/&nbsp;<span>Columns</span>
-                            </div>
-                            
-                        </div>
+                    <h2 class="section-title font-alt mb-sm-40">
+                        <u><b>Hub</b> Challange</u>
+                    </h2>  
+
+                    <div class="section-text align-center mb-40 mb-xs-40">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sed egestas nunc. Curabitur dictum viverra magna quis congue. In ut nibh in nisl
+                        pellentesque viverra. Duis gravida tortor id maximus pulvinar. Proin posuere tortor felis, non placerat mauris eleifend a. Nam et nibh eu enim convallis sodales.
+                        In porttitor erat sed nunc eleifend, in feugiat leo faucibus. Phasellus mattis felis vestibulum elit suscipit, condimentum fringilla nibh efficitur. Vivamus ac erat
+                        consectetur, maximus elit vel, suscipit nisl. Maecenas varius ante rutrum sem sollicitudin tincidunt. In lobortis purus risus, a consequat purus faucibus eget.
+                        Phasellus vel tristique magna. Vivamus sit amet finibus nisi, a sodales dui. Nunc arcu augue, scelerisque id
                     </div>
-                    
-                </div>
-            </section> -->
-            <!-- End Head Section -->
-            
-            
-            <!-- Search Section -->
-            <section class="small-section">
-                <div class="container relative">
-                    
-                    <!-- Search -->
-                    
-                    <form class="form-inline form" role="form">
-                        <div class="search-wrap">
-                            <button class="search-button animate" type="submit" title="Start Search">
-                                <i class="fa fa-search"></i>
-                            </button>
-                            <input type="text" class="form-control search-field" placeholder="Search...">
-                        </div>
-                    </form>
-                    
-                    <!-- End Search -->
-                    
-                </div>
-            </section>
-            <!-- End Search Section -->
-            
-            
-            <!-- Divider -->
-            <hr class="mt-0 mb-0"/>
-            <!-- End Divider -->
-            
-            
-            <!-- Section -->
-            <section class="page-section">
-                <div class="container relative">
-                    
-                            <div class="row multi-columns-row">
-                        
-                                <!-- Post Item -->
-                                <div class="col-sm-6 col-md-3 col-lg-3 mb-60 mb-xs-40">
-                                    
-                                    <div class="post-prev-img">
-                                        <a href="blog-single-sidebar-right.html"><img src="images/blog/post-prev-1.jpg" alt="" /></a>
-                                    </div>
-                                    
-                                    <div class="post-prev-title font-alt">
-                                        <a href="">New Web Design Trends</a>
-                                    </div>
-                                    
-                                    <div class="post-prev-info font-alt">
-                                        <a href="">John Doe</a> | 10 December
-                                    </div>
-                                    
-                                    <div class="post-prev-text">
-                                        Maecenas  volutpat, diam enim sagittis quam, id porta quam. Sed id dolor 
-                                        consectetur fermentum nibh volutpat, accumsan purus. 
-                                    </div>
-                                    
-                                    <div class="post-prev-more">
-                                        <a href="" class="btn btn-mod btn-gray btn-round">Read More <i class="fa fa-angle-right"></i></a>
-                                    </div>
-                                    
+
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs tpl-alt-tabs font-alt pt-sm-0 pb-30 pb-sm-0 challange-icons">
+                        <li>
+                            <a href="#" data-toggle="tab">
+                                
+                                <div class="alt-tabs-icon">
+                                    <img src="/images/categories/music.png">
                                 </div>
-                                <!-- End Post Item -->
+
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-toggle="tab">
                                 
-                                <!-- Post Item -->
-                                <div class="col-sm-6 col-md-3 col-lg-3 mb-60 mb-xs-40">
-                                    
-                                    <div class="post-prev-img">
-                                        <a href="blog-single-sidebar-right.html"><img src="images/blog/post-prev-2.jpg" alt="" /></a>
-                                    </div>
-                                    
-                                    <div class="post-prev-title font-alt">
-                                        <a href="">Minimalistic Design Forever</a>
-                                    </div>
-                                    
-                                    <div class="post-prev-info font-alt">
-                                        <a href="">John Doe</a> | 9 December
-                                    </div>
-                                    
-                                    <div class="post-prev-text">
-                                        Maecenas  volutpat, diam enim sagittis quam, id porta quam. Sed id dolor 
-                                        consectetur fermentum nibh volutpat, accumsan purus. 
-                                    </div>
-                                    
-                                    <div class="post-prev-more">
-                                        <a href="" class="btn btn-mod btn-gray btn-round">Read More <i class="fa fa-angle-right"></i></a>
-                                    </div>
-                                    
+                                <div class="alt-tabs-icon">
+                                    <img src="/images/categories/comdey.png">
                                 </div>
-                                <!-- End Post Item -->
+
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-toggle="tab">
                                 
-                                <!-- Post Item -->
-                                <div class="col-sm-6 col-md-3 col-lg-3 mb-60 mb-xs-40">
-                                    
-                                    <div class="post-prev-img">
-                                        <a href="blog-single-sidebar-right.html"><img src="images/blog/post-prev-3.jpg" alt="" /></a>
-                                    </div>
-                                    
-                                    <div class="post-prev-title font-alt">
-                                        <a href="">Hipster&rsquo;s Style in&nbsp;Web</a>
-                                    </div>
-                                    
-                                    <div class="post-prev-info font-alt">
-                                        <a href="">John Doe</a> | 7 December
-                                    </div>
-                                    
-                                    <div class="post-prev-text">
-                                        Maecenas  volutpat, diam enim sagittis quam, id porta quam. Sed id dolor 
-                                        consectetur fermentum nibh volutpat, accumsan purus. 
-                                    </div>
-                                    
-                                    <div class="post-prev-more">
-                                        <a href="" class="btn btn-mod btn-gray btn-round">Read More <i class="fa fa-angle-right"></i></a>
-                                    </div>
-                                    
-                                </div>
-                                <!-- End Post Item -->
-                                
-                                <!-- Post Item -->
-                                <div class="col-sm-6 col-md-3 col-lg-3 mb-60 mb-xs-40">
-                                    
-                                    <div class="post-prev-img">
-                                        <a href="blog-single-sidebar-right.html"><img src="images/blog/post-prev-4.jpg" alt="" /></a>
-                                    </div>
-                                    
-                                    <div class="post-prev-title font-alt">
-                                        <a href="">Duis tristique condimentum</a>
-                                    </div>
-                                    
-                                    <div class="post-prev-info font-alt">
-                                        <a href="">John Doe</a> | 7 December
-                                    </div>
-                                    
-                                    <div class="post-prev-text">
-                                        Maecenas  volutpat, diam enim sagittis quam, id porta quam. Sed id dolor 
-                                        consectetur fermentum nibh volutpat, accumsan purus. 
-                                    </div>
-                                    
-                                    <div class="post-prev-more">
-                                        <a href="" class="btn btn-mod btn-gray btn-round">Read More <i class="fa fa-angle-right"></i></a>
-                                    </div>
-                                    
-                                </div>
-                                <!-- End Post Item -->
-                                
-                                <!-- Post Item -->
-                                <div class="col-sm-6 col-md-3 col-lg-3 mb-60 mb-xs-40">
-                                    
-                                    <div class="post-prev-img">
-                                        <a href="blog-single-sidebar-right.html"><img src="images/blog/post-prev-5.jpg" alt="" /></a>
-                                    </div>
-                                    
-                                    <div class="post-prev-title font-alt">
-                                        <a href="">New Web Design Trends</a>
-                                    </div>
-                                    
-                                    <div class="post-prev-info font-alt">
-                                        <a href="">John Doe</a> | 10 December
-                                    </div>
-                                    
-                                    <div class="post-prev-text">
-                                        Maecenas  volutpat, diam enim sagittis quam, id porta quam. Sed id dolor 
-                                        consectetur fermentum nibh volutpat, accumsan purus. 
-                                    </div>
-                                    
-                                    <div class="post-prev-more">
-                                        <a href="" class="btn btn-mod btn-gray btn-round">Read More <i class="fa fa-angle-right"></i></a>
-                                    </div>
-                                    
-                                </div>
-                                <!-- End Post Item -->
-                                
-                                <!-- Post Item -->
-                                <div class="col-sm-6 col-md-3 col-lg-3 mb-60 mb-xs-40">
-                                    
-                                    <div class="post-prev-img">
-                                        <a href="blog-single-sidebar-right.html"><img src="images/blog/post-prev-6.jpg" alt="" /></a>
-                                    </div>
-                                    
-                                    <div class="post-prev-title font-alt">
-                                        <a href="">Minimalistic Design Forever</a>
-                                    </div>
-                                    
-                                    <div class="post-prev-info font-alt">
-                                        <a href="">John Doe</a> | 9 December
-                                    </div>
-                                    
-                                    <div class="post-prev-text">
-                                        Maecenas  volutpat, diam enim sagittis quam, id porta quam. Sed id dolor 
-                                        consectetur fermentum nibh volutpat, accumsan purus. 
-                                    </div>
-                                    
-                                    <div class="post-prev-more">
-                                        <a href="" class="btn btn-mod btn-gray btn-round">Read More <i class="fa fa-angle-right"></i></a>
-                                    </div>
-                                    
-                                </div>
-                                <!-- End Post Item -->
-                                
-                                <!-- Post Item -->
-                                <div class="col-sm-6 col-md-3 col-lg-3 mb-60 mb-xs-40">
-                                    
-                                    <div class="post-prev-img">
-                                        <a href="blog-single-sidebar-right.html"><img src="images/blog/post-prev-7.jpg" alt="" /></a>
-                                    </div>
-                                    
-                                    <div class="post-prev-title font-alt">
-                                        <a href="">Hipster&rsquo;s Style in&nbsp;Web</a>
-                                    </div>
-                                    
-                                    <div class="post-prev-info font-alt">
-                                        <a href="">John Doe</a> | 7 December
-                                    </div>
-                                    
-                                    <div class="post-prev-text">
-                                        Maecenas  volutpat, diam enim sagittis quam, id porta quam. Sed id dolor 
-                                        consectetur fermentum nibh volutpat, accumsan purus. 
-                                    </div>
-                                    
-                                    <div class="post-prev-more">
-                                        <a href="" class="btn btn-mod btn-gray btn-round">Read More <i class="fa fa-angle-right"></i></a>
-                                    </div>
-                                    
-                                </div>
-                                <!-- End Post Item -->
-                                
-                                <!-- Post Item -->
-                                <div class="col-sm-6 col-md-3 col-lg-3 mb-60 mb-xs-40">
-                                    
-                                    <div class="post-prev-img">
-                                        <a href="blog-single-sidebar-right.html"><img src="images/blog/post-prev-8.jpg" alt="" /></a>
-                                    </div>
-                                    
-                                    <div class="post-prev-title font-alt">
-                                        <a href="">Duis tristique condimentum</a>
-                                    </div>
-                                    
-                                    <div class="post-prev-info font-alt">
-                                        <a href="">John Doe</a> | 7 December
-                                    </div>
-                                    
-                                    <div class="post-prev-text">
-                                        Maecenas  volutpat, diam enim sagittis quam, id porta quam. Sed id dolor 
-                                        consectetur fermentum nibh volutpat, accumsan purus. 
-                                    </div>
-                                    
-                                    <div class="post-prev-more">
-                                        <a href="" class="btn btn-mod btn-gray btn-round">Read More <i class="fa fa-angle-right"></i></a>
-                                    </div>
-                                    
-                                </div>
-                                <!-- End Post Item -->
-                                
-                                <!-- Post Item -->
-                                <div class="col-sm-6 col-md-3 col-lg-3 mb-60 mb-xs-40">
-                                    
-                                    <div class="post-prev-img">
-                                        <a href="blog-single-sidebar-right.html"><img src="images/blog/post-prev-9.jpg" alt="" /></a>
-                                    </div>
-                                    
-                                    <div class="post-prev-title font-alt">
-                                        <a href="">New Web Design Trends</a>
-                                    </div>
-                                    
-                                    <div class="post-prev-info font-alt">
-                                        <a href="">John Doe</a> | 10 December
-                                    </div>
-                                    
-                                    <div class="post-prev-text">
-                                        Maecenas  volutpat, diam enim sagittis quam, id porta quam. Sed id dolor 
-                                        consectetur fermentum nibh volutpat, accumsan purus. 
-                                    </div>
-                                    
-                                    <div class="post-prev-more">
-                                        <a href="" class="btn btn-mod btn-gray btn-round">Read More <i class="fa fa-angle-right"></i></a>
-                                    </div>
-                                    
-                                </div>
-                                <!-- End Post Item -->
-                                
-                                <!-- Post Item -->
-                                <div class="col-sm-6 col-md-3 col-lg-3 mb-60 mb-xs-40">
-                                    
-                                    <div class="post-prev-img">
-                                        <a href="blog-single-sidebar-right.html"><img src="images/blog/post-prev-10.jpg" alt="" /></a>
-                                    </div>
-                                    
-                                    <div class="post-prev-title font-alt">
-                                        <a href="">Minimalistic Design Forever</a>
-                                    </div>
-                                    
-                                    <div class="post-prev-info font-alt">
-                                        <a href="">John Doe</a> | 9 December
-                                    </div>
-                                    
-                                    <div class="post-prev-text">
-                                        Maecenas  volutpat, diam enim sagittis quam, id porta quam. Sed id dolor 
-                                        consectetur fermentum nibh volutpat, accumsan purus. 
-                                    </div>
-                                    
-                                    <div class="post-prev-more">
-                                        <a href="" class="btn btn-mod btn-gray btn-round">Read More <i class="fa fa-angle-right"></i></a>
-                                    </div>
-                                    
-                                </div>
-                                <!-- End Post Item -->
-                                
-                                <!-- Post Item -->
-                                <div class="col-sm-6 col-md-3 col-lg-3 mb-60 mb-xs-40">
-                                    
-                                    <div class="post-prev-img">
-                                        <a href="blog-single-sidebar-right.html"><img src="images/blog/post-prev-11.jpg" alt="" /></a>
-                                    </div>
-                                    
-                                    <div class="post-prev-title font-alt">
-                                        <a href="">Hipster&rsquo;s Style in&nbsp;Web</a>
-                                    </div>
-                                    
-                                    <div class="post-prev-info font-alt">
-                                        <a href="">John Doe</a> | 7 December
-                                    </div>
-                                    
-                                    <div class="post-prev-text">
-                                        Maecenas  volutpat, diam enim sagittis quam, id porta quam. Sed id dolor 
-                                        consectetur fermentum nibh volutpat, accumsan purus. 
-                                    </div>
-                                    
-                                    <div class="post-prev-more">
-                                        <a href="" class="btn btn-mod btn-gray btn-round">Read More <i class="fa fa-angle-right"></i></a>
-                                    </div>
-                                    
-                                </div>
-                                <!-- End Post Item -->
-                                
-                                <!-- Post Item -->
-                                <div class="col-sm-6 col-md-3 col-lg-3 mb-60 mb-xs-40">
-                                    
-                                    <div class="post-prev-img">
-                                        <a href="blog-single-sidebar-right.html"><img src="images/blog/post-prev-12.jpg" alt="" /></a>
-                                    </div>
-                                    
-                                    <div class="post-prev-title font-alt">
-                                        <a href="">Duis tristique condimentum</a>
-                                    </div>
-                                    
-                                    <div class="post-prev-info font-alt">
-                                        <a href="">John Doe</a> | 7 December
-                                    </div>
-                                    
-                                    <div class="post-prev-text">
-                                        Maecenas  volutpat, diam enim sagittis quam, id porta quam. Sed id dolor 
-                                        consectetur fermentum nibh volutpat, accumsan purus. 
-                                    </div>
-                                    
-                                    <div class="post-prev-more">
-                                        <a href="" class="btn btn-mod btn-gray btn-round">Read More <i class="fa fa-angle-right"></i></a>
-                                    </div>
-                                    
-                                </div>
-                                <!-- End Post Item -->
-                                
-                            </div>
-                            
-                            <!-- Pagination -->
-                            <div class="pagination">
-                                <a href=""><i class="fa fa-angle-left"></i></a>
-                                <a href="" class="active">1</a>
-                                <a href="">2</a>
-                                <a href="">3</a>
-                                <a class="no-active">...</a>
-                                <a href="">9</a>
-                                <a href=""><i class="fa fa-angle-right"></i></a>
-                            </div>
-                            <!-- End Pagination -->
-                    
-                    
-                </div>
-            </section>
-            <!-- End Section -->
-            
-            
-            <!-- Divider -->
-            <hr class="mt-0 mb-0"/>
-            <!-- End Divider -->
-            
-            
-            <!-- Widgets Section -->
-            <section class="page-section">
-                <div class="container relative">
-                    
-                    <div class="row multi-columns-row">
-                        
-                        <div class="col-sm-6 col-md-3 col-lg-3">
-                            
-                            <!-- Widget -->
-                            <div class="widget">
-                                
-                                <h5 class="widget-title font-alt">Categories</h5>
-                                
-                                <div class="widget-body">
-                                    <ul class="clearlist widget-menu">
-                                        <li>
-                                            <a href="#" title="">Branding</a>
-                                            <small>
-                                                - 7
-                                            </small>
-                                        </li>
-                                        <li>
-                                            <a href="#" title="">Design</a>
-                                            <small>
-                                                - 15
-                                            </small>
-                                        </li>
-                                        <li>
-                                            <a href="#" title="">Development</a>
-                                            <small>
-                                                - 3
-                                            </small>
-                                        </li>
-                                        <li>
-                                            <a href="#" title="">Photography</a>
-                                            <small>
-                                                - 5
-                                            </small>
-                                        </li>
-                                        <li>
-                                            <a href="#" title="">Other</a>
-                                            <small>
-                                                - 1
-                                            </small>
-                                        </li>
-                                    </ul>
+                                <div class="alt-tabs-icon">
+                                    <img src="/images/categories/theater.png">
                                 </div>
                                 
-                            </div>
-                            <!-- End Widget -->
-                            
-                        </div>
-                        
-                        <div class="col-sm-6 col-md-3 col-lg-3">
-                            
-                            <!-- Widget -->
-                            <div class="widget">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-toggle="tab">
                                 
-                                <h5 class="widget-title font-alt">Tags</h5>
+                                <div class="alt-tabs-icon">
+                                    <img src="/images/categories/art.png">
+                                </div>
                                 
-                                <div class="widget-body">
-                                    <div class="tags">
-                                        <a href="">Design</a>
-                                        <a href="">Portfolio</a>
-                                        <a href="">Digital</a>
-                                        <a href="">Branding</a>
-                                        <a href="">Theme</a>
-                                        <a href="">Clean</a>
-                                        <a href="">UI & UX</a>
-                                        <a href="">Love</a>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-toggle="tab">
+                                
+                                <div class="alt-tabs-icon">
+                                    <img src="/images/categories/adventure.png">
+                                </div>
+
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- End Nav tabs -->
+                    <div class="challange-sub-section">
+                        <section class="page-section">
+                            <div class="container relative">
+                                
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <div class="profile-info">
+                                            <div class="profile-pic"><img src="/images/challange/profile-pic.png"></div>
+                                            <div class="profile-title">
+                                                <span>Arvind Krishna</span><br>
+                                                @techadvisor
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                
-                            </div>
-                            <!-- End Widget -->
-                            
-                        </div>
-                        
-                        <div class="col-sm-6 col-md-3 col-lg-3">
-                            
-                            <!-- Widget -->
-                            <div class="widget">
-                                
-                                <h5 class="widget-title font-alt">Archive</h5>
-                                
-                                <div class="widget-body">
-                                    <ul class="clearlist widget-menu">
-                                        <li>
-                                            <a href="#" title="">January 2015</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" title="">February 2014</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" title="">January 2014</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" title="">December 2013</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                
-                            </div>
-                            <!-- End Widget -->
-                            
-                        </div>
-                        
-                        <div class="col-sm-6 col-md-3 col-lg-3">
-                            
-                            <!-- Widget -->
-                            <div class="widget">
-                                
-                                <h5 class="widget-title font-alt">Text widget</h5>
-                                
-                                <div class="widget-body">
-                                    <div class="widget-text clearfix">
+                                    
+                                    <div class="col-md-6 mb-sm-40">
+                                        <h3 class="font-alt mb-30 mb-xxs-10"><b>AI</b> changing world</h3>
+                                        <!-- Gallery -->
+                                        <div class="work-full-media mt-0 white-shadow wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+                                            <img src="/images/challange/video-img.png" alt="">
+                                        </div>
+                                        <br>
+                                        <!-- End Gallery -->
+                                        <ul class="social-links">
+                                            <li><a href="#"><img src="/images/challange/like-icon.png"></a></li>
+                                            <li><a href="#"><img src="/images/challange/share-icon.png"></a></li>
+                                            <li><a href="#"><img src="/images/challange/comment-icon.png"></a></li>
+                                            <li><input type="text" name="search" id="search" class="input-md round form-control" placeholder="Write your comment"></li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="col-md-5">
+                                        <br><br><br>
+                                        <!-- About Project -->
+                                        <div class="text">
+                                            
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sed
+                                                egestas nunc. Curabitur dictum viverra magna quis congue. In ut nibh in nisl
+                                                pellentesque viverra. Duis gravida tortor id maximus pulvinar. Proin posuere
+                                                tortor felis, non placerat mauris eleifend a. Nam et nibh eu enim convallis
+                                                sodales. In porttitor erat sed nunc eleifend, in feugiat leo faucibus. Phasellus
+                                                mattis felis vestibulum elit suscipit, condimentum fringilla nibh efficitur.
+                                                Vivamus ac erat consectetur, maximus elit vel, suscipit nisl. Maecenas varius
+                                                ante rutrum sem sollicitudin tincidunt. In lobortis purus risus, a consequat
+                                                purus faucibus eget. Phasellus vel tristique magna. Vivamus sit amet finibus
+                                                nisi, a sodales dui. Nunc arcu augue, scelerisque id facilisis ac, iaculis quis
+                                                nunc.
+                                            </p>
+                                            
+                                        </div>
+                                        <!-- End About Project -->
                                         
-                                        <img src="images/user-avatar.png" alt="" width="70" class="img-circle left img-left">
-                                        
-                                        Consectetur adipiscing elit. Quisque magna ante eleifend eleifend. 
-                                        Purus ut dignissim consectetur, nulla erat ultrices purus, ut consequat sem elit non sem.
-                                        Quisque magna ante eleifend eleifend. 
-                                    
                                     </div>
                                 </div>
+                            </div>
+                        </section>
+                        <hr>
+                        <section class="page-section">
+                            <div class="container relative">
                                 
-                            </div>                            
-                            <!-- End Widget -->
-                            
-                        </div>
-                        
+                                <div class="row">
+                                    <div class="col-md-12 subscribe-section">
+                                        <img src="/images/challange/subscribe.png" alt="">
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </section>
+                        <hr>
+                        <section class="page-section">
+                            <div class="container relative">
+                                
+                                <div class="row">
+                                 
+                                    <div class="col-md-5">
+                                        
+                                        <div class="profile-info">
+                                            <div class="profile-pic"><img src="/images/challange/profile-pic.png"></div>
+                                            <div class="profile-title">
+                                                <span>Arvind Krishna</span><br>
+                                                @techadvisor
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="text">
+                                            <h3 class="font-alt mb-30 mb-xxs-10">LIFE<b> HACKS</b> 2020</h3>
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sed
+                                                egestas nunc. Curabitur dictum viverra magna quis congue. In ut nibh in nisl
+                                                pellentesque viverra. Duis gravida tortor id maximus pulvinar. Proin posuere
+                                                tortor felis, non placerat mauris eleifend a. Nam et nibh eu enim convallis
+                                                sodales. In porttitor erat sed nunc eleifend, in feugiat leo faucibus. Phasellus
+                                                mattis felis vestibulum elit suscipit, condimentum fringilla nibh efficitur.
+                                                Vivamus ac erat consectetur, maximus elit vel, suscipit nisl. Maecenas varius
+                                                ante rutrum sem sollicitudin tincidunt. In lobortis purus risus, a consequat
+                                                purus faucibus eget. Phasellus vel tristique magna. Vivamus sit amet finibus
+                                                nisi, a sodales dui. Nunc arcu augue, scelerisque id facilisis ac, iaculis quis
+                                                nunc.
+                                            </p>
+                                            
+                                        </div>
+                                        <!-- End About Project -->
+                                        
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <!-- Gallery -->
+                                        <div class="work-full-media mt-0 white-shadow wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+                                            <br><br><br><br><br><br><br><br>
+                                            <img src="/images/challange/video-img.png" alt="">
+                                        </div>
+                                        <br>
+                                        <!-- End Gallery -->
+                                        <ul class="social-links">
+                                            <li><a href="#"><img src="/images/challange/like-icon.png"></a></li>
+                                            <li><a href="#"><img src="/images/challange/share-icon.png"></a></li>
+                                            <li><a href="#"><img src="/images/challange/comment-icon.png"></a></li>
+                                            <li><input type="text" name="search" id="search" class="input-md round form-control" placeholder="Write your comment"></li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </section>
                     </div>
-                    
+    
                 </div>
             </section>
-            <!-- End Widgets Section -->
-            
-            <!-- Foter -->
-          <th:block th:replace="fragments/footer_user :: footer"/>
-            <!-- End Foter -->
-            
-            
-            <!-- Buy Button -->
-           <!--  <a href="https://themeforest.net/item/rhythm-multipurpose-onemulti-page-template/10140354" target="_blank" class="buy-button"><i class="fa fa-shopping-cart" aria-hidden="true"></i> <span>Buy</span></a> -->
-            <!-- End Buy Button -->
-        
+            <!-- End Services Section -->
         
         </div>
         <!-- End Page Wrap -->
         
         
-         <!-- JS -->
+        
+        <!-- JS -->
         <script type="text/javascript" th:src="@{../js/jquery-1.11.2.min.js}"></script>
         <script type="text/javascript" th:src="@{../js/jquery.easing.1.3.js}"></script>
         <script type="text/javascript" th:src="@{../js/bootstrap.min.js}"></script>        
@@ -622,7 +259,8 @@
         <script type="text/javascript" th:src="@{../js/jquery.lazyload.min.js}"></script>
         <script type="text/javascript" th:src="@{../js/all.js}"></script>
         <script type="text/javascript" th:src="@{../js/contact-form.js}"></script>
-        <script type="text/javascript" th:src="@{../js/jquery.ajaxchimp.min.js}"></script>        
-       <!--[if lt IE 10]><script type="text/javascript" src="js/placeholder.js"></script><![endif]-->
+        <script type="text/javascript" th:src="@{../js/jquery.ajaxchimp.min.js}"></script>       
+        <!--[if lt IE 10]><script type="text/javascript" src="js/placeholder.js"></script><![endif]-->
+        
     </body>
 </html>

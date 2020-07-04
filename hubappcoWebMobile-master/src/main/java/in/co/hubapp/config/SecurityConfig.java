@@ -49,6 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                             "/otp_verify",
                             "/v2/**",
                             "/posts/**",
+                            "/send-mail",
                             "/mobilenumbers/**",
                             "/error/access-denied").permitAll()
                     .antMatchers("/user/**").hasAnyRole("USER")

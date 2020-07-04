@@ -25,6 +25,7 @@
     </head>
        <body class="appear-animate">
         
+          
         <!-- Page Loader -->        
         <div class="page-loader">
             <div class="loader">Loading...</div>
@@ -32,376 +33,205 @@
         <!-- End Page Loader -->
         
         <!-- Page Wrap -->
-        <div class="page" id="top"><span sec:authentication="principal.username" class="page" id="top">User</span>
+        <div class="page" id="top">
             
-            <!-- Navigation panel -->
-           <th:block th:replace="fragments/header_user :: header"/>
-            <!-- End Navigation panel -->
-            
-            
-            <!-- Head Section -->
-            <section class="small-section bg-dark-alfa-30 parallax-2" data-background="images/full-width-images/section-bg-18.jpg">
-                <div class="relative container align-left">
+             <th:block th:replace="fragments/header_ui :: header"/>
+                       
+            <!-- Services Section -->
+            <section class="page-section event-section">
+                <div class="container relative challange-wrapper">
                     
-                    <div class="row">
-                        
-                        <div class="col-md-8">
-                            <h1 class="hs-line-11 font-alt mb-20 mb-xs-0">Portfolio</h1>
-                            <div class="hs-line-4 font-alt">
-                                An eye for detail makes our works excellent
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-4 mt-30">
-                            <div class="mod-breadcrumbs font-alt align-right">
-                                <a href="#">Home</a>&nbsp;/&nbsp;<a href="#">Portfolio</a>&nbsp;/&nbsp;<span>Boxed</span>
-                            </div>
-                            
-                        </div>
+                    <h2 class="section-title font-alt mb-sm-40">
+                        <u><b>Hub</b> Challange</u>
+                    </h2>  
+
+                    <div class="section-text align-center mb-40 mb-xs-40">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sed egestas nunc. Curabitur dictum viverra magna quis congue. In ut nibh in nisl
+                        pellentesque viverra. Duis gravida tortor id maximus pulvinar. Proin posuere tortor felis, non placerat mauris eleifend a. Nam et nibh eu enim convallis sodales.
+                        In porttitor erat sed nunc eleifend, in feugiat leo faucibus. Phasellus mattis felis vestibulum elit suscipit, condimentum fringilla nibh efficitur. Vivamus ac erat
+                        consectetur, maximus elit vel, suscipit nisl. Maecenas varius ante rutrum sem sollicitudin tincidunt. In lobortis purus risus, a consequat purus faucibus eget.
+                        Phasellus vel tristique magna. Vivamus sit amet finibus nisi, a sodales dui. Nunc arcu augue, scelerisque id
                     </div>
-                    
-                </div>
-            </section>
-            <!-- End Head Section -->
-            
-            
-            <!-- Portfolio Section -->
-            <section class="page-section">
-                <div class="container relative">
-                    
-                    <!-- Works Filter -->                    
-                    <div class="works-filter font-alt align-center">
-                        <a href="#" class="filter active" data-filter="*">All works</a>
-                        <a href="#branding" class="filter" data-filter=".branding">Branding</a>
-                        <a href="#design" class="filter" data-filter=".design">Design</a>
-                        <a href="#photography" class="filter" data-filter=".photography">Photography</a>
-                    </div>                    
-                    <!-- End Works Filter -->
-                    
-                    <!-- Works Grid -->
-                    <ul class="works-grid clearfix font-alt hover-white hide-titles" id="work-grid">
-                        
-                        <!-- Work Item (Lightbox) -->
-                        <li class="work-item mix photography">
-                            <a href="images/portfolio/full-project-1.jpg" class="work-lightbox-link mfp-image">
-                                <div class="work-img">
-                                    <img src="images/portfolio/projects-1.jpg" alt="Work" />
+
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs tpl-alt-tabs font-alt pt-sm-0 pb-30 pb-sm-0 challange-icons">
+                        <li>
+                            <a href="#" data-toggle="tab">
+                                
+                                <div class="alt-tabs-icon">
+                                    <img src="/images/categories/music.png">
                                 </div>
-                                <div class="work-intro">
-                                    <h3 class="work-title">Portrait</h3>
-                                    <div class="work-descr">
-                                        Lightbox
-                                    </div>
-                                </div>
+
                             </a>
                         </li>
-                        <!-- End Work Item -->
-                        
-                        <!-- Work Item (External Page) -->
-                        <li class="work-item mix branding design">
-                            <a href="portfolio-single-1.html" class="work-ext-link">
-                                <div class="work-img">
-                                    <img class="work-img" src="images/portfolio/projects-2.jpg" alt="Work" />
+                        <li>
+                            <a href="#" data-toggle="tab">
+                                
+                                <div class="alt-tabs-icon">
+                                    <img src="/images/categories/comdey.png">
                                 </div>
-                                <div class="work-intro">
-                                    <h3 class="work-title">Vase 3D</h3>
-                                    <div class="work-descr">
-                                        External Page
-                                    </div>
-                                </div>
+
                             </a>
                         </li>
-                        <!-- End Work Item -->
-                        
-                        <!-- Work Item (External Page) -->
-                        <li class="work-item mix branding">
-                            <a href="portfolio-single-1.html" class="work-ext-link">
-                                <div class="work-img">
-                                    <img class="work-img" src="images/portfolio/projects-3.jpg" alt="Work" />
+                        <li>
+                            <a href="#" data-toggle="tab">
+                                
+                                <div class="alt-tabs-icon">
+                                    <img src="/images/categories/theater.png">
                                 </div>
-                                <div class="work-intro">
-                                    <h3 class="work-title">Boy in T-shirt</h3>
-                                    <div class="work-descr">
-                                        External Page
-                                    </div>
-                                </div>
+                                
                             </a>
                         </li>
-                        <!-- End Work Item -->
-                        
-                        <!-- Work Item (External Page) -->
-                        <li class="work-item mix design photography">
-                            <a href="portfolio-single-1.html" class="work-ext-link">
-                                <div class="work-img">
-                                    <img class="work-img" src="images/portfolio/projects-4.jpg" alt="Work" />
+                        <li>
+                            <a href="#" data-toggle="tab">
+                                
+                                <div class="alt-tabs-icon">
+                                    <img src="/images/categories/art.png">
                                 </div>
-                                <div class="work-intro">
-                                    <h3 class="work-title">Space</h3>
-                                    <div class="work-descr">
-                                        External Page
-                                    </div>
-                                </div>
+                                
                             </a>
                         </li>
-                        <!-- End Work Item -->
-                        
-                        <!-- Work Item (External Page) -->
-                        <li class="work-item mix design">
-                            <a href="portfolio-single-1.html" class="work-ext-link">
-                                <div class="work-img">
-                                    <img class="work-img" src="images/portfolio/projects-5.jpg" alt="Work" />
+                        <li>
+                            <a href="#" data-toggle="tab">
+                                
+                                <div class="alt-tabs-icon">
+                                    <img src="/images/categories/adventure.png">
                                 </div>
-                                <div class="work-intro">
-                                    <h3 class="work-title">Model</h3>
-                                    <div class="work-descr">
-                                        External Page
-                                    </div>
-                                </div>
+
                             </a>
                         </li>
-                        <!-- End Work Item -->
-                        
-                        <!-- Work Item (External Page) -->
-                        <li class="work-item mix design photography">
-                            <a href="portfolio-single-1.html" class="work-ext-link">
-                                <div class="work-img">
-                                    <img class="work-img" src="images/portfolio/projects-6.jpg" alt="Work" />
-                                </div>
-                                <div class="work-intro">
-                                    <h3 class="work-title">Space</h3>
-                                    <div class="work-descr">
-                                        External Page
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <!-- End Work Item -->
-                        
-                        <!-- Work Item (External Page) -->
-                        <li class="work-item mix design">
-                            <a href="portfolio-single-1.html" class="work-ext-link">
-                                <div class="work-img">
-                                    <img class="work-img" src="images/portfolio/projects-7.jpg" alt="Work" />
-                                </div>
-                                <div class="work-intro">
-                                    <h3 class="work-title">Model</h3>
-                                    <div class="work-descr">
-                                        External Page
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <!-- End Work Item -->
-                        
-                        <!-- Work Item (External Page) -->
-                        <li class="work-item mix branding design">
-                            <a href="portfolio-single-1.html" class="work-ext-link">
-                                <div class="work-img">
-                                    <img class="work-img" src="images/portfolio/projects-8.jpg" alt="Work" />
-                                </div>
-                                <div class="work-intro">
-                                    <h3 class="work-title">Vase 3D</h3>
-                                    <div class="work-descr">
-                                        External Page
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <!-- End Work Item -->
-                        
-                        <!-- Work Item (External Page) -->
-                        <li class="work-item mix branding">
-                            <a href="portfolio-single-1.html" class="work-ext-link">
-                                <div class="work-img">
-                                    <img class="work-img" src="images/portfolio/projects-9.jpg" alt="Work" />
-                                </div>
-                                <div class="work-intro">
-                                    <h3 class="work-title">Boy in T-shirt</h3>
-                                    <div class="work-descr">
-                                        External Page
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <!-- End Work Item -->
-                        
-                        <!-- Work Item (External Page) -->
-                        <li class="work-item mix design photography">
-                            <a href="portfolio-single-1.html" class="work-ext-link">
-                                <div class="work-img">
-                                    <img class="work-img" src="images/portfolio/projects-10.jpg" alt="Work" />
-                                </div>
-                                <div class="work-intro">
-                                    <h3 class="work-title">Space</h3>
-                                    <div class="work-descr">
-                                        External Page
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <!-- End Work Item -->
-                        
-                        <!-- Work Item (External Page) -->
-                        <li class="work-item mix design">
-                            <a href="portfolio-single-1.html" class="work-ext-link">
-                                <div class="work-img">
-                                    <img class="work-img" src="images/portfolio/projects-11.jpg" alt="Work" />
-                                </div>
-                                <div class="work-intro">
-                                    <h3 class="work-title">Model</h3>
-                                    <div class="work-descr">
-                                        External Page
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <!-- End Work Item -->
-                        
-                        <!-- Work Item (External Page) -->
-                        <li class="work-item mix branding design">
-                            <a href="portfolio-single-1.html" class="work-ext-link">
-                                <div class="work-img">
-                                    <img class="work-img" src="images/portfolio/projects-12.jpg" alt="Work" />
-                                </div>
-                                <div class="work-intro">
-                                    <h3 class="work-title">Vase 3D</h3>
-                                    <div class="work-descr">
-                                        External Page
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <!-- End Work Item -->
-                        
-                        <!-- Work Item (External Page) -->
-                        <li class="work-item mix branding">
-                            <a href="portfolio-single-1.html" class="work-ext-link">
-                                <div class="work-img">
-                                    <img class="work-img" src="images/portfolio/projects-13.jpg" alt="Work" />
-                                </div>
-                                <div class="work-intro">
-                                    <h3 class="work-title">Boy in T-shirt</h3>
-                                    <div class="work-descr">
-                                        External Page
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <!-- End Work Item -->
-                        
-                        <!-- Work Item (External Page) -->
-                        <li class="work-item mix design photography">
-                            <a href="portfolio-single-1.html" class="work-ext-link">
-                                <div class="work-img">
-                                    <img class="work-img" src="images/portfolio/projects-14.jpg" alt="Work" />
-                                </div>
-                                <div class="work-intro">
-                                    <h3 class="work-title">Space</h3>
-                                    <div class="work-descr">
-                                        External Page
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <!-- End Work Item -->
-                        
-                        <!-- Work Item (External Page) -->
-                        <li class="work-item mix design">
-                            <a href="portfolio-single-1.html" class="work-ext-link">
-                                <div class="work-img">
-                                    <img class="work-img" src="images/portfolio/projects-15.jpg" alt="Work" />
-                                </div>
-                                <div class="work-intro">
-                                    <h3 class="work-title">Model</h3>
-                                    <div class="work-descr">
-                                        External Page
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <!-- End Work Item -->
-                        
-                        <!-- Work Item (Lightbox) -->
-                        <li class="work-item mix design branding">
-                            <a href="images/portfolio/full-project-3.jpg" class="work-lightbox-link mfp-image">
-                                <div class="work-img">
-                                    <img src="images/portfolio/projects-1.jpg" alt="Work" />
-                                </div>
-                                <div class="work-intro">
-                                    <h3 class="work-title">Young Man</h3>
-                                    <div class="work-descr">
-                                        Lightbox
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <!-- End Work Item -->
-                        
                     </ul>
-                    <!-- End Works Grid -->
-                    
+                    <!-- End Nav tabs -->
+                    <div class="challange-sub-section">
+                        <section class="page-section">
+                            <div class="container relative">
+                                
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <div class="profile-info">
+                                            <div class="profile-pic"><img src="/images/challange/profile-pic.png"></div>
+                                            <div class="profile-title">
+                                                <span>Arvind Krishna</span><br>
+                                                @techadvisor
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-6 mb-sm-40">
+                                        <h3 class="font-alt mb-30 mb-xxs-10"><b>AI</b> changing world</h3>
+                                        <!-- Gallery -->
+                                        <div class="work-full-media mt-0 white-shadow wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+                                            <img src="/images/challange/video-img.png" alt="">
+                                        </div>
+                                        <br>
+                                        <!-- End Gallery -->
+                                        <ul class="social-links">
+                                            <li><a href="#"><img src="/images/challange/like-icon.png"></a></li>
+                                            <li><a href="#"><img src="/images/challange/share-icon.png"></a></li>
+                                            <li><a href="#"><img src="/images/challange/comment-icon.png"></a></li>
+                                            <li><input type="text" name="search" id="search" class="input-md round form-control" placeholder="Write your comment"></li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="col-md-5">
+                                        <br><br><br>
+                                        <!-- About Project -->
+                                        <div class="text">
+                                            
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sed
+                                                egestas nunc. Curabitur dictum viverra magna quis congue. In ut nibh in nisl
+                                                pellentesque viverra. Duis gravida tortor id maximus pulvinar. Proin posuere
+                                                tortor felis, non placerat mauris eleifend a. Nam et nibh eu enim convallis
+                                                sodales. In porttitor erat sed nunc eleifend, in feugiat leo faucibus. Phasellus
+                                                mattis felis vestibulum elit suscipit, condimentum fringilla nibh efficitur.
+                                                Vivamus ac erat consectetur, maximus elit vel, suscipit nisl. Maecenas varius
+                                                ante rutrum sem sollicitudin tincidunt. In lobortis purus risus, a consequat
+                                                purus faucibus eget. Phasellus vel tristique magna. Vivamus sit amet finibus
+                                                nisi, a sodales dui. Nunc arcu augue, scelerisque id facilisis ac, iaculis quis
+                                                nunc.
+                                            </p>
+                                            
+                                        </div>
+                                        <!-- End About Project -->
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <hr>
+                        <section class="page-section">
+                            <div class="container relative">
+                                
+                                <div class="row">
+                                    <div class="col-md-12 subscribe-section">
+                                        <img src="/images/challange/subscribe.png" alt="">
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </section>
+                        <hr>
+                        <section class="page-section">
+                            <div class="container relative">
+                                
+                                <div class="row">
+                                 
+                                    <div class="col-md-5">
+                                        
+                                        <div class="profile-info">
+                                            <div class="profile-pic"><img src="/images/challange/profile-pic.png"></div>
+                                            <div class="profile-title">
+                                                <span>Arvind Krishna</span><br>
+                                                @techadvisor
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="text">
+                                            <h3 class="font-alt mb-30 mb-xxs-10">LIFE<b> HACKS</b> 2020</h3>
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sed
+                                                egestas nunc. Curabitur dictum viverra magna quis congue. In ut nibh in nisl
+                                                pellentesque viverra. Duis gravida tortor id maximus pulvinar. Proin posuere
+                                                tortor felis, non placerat mauris eleifend a. Nam et nibh eu enim convallis
+                                                sodales. In porttitor erat sed nunc eleifend, in feugiat leo faucibus. Phasellus
+                                                mattis felis vestibulum elit suscipit, condimentum fringilla nibh efficitur.
+                                                Vivamus ac erat consectetur, maximus elit vel, suscipit nisl. Maecenas varius
+                                                ante rutrum sem sollicitudin tincidunt. In lobortis purus risus, a consequat
+                                                purus faucibus eget. Phasellus vel tristique magna. Vivamus sit amet finibus
+                                                nisi, a sodales dui. Nunc arcu augue, scelerisque id facilisis ac, iaculis quis
+                                                nunc.
+                                            </p>
+                                            
+                                        </div>
+                                        <!-- End About Project -->
+                                        
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <!-- Gallery -->
+                                        <div class="work-full-media mt-0 white-shadow wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+                                            <br><br><br><br><br><br><br><br>
+                                            <img src="/images/challange/video-img.png" alt="">
+                                        </div>
+                                        <br>
+                                        <!-- End Gallery -->
+                                        <ul class="social-links">
+                                            <li><a href="#"><img src="/images/challange/like-icon.png"></a></li>
+                                            <li><a href="#"><img src="/images/challange/share-icon.png"></a></li>
+                                            <li><a href="#"><img src="/images/challange/comment-icon.png"></a></li>
+                                            <li><input type="text" name="search" id="search" class="input-md round form-control" placeholder="Write your comment"></li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+    
                 </div>
             </section>
-            <!-- End Portfolio Section -->
-            
-            
-            <!-- Call Action Section -->
-            <section class="small-section bg-dark">
-                <div class="container relative">
-                    
-                    <div class="align-center">
-                        <h3 class="banner-heading font-alt">Like Our Creative Works?</h3>
-                        <div>
-                            <a href="#" class="btn btn-mod btn-w btn-medium btn-round">Start Project</a>
-                        </div>
-                    </div>
-                    
-                </div>
-            </section>
-            <!-- End Call Action Section -->
-            
-            
-            <!-- Foter -->
-            <footer class="page-section bg-gray-lighter footer pb-60">
-                <div class="container">
-                    
-                    <!-- Footer Logo -->
-                    <div class="local-scroll mb-30 wow fadeInUp" data-wow-duration="1.5s">
-                        <a href="#top"><img src="images/logo-footer.png" width="78" height="36" alt="" /></a>
-                    </div>
-                    <!-- End Footer Logo -->
-                    
-                    <!-- Social Links -->
-                    <div class="footer-social-links mb-110 mb-xs-60">
-                        <a href="#" title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a>
-                        <a href="#" title="Twitter" target="_blank"><i class="fa fa-twitter"></i></a>
-                        <a href="#" title="Behance" target="_blank"><i class="fa fa-behance"></i></a>
-                        <a href="#" title="LinkedIn+" target="_blank"><i class="fa fa-linkedin"></i></a>
-                        <a href="#" title="Pinterest" target="_blank"><i class="fa fa-pinterest"></i></a>
-                    </div>
-                    <!-- End Social Links -->  
-                    
-                    <!-- Footer Text -->
-                     <th:block th:replace="fragments/footer_user :: footer"/>
-                    <!-- End Footer Text --> 
-                    
-                 </div>
-                 
-                 
-                 <!-- Top Link -->
-                 <div class="local-scroll">
-                     <a href="#top" class="link-to-top"><i class="fa fa-caret-up"></i></a>
-                 </div>
-                 <!-- End Top Link -->
-                 
-            </footer>
-            <!-- End Foter -->
-            
-            
-            <!-- Buy Button -->
-         <!--    <a href="https://themeforest.net/item/rhythm-multipurpose-onemulti-page-template/10140354" target="_blank" class="buy-button"><i class="fa fa-shopping-cart" aria-hidden="true"></i> <span>Buy</span></a> -->
-            <!-- End Buy Button -->
-        
+            <!-- End Services Section -->
         
         </div>
         <!-- End Page Wrap -->

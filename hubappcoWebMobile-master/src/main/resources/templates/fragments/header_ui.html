@@ -42,7 +42,7 @@
                     <div class="nav-logo-wrap local-scroll">
                         <div class="logo-shape"></div>
                         <a href="#top" class="logo">
-                            <img src="images/hub-logo.png" alt="" />
+                            <img src="/images/hub-logo.png" alt="" />
                         </a>
                     </div>
                     <div class="mobile-nav">
@@ -51,18 +51,18 @@
                     <!-- Main Menu -->
                     <div class="centralised-nav inner-nav desktop-nav">
                         <ul class="clearlist scroll-nav local-scroll">
-                            <li><a href="#">FEED</a></li>
-                            <li><a href="#">EVENTS</a></li>
-                            <li><a href="#"><img src="./images/white-hub-logo.png"></a></li>
-                            <li><a href="#">EXPLORE</a></li>
-                            <li><a href="#">PROFILE</a></li>
+                            <li><a href="/" th:href="@{/user/}" class="mn-has-sub active">FEED</a></li>
+                            <li><a href="/" th:href="@{/user/event}">EVENTS</a></li>
+                            <li><a href="#"><img src="/images/white-hub-logo.png"></a></li>
+                            <li><a href="/" th:href="@{/user/explore}">EXPLORE</a></li>
+                            <li><a href="/" th:href="@{/user/profile}">PROFILE</a></li>
                             <li class="search-section">
                                 <a href="#">
                                     <!-- Search -->
                                     <div class="form-group">
                                         <input type="text" name="search" id="search" class="input-md round form-control">
-                                        <a href="#"><img src="images/categories/search.png" /></a>
-                                        <a href="#"><img src="images/categories/lock.png" /></a>
+                                        <a href="#"><img src="/images/categories/search.png" /></a>
+                                        <a href="#"><img src="/images/categories/lock.png" /></a>
                                     </div>
                                 </a>
                             </li>

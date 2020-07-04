@@ -6,7 +6,6 @@
 <meta name="description" content="">
 <meta name="keywords" content="">
 <meta charset="utf-8">
-<!-- <meta name="author" content="https://themeforest.net/user/bestlooker/portfolio"> -->
 <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -24,447 +23,116 @@
 
 </head>
 <body class="appear-animate html-profile">
-	<div id="bg">
-		<img src="../images/profileImages/background.jpg" alt="">
-	</div>
+	 <!-- Page Loader -->        
+        <div class="page-loader">
+            <div class="loader">Loading...</div>
+        </div>
+        <!-- End Page Loader -->
+        
+        <!-- Page Wrap -->
+        <div class="page" id="top">
+            
+            <!-- Navigation panel -->
+            <th:block th:replace="fragments/header_ui :: header"/>
+            <!-- End Navigation panel -->
+                       
+            <!-- Services Section -->
+            <section class="page-section profile-section">
+                <div class="container relative profile-wrapper">
+                    <div class="profile-banner">
+                        <img src="/images/profile/profile-banner.png"/>
+                        <a href="#" class="settings-btn"><img src="/images/profile/settings.png"/></a>
+                    </div>
 
-	<!-- Page Loader -->
-	<div class="page-loader">
-		<div class="loader">Loading...</div>
-	</div>
-	<!-- End Page Loader -->
-
-	<!-- Page Wrap -->
-	<!-- <div class="page" id="top"><span sec:authentication="principal.username" class="page" id="top">User</span> -->
-
-	<!-- Navigation panel -->
-	<!--  <th:block th:replace="fragments/header :: header"/> -->
-	<th:block th:replace="fragments/header_user :: header" />
-	<!-- End Navigation panel -->
-
-
-
-	<!-- Section -->
-
-	<section class="small-section-1">
-		<div class="row1">
-			<div class="column left-border">
-				<img class="column-profile"
-					src="../images/profileImages/profile.png" />
-			</div>
-			<div class="column ">
-				<h3 class="1h3">Arvind Krishna</h3>
-				<h4>@techadvisor</h4>
-
-				<div class="inner-nav-2 borderBackground">
-					<ul class="clearlist">
-						<li><a><img class="column-list" src="../images/profileImages/gaming.png"></a>
-						</li>
-						<li><a><img class="column-list" src="../images/profileImages/Path -1.png"></a>
-						</li>
-						<li><a><img class="column-list" src="../images/profileImages/interface (1).png"></a></li>
-					</ul>
-				</div>
-			</div>
-			<div class="column">
-			<div class="column-description">
-			<p>Sample text</p></div></div>
-			<div class="column right-border">
-				<a class="floatright" th:href="@{user/addPost}"><img class="imagesPost"
-					src="../images/profileImages/button.png" alt=""></a>
-			</div>
-		</div>
-	</section>
-	<!-- <section class="small-section-1">
-		<div class="profile-header black">
-			 <img  src="http://www.clipartbest.com/cliparts/ace/o9d/aceo9daEi.jpeg" />
-
-		</div>
-		<div class="profile-header white">
-			<h3>Arvind Krishna</h3>
-			<h4>@techadvisor</h4>
-			<img src="../images/profileImages/profile.png" />
-			<div class="inner-nav-2">
-				<ul class="clearlist">
-					<li><a><img src="../images/profileImages/gaming.png"></a>
-					</li>
-					<li><a><img src="../images/profileImages/Path -1.png"></a>
-					</li>
-					<li><a><img
-							src="../images/profileImages/interface (1).png"></a></li>
-				</ul>
-			</div>
-			<div class="profile-desc col-sm-4 mb-40">Sample text</div>
-			 <div class="profile-button "><input type="button" name="" value="Create Post"></div>
-			<div class="profile-button col-sm-4 mb-40">
-				<a href="@{user/addPost}"><img
-					src="../images/profileImages/button.png" alt=""></a>
-			</div>
-		</div>
-
-
-		<br />
-
-	</section> -->
-
-	<!-- End Section -->
-	<!-- Section -->
-	<section class="small-section bg-gray-lighter pt-20 pb-10 radius">
-		<div class="relative container align-left">
-
-			<div class="row">
-
-
-				<div class="inner-nav-1">
-					<div class="works-filter font-alt align-center">
-						<ul class="clearlist">
-							<!-- Works Filter -->
-
-
-							<!-- End Works Filter -->
-							<li><a href="#" class="filter active" data-filter="*">All
-									works</a></li>
-							<li><a href="#branding" class="filter"
-								data-filter=".branding">Branding</a></li>
-							<li><a href="#design" class="filter" data-filter=".design">Design</a></li>
-							<li><a href="#photography" class="filter"
-								data-filter=".photography">Photography</a></li>
-						</ul>
-					</div>
-
-				</div>
-			</div>
-
-		</div>
-	</section>
-	<!-- End Section -->
-
-	<section class="page-section-2">
-		<div class="container relative">
-
-
-
-			<!-- Works Grid -->
-			<ul
-				class="works-grid work-grid-3 work-grid-gut clearfix font-alt hover-white hide-titles"
-				id="work-grid">
-
-				<!-- Work Item (Lightbox) -->
-				<li class="work-item mix photography"><a
-					href="../images/portfolio/full-project-1.jpg"
-					class="work-lightbox-link mfp-image">
-						<div class="work-img">
-							<img src="../images/portfolio/projects-1.jpg" alt="Work" />
-
-						</div>
-
-						<div class="work-intro">
-							<h3 class="work-title">Portrait</h3>
-							<div class="work-descr">Lightbox</div>
-						</div>
-				</a>
-					<div class="profile-footer inner-nav-2">
-						<ul class="clearlist">
-							<li><a><img src="../images/profileImages/gaming.png"></a>
-							</li>
-							<li><a><img src="../images/profileImages/Path -1.png"></a>
-							</li>
-							<li><a><img
-									src="../images/profileImages/interface (1).png"></a></li>
-						</ul>
-					</div></li>
-				<!-- End Work Item -->
-
-				<!-- Work Item (External Page) -->
-				<li class="work-item mix branding design"><a
-					href="portfolio-single-1.html" class="work-ext-link">
-						<div class="work-img">
-							<img class="work-img" src="../images/portfolio/projects-2.jpg"
-								alt="Work" />
-						</div>
-						<div class="work-intro">
-							<h3 class="work-title">Vase 3D</h3>
-							<div class="work-descr">External Page</div>
-						</div>
-				</a>
-					<div class="profile-footer inner-nav-2">
-						<ul class="clearlist">
-							<li><a><img src="../images/profileImages/gaming.png"></a>
-							</li>
-							<li><a><img src="../images/profileImages/Path -1.png"></a>
-							</li>
-							<li><a><img
-									src="../images/profileImages/interface (1).png"></a></li>
-						</ul>
-					</div></li>
-				<!-- End Work Item -->
-
-				<!-- Work Item (External Page) -->
-				<li class="work-item mix branding"><a
-					href="portfolio-single-1.html" class="work-ext-link">
-						<div class="work-img">
-							<img class="work-img" src="../images/portfolio/projects-3.jpg"
-								alt="Work" />
-						</div>
-						<div class="work-intro">
-							<h3 class="work-title">Boy in T-shirt</h3>
-							<div class="work-descr">External Page</div>
-						</div>
-				</a>
-					<div class="profile-footer inner-nav-2">
-						<ul class="clearlist">
-							<li><a><img src="../images/profileImages/gaming.png"></a>
-							</li>
-							<li><a><img src="../images/profileImages/Path -1.png"></a>
-							</li>
-							<li><a><img
-									src="../images/profileImages/interface (1).png"></a></li>
-						</ul>
-					</div></li>
-				<!-- End Work Item -->
-
-				<!-- Work Item (External Page) -->
-				<li class="work-item mix design photography"><a
-					href="portfolio-single-1.html" class="work-ext-link">
-						<div class="work-img">
-							<img class="work-img" src="../images/portfolio/projects-4.jpg"
-								alt="Work" />
-						</div>
-						<div class="work-intro">
-							<h3 class="work-title">Space</h3>
-							<div class="work-descr">External Page</div>
-						</div>
-				</a>
-					<div class="profile-footer inner-nav-2">
-						<ul class="clearlist">
-							<li><a><img src="../images/profileImages/gaming.png"></a>
-							</li>
-							<li><a><img src="../images/profileImages/Path -1.png"></a>
-							</li>
-							<li><a><img
-									src="../images/profileImages/interface (1).png"></a></li>
-						</ul>
-					</div></li>
-				<!-- End Work Item -->
-
-				<!-- Work Item (External Page) -->
-				<li class="work-item mix design"><a
-					href="portfolio-single-1.html" class="work-ext-link">
-						<div class="work-img">
-							<img class="work-img" src="../images/portfolio/projects-5.jpg"
-								alt="Work" />
-						</div>
-						<div class="work-intro">
-							<h3 class="work-title">Model</h3>
-							<div class="work-descr">External Page</div>
-						</div>
-				</a>
-					<div class="profile-footer inner-nav-2">
-						<ul class="clearlist">
-							<li><a><img src="../images/profileImages/gaming.png"></a>
-							</li>
-							<li><a><img src="../images/profileImages/Path -1.png"></a>
-							</li>
-							<li><a><img
-									src="../images/profileImages/interface (1).png"></a></li>
-						</ul>
-					</div></li>
-				<!-- End Work Item -->
-
-				<!-- Work Item (External Page) -->
-				<li class="work-item mix branding"><a
-					href="portfolio-single-1.html" class="work-ext-link">
-						<div class="work-img">
-							<img class="work-img" src="../images/portfolio/projects-6.jpg"
-								alt="Work" />
-						</div>
-						<div class="work-intro">
-							<h3 class="work-title">Boy in T-shirt</h3>
-							<div class="work-descr">External Page</div>
-						</div>
-				</a>
-					<div class="profile-footer inner-nav-2">
-						<ul class="clearlist">
-							<li><a><img src="../images/profileImages/gaming.png"></a>
-							</li>
-							<li><a><img src="../images/profileImages/Path -1.png"></a>
-							</li>
-							<li><a><img
-									src="../images/profileImages/interface (1).png"></a></li>
-						</ul>
-					</div></li>
-				<!-- End Work Item -->
-
-				<!-- Work Item (External Page) -->
-				<li class="work-item mix design photography"><a
-					href="portfolio-single-1.html" class="work-ext-link">
-						<div class="work-img">
-							<img class="work-img" src="../images/portfolio/projects-7.jpg"
-								alt="Work" />
-						</div>
-						<div class="work-intro">
-							<h3 class="work-title">Space</h3>
-							<div class="work-descr">External Page</div>
-						</div>
-				</a>
-					<div class="profile-footer inner-nav-2">
-						<ul class="clearlist">
-							<li><a><img src="../images/profileImages/gaming.png"></a>
-							</li>
-							<li><a><img src="../images/profileImages/Path -1.png"></a>
-							</li>
-							<li><a><img
-									src="../images/profileImages/interface (1).png"></a></li>
-						</ul>
-					</div></li>
-				<!-- End Work Item -->
-
-				<!-- Work Item (External Page) -->
-				<li class="work-item mix branding"><a
-					href="portfolio-single-1.html" class="work-ext-link">
-						<div class="work-img">
-							<img class="work-img" src="../images/portfolio/projects-8.jpg"
-								alt="Work" />
-						</div>
-						<div class="work-intro">
-							<h3 class="work-title">Boy in T-shirt</h3>
-							<div class="work-descr">External Page</div>
-						</div>
-				</a>
-					<div class="profile-footer inner-nav-2">
-						<ul class="clearlist">
-							<li><a><img src="../images/profileImages/gaming.png"></a>
-							</li>
-							<li><a><img src="../images/profileImages/Path -1.png"></a>
-							</li>
-							<li><a><img
-									src="../images/profileImages/interface (1).png"></a></li>
-						</ul>
-					</div></li>
-				<!-- End Work Item -->
-
-				<!-- Work Item (External Page) -->
-				<li class="work-item mix design photography"><a
-					href="portfolio-single-1.html" class="work-ext-link">
-						<div class="work-img">
-							<img class="work-img" src="../images/portfolio/projects-9.jpg"
-								alt="Work" />
-						</div>
-						<div class="work-intro">
-							<h3 class="work-title">Space</h3>
-							<div class="work-descr">External Page</div>
-						</div>
-				</a>
-					<div class="profile-footer inner-nav-2">
-						<ul class="clearlist">
-							<li><a><img src="../images/profileImages/gaming.png"></a>
-							</li>
-							<li><a><img src="../images/profileImages/Path -1.png"></a>
-							</li>
-							<li><a><img
-									src="../images/profileImages/interface (1).png"></a></li>
-						</ul>
-					</div></li>
-				<!-- End Work Item -->
-
-				<!-- Work Item (External Page) -->
-				<li class="work-item mix design"><a
-					href="portfolio-single-1.html" class="work-ext-link">
-						<div class="work-img">
-							<img class="work-img" src="../images/portfolio/projects-10.jpg"
-								alt="Work" />
-						</div>
-						<div class="work-intro">
-							<h3 class="work-title">Model</h3>
-							<div class="work-descr">External Page</div>
-						</div>
-				</a>
-					<div class="profile-footer inner-nav-2">
-						<ul class="clearlist">
-							<li><a><img src="../images/profileImages/gaming.png"></a>
-							</li>
-							<li><a><img src="../images/profileImages/Path -1.png"></a>
-							</li>
-							<li><a><img
-									src="../images/profileImages/interface (1).png"></a></li>
-						</ul>
-					</div></li>
-				<!-- End Work Item -->
-
-				<!-- Work Item (External Page) -->
-				<li class="work-item mix design"><a
-					href="portfolio-single-1.html" class="work-ext-link">
-						<div class="work-img">
-							<img class="work-img" src="../images/portfolio/projects-11.jpg"
-								alt="Work" />
-						</div>
-						<div class="work-intro">
-							<h3 class="work-title">Model</h3>
-							<div class="work-descr">External Page</div>
-						</div>
-				</a>
-					<div class="profile-footer inner-nav-2">
-						<ul class="clearlist">
-							<li><a><img src="../images/profileImages/gaming.png"></a>
-							</li>
-							<li><a><img src="../images/profileImages/Path -1.png"></a>
-							</li>
-							<li><a><img
-									src="../images/profileImages/interface (1).png"></a></li>
-						</ul>
-					</div></li>
-				<!-- End Work Item -->
-
-				<!-- Work Item (Lightbox) -->
-				<li class="work-item mix design branding"><a
-					href="../images/portfolio/full-project-3.jpg"
-					class="work-lightbox-link mfp-image">
-						<div class="work-img">
-							<img src="../images/portfolio/projects-12.jpg" alt="Work" />
-						</div>
-						<div class="work-intro">
-							<h3 class="work-title">Young Man</h3>
-							<div class="work-descr">Lightbox</div>
-						</div>
-				</a>
-					<div class="profile-footer inner-nav-2">
-						<ul class="clearlist">
-							<li><a><img src="../images/profileImages/gaming.png"></a>
-							</li>
-							<li><a><img src="../images/profileImages/Path -1.png"></a>
-							</li>
-							<li><a><img
-									src="../images/profileImages/interface (1).png"></a></li>
-						</ul>
-					</div></li>
-				<!-- End Work Item -->
-
-			</ul>
-			<!-- End Works Grid -->
-
-		</div>
-	</section>
-	<!-- End Portfolio Section -->
-	<!-- Divider -->
-	<hr class="mt-0 mb-0" />
-	<!-- End Divider -->
-
-
-
-
-	<!-- Foter -->
-	<th:block th:replace="fragments/footer_user :: footer" />
-	<!-- End Foter -->
-
-
-	<!-- Buy Button -->
-	<!--  <a href="https://themeforest.net/item/rhythm-multipurpose-onemulti-page-template/10140354" target="_blank" class="buy-button"><i class="fa fa-shopping-cart" aria-hidden="true"></i> <span>Buy</span></a> -->
-	<!-- End Buy Button -->
-
-
-	</div>
-	<!-- End Page Wrap -->
-
+                    <div class="profile-sub-section">
+                        <div class="row">
+                            <div class="col-md-3">
+                               <div class="profile-pic">
+                                    <img src="/images/profile/profile-pic.png" />
+                               </div>
+                               <div class="profile-details">
+                                    <span class="profile-name">ARIJIT SUKLA</span> <span>| @arijitsukla</span><br><br>
+                                    <p>
+                                        <b>ABOUT</b><br>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                        Mauris porta lorem nec leo pretium maximus. Proin
+                                        bibendum dolor nibh, at sollicitudin dui consectetur eu. Cras
+                                        scelerisque suscipit ante pulvinar interdum. Etiam convallis
+                                        imperdiet massa, vitae elementum tortor ullamcorper in.
+                                        <br><br>
+                                        <a href="#">Read more</a>
+                                    </p>
+                                    <p>
+                                        <table class="table">
+                                            <tr>
+                                                <td>Followers</td>
+                                                <td>2,000</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Following</td>
+                                                <td>500</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Posts</td>
+                                                <td>500</td>
+                                            </tr>
+                                        </table>
+                                    </p>
+                               </div>
+                               <div class="profile-information">
+                                    <p>
+                                        Professional photographer <br>
+                                        Photographer in NatGeo <br>
+                                        Lives in Bangalore <br>
+                                        From Rampur <br>
+                                    </p>
+                                    <a href="#" class="settings-btn"><img src="/images/profile/settings-1.png"/></a>
+                               </div>
+                            </div>
+                            <div class="col-md-9">
+                               <div class="row">
+                                    <div class="col-md-12 mb-sm-40 post-btns">
+                                        <br>
+                                        <img src="/images/profile/create-post-btn.png" alt="">
+                                        <img src="/images/profile/manage-posts-btn.png" alt="">
+                                        <br><br>
+                                    </div>
+                                    <div class="col-md-6 mb-sm-40">
+                                        <!-- Gallery -->
+                                        <div class="work-full-media mt-0 white-shadow wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+                                            <img src="/images/profile/profile-image.png" alt="">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-5">
+                                        <!-- About Project -->
+                                        <div class="text">
+                                            
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sed
+                                                egestas nunc. Curabitur dictum viverra magna quis congue. In ut nibh in nisl
+                                                pellentesque viverra. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sed
+                                                egestas nunc. Curabitur dictum viverra magna quis congue. In ut nibh in nisl
+                                                pellentesque viverra.
+                                            </p>
+                                            
+                                        </div>
+                                        <!-- End About Project -->
+                                        
+                                    </div>
+                               </div>
+                            </div>
+                        </div>
+                   
+                    </div>
+    
+                </div>
+            </section>
+            <!-- End Services Section -->
+        
+        </div>
+        <!-- End Page Wrap -->
+        
 
 	<!-- JS -->
 	<script type="text/javascript" th:src="@{../js/jquery-1.11.2.min.js}"></script>

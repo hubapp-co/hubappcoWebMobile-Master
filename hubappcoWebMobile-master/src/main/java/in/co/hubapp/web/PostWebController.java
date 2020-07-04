@@ -55,7 +55,7 @@ public class PostWebController {
 		return model;
 	}
 	//@RequestMapping(path = "/user/postweb", method = RequestMethod.POST, consumes= {"multipart/form-data"})
-  	@RequestMapping(value="/user/postweb",method = RequestMethod.POST,consumes = {"multipart/form-data" })
+  	@RequestMapping(value="/user/postweb",method = RequestMethod.POST,consumes = {"multipart/form-data"})
   	public String createUserposts(@ModelAttribute PostReq req,MultipartFile postImageFile,Model model, BindingResult result)throws IOException {
   		log.info("Submit TTESTTTTTTT" +req.toString());
   		log.info(postImageFile.getName()+postImageFile.getOriginalFilename());
