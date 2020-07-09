@@ -1,5 +1,6 @@
 package in.co.hubapp.web;
 
+import javax.mail.MessagingException;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import in.co.hubapp.model.User;
+import in.co.hubapp.service.MailService;
 import in.co.hubapp.service.UserService;
 import in.co.hubapp.dto.UserRegistrationDto;
 
@@ -21,6 +23,9 @@ public class UserRegistrationController {
 
     @Autowired
     private UserService userService;
+    
+    @Autowired
+    private MailService mailService;
 
     @ModelAttribute("user")
     public UserRegistrationDto userRegistrationDto() {
@@ -34,7 +39,7 @@ public class UserRegistrationController {
 
     @PostMapping
     public String registerUserAccount(@ModelAttribute("user") @Valid UserRegistrationDto userDto,
-                                      BindingResult result){
+                                      BindingResult result) throws MessagingException{
 
         User existing = userService.findByEmail(userDto.getEmail());
         if (existing != null){
@@ -46,6 +51,7 @@ public class UserRegistrationController {
         }
 
         userService.save(userDto);
+        mailService.send(userDto.getEmail(),"Hubapp Registration OTP", "Hubapp Registration. Your OTP is ");
         return "redirect:/registration_success";
     }
 

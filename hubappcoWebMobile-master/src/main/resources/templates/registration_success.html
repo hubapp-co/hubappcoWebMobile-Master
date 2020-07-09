@@ -66,14 +66,17 @@
                         <div class="col-md-4"></div>
                         <div class="col-md-4">
                             <br><br>
-                             <form th:action="@{/otp_verify}" th:object="${otp}" method="post"
+                             <form th:action="@{/otp_verify}" th:object="${otpMail}" method="POST"
                              class="form contact-form" id="contact_form">
-										
+									<div th:if="${param.otp_status}">
+											<div class="alert alert-danger">${otp_status}</div>	</div>
                                 <div class="clearfix">
 <div id="my-popup" class="mfp-content white-popup">
                                      <h2 class="section-title font-alt mb-20 mb-sm-40">
                                     ENTER OTP
                                 </h2>
+                                
+                                
                                             <!-- Name -->
                                             <div class="form-group">
                                                 <input type="text" name="otp" id="otp" class="input-md round form-control" placeholder="Enter OTP" pattern=".{3,100}" required>
@@ -86,7 +89,7 @@
                                             
                                             <!-- Name -->
                                             <div class="form-group">
-                                                <button class="submit_btn btn btn-mod btn-medium btn-round" id="submit_btn">SUBMIT</button>
+                                                <button class="submit_btn btn btn-mod btn-medium btn-round">SUBMIT</button>
                                             </div>
 
                                     </div>   

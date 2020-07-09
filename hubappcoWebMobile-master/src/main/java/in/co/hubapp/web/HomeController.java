@@ -6,12 +6,16 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -23,12 +27,17 @@ import in.co.hubapp.mobile.channel.PostReq;
 import in.co.hubapp.mobile.service.PostServiceMob;
 import in.co.hubapp.mobile.service.UserServiceMob;
 import in.co.hubapp.model.Category;
+import in.co.hubapp.model.OtpMail;
 import in.co.hubapp.model.Posts;
 import in.co.hubapp.model.User;
+import in.co.hubapp.service.MailService;
 import in.co.hubapp.service.UserService;
 
 @Controller
 public class HomeController {
+
+	@Autowired
+	private MailService mailService;
 
 	@Autowired
 	private UserServiceMob userServiceMob;
@@ -53,20 +62,33 @@ public class HomeController {
 	public String about() {
 		return "about_us";
 	}
-	
+
 	@GetMapping("/registration_success")
 	public String registration_success() {
-		
-		
-		
+
 		return "registration_success";
 	}
 
-	@GetMapping("/otp_verify")
-	public String otp_verify() {
-		return "otp_verify";
+	@PostMapping("/otp_verify")
+	public String otp_verify(@ModelAttribute OtpMail otpMail, Model model) {
+
+		ResponseEntity<Object> result = mailService.mailOtpVerify(otpMail);
+
+		System.out.println(result);
+
+		if (result.getBody().equals("OTP is verified successfully")) {
+			return "login";
+		} else if (result.getBody().equals("Invalid OTP")) {
+			model.addAttribute("otp_status", "Invalid OTP");
+			return "registration_success";
+		}else if (result.getBody().equals("Please provide OTP")) {
+			model.addAttribute("otp_status", "Please provide OTP");
+			return "registration_success";
+		}
+		return "registration_success";
+
 	}
-	
+
 	@GetMapping("/services")
 	public String services() {
 		return "services";
@@ -125,11 +147,11 @@ public class HomeController {
 		model.addAttribute("categories", categories);
 		return "user/addposts";
 	}
+
 	@GetMapping("/user/categories")
 	public String categories() {
 		return "user/categories";
 	}
-
 
 	@GetMapping("/user/posts")
 	public String userPosts() {
