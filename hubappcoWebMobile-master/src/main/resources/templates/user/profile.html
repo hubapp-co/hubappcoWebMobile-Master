@@ -41,7 +41,7 @@
                 <div class="container relative profile-wrapper">
                     <div class="profile-banner">
                         <img src="/images/profile/profile-banner.png"/>
-                        <a href="#" class="settings-btn"><img src="/images/profile/settings.png"/></a>
+                        <a href="#" th:href="@{/user/edit-profile}" class="settings-btn"><img src="/images/profile/settings.png"/></a>
                     </div>
 
                     <div class="profile-sub-section">
@@ -93,8 +93,8 @@
                                <div class="row">
                                     <div class="col-md-12 mb-sm-40 post-btns">
                                         <br>
-                                        <img src="/images/profile/create-post-btn.png" alt="">
-                                        <img src="/images/profile/manage-posts-btn.png" alt="">
+                                        <a href="#" th:href="@{/user/addposts}"><img src="/images/profile/create-post-btn.png" alt=""></a>
+                                        <a href="#"><img src="/images/profile/manage-posts-btn.png" alt=""></a>
                                         <br><br>
                                     </div>
                                     <div class="col-md-6 mb-sm-40">

@@ -51,12 +51,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                             "/posts/**",
                             "/send-mail/**",
                             "/mobilenumbers/**",
+                            "/uploads/**",
                             "/error/access-denied").permitAll()
                     .antMatchers("/user/**").hasAnyRole("USER")
                     .antMatchers("/user/postweb").hasAnyRole("USER")
                     .antMatchers("/user/event").hasAnyRole("USER")
                     .antMatchers("/user/profile").hasAnyRole("USER")
                     .antMatchers("/user/categories").hasAnyRole("USER")
+                    .antMatchers("/user/edit-profile").hasAnyRole("USER")
+                    .antMatchers("/user/edituserProfile").hasAnyRole("USER")
                     .anyRequest().authenticated()
                 .and()
                 .formLogin()

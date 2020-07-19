@@ -2,7 +2,7 @@
 <html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>HUB - Categories</title>
+        <title>HUB - Explore</title>
         <meta name="description" content="">
         <meta name="keywords" content="">
         <meta charset="utf-8">
@@ -23,7 +23,7 @@
         
     </head>
     <body class="appear-animate">
-        <!-- <span sec:authentication="principal.username" class="userId_name" id="userId_name"></span> -->
+         
         <!-- Page Loader -->        
         <div class="page-loader">
             <div class="loader">Loading...</div>
@@ -36,15 +36,23 @@
              <th:block th:replace="fragments/header_ui :: header"/>
                        
             <!-- Services Section -->
-            <section class="page-section categories-section" id="services">
-                <div class="container relative">
+            <section class="page-section challange-section">
+                <div class="container relative challange-wrapper">
                     
                     <h2 class="section-title font-alt mb-sm-40">
-                        Categories
-                    </h2>
-                    
+                        <u><b>Hub</b> Challange</u>
+                    </h2>  
+
+                    <div class="section-text align-center mb-40 mb-xs-40">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sed egestas nunc. Curabitur dictum viverra magna quis congue. In ut nibh in nisl
+                        pellentesque viverra. Duis gravida tortor id maximus pulvinar. Proin posuere tortor felis, non placerat mauris eleifend a. Nam et nibh eu enim convallis sodales.
+                        In porttitor erat sed nunc eleifend, in feugiat leo faucibus. Phasellus mattis felis vestibulum elit suscipit, condimentum fringilla nibh efficitur. Vivamus ac erat
+                        consectetur, maximus elit vel, suscipit nisl. Maecenas varius ante rutrum sem sollicitudin tincidunt. In lobortis purus risus, a consequat purus faucibus eget.
+                        Phasellus vel tristique magna. Vivamus sit amet finibus nisi, a sodales dui. Nunc arcu augue, scelerisque id
+                    </div>
+
                     <!-- Nav tabs -->
-                    <ul class="nav nav-tabs tpl-alt-tabs font-alt pt-30 pt-sm-0 pb-30 pb-sm-0 category-icons">
+                    <ul class="nav nav-tabs tpl-alt-tabs font-alt pt-sm-0 pb-30 pb-sm-0 challange-icons">
                         <li>
                             <a href="#" data-toggle="tab">
                                 
@@ -92,30 +100,140 @@
                         </li>
                     </ul>
                     <!-- End Nav tabs -->
-                    <div class="row category-icons">
-                        <div class="col-md-6">
-                            <!-- Login -->
-                            <div class="form-group">
-                                <button class="submit_btn btn btn-mod btn-medium btn-round">
-                                    WEEKLY EVENTS
-                                </button>
+                    <div class="challange-sub-section">
+                        <section class="page-section">
+                            <div class="container relative">
+                                
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <div class="profile-info">
+                                            <div class="profile-pic"><img src="/images/challange/profile-pic.png"></div>
+                                            <div class="profile-title">
+                                                <span>Arvind Krishna</span><br>
+                                                @techadvisor
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-6 mb-sm-40">
+                                        <h3 class="font-alt mb-30 mb-xxs-10"><b>AI</b> changing world</h3>
+                                        <!-- Gallery -->
+                                        <div class="work-full-media mt-0 white-shadow wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+                                            <img src="/images/challange/video-img.png" alt="">
+                                        </div>
+                                        <br>
+                                        <!-- End Gallery -->
+                                        <ul class="social-links">
+                                            <li><a href="#"><img src="/images/challange/like-icon.png"></a></li>
+                                            <li><a href="#"><img src="/images/challange/share-icon.png"></a></li>
+                                            <li><a href="#"><img src="/images/challange/comment-icon.png"></a></li>
+                                            <li><input type="text" name="search" id="search" class="input-md round form-control" placeholder="Write your comment"></li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="col-md-5">
+                                        <br><br><br>
+                                        <!-- About Project -->
+                                        <div class="text">
+                                            
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sed
+                                                egestas nunc. Curabitur dictum viverra magna quis congue. In ut nibh in nisl
+                                                pellentesque viverra. Duis gravida tortor id maximus pulvinar. Proin posuere
+                                                tortor felis, non placerat mauris eleifend a. Nam et nibh eu enim convallis
+                                                sodales. In porttitor erat sed nunc eleifend, in feugiat leo faucibus. Phasellus
+                                                mattis felis vestibulum elit suscipit, condimentum fringilla nibh efficitur.
+                                                Vivamus ac erat consectetur, maximus elit vel, suscipit nisl. Maecenas varius
+                                                ante rutrum sem sollicitudin tincidunt. In lobortis purus risus, a consequat
+                                                purus faucibus eget. Phasellus vel tristique magna. Vivamus sit amet finibus
+                                                nisi, a sodales dui. Nunc arcu augue, scelerisque id facilisis ac, iaculis quis
+                                                nunc.
+                                            </p>
+                                            
+                                        </div>
+                                        <!-- End About Project -->
+                                        
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-6">
-                            <!-- Login -->
-                            <div class="form-group">
-                                <button class="submit_btn btn btn-mod btn-medium btn-round">
-                                    MONTHLY EVENTS
-                                </button>
+                        </section>
+                        <hr>
+                        <section class="page-section">
+                            <div class="container relative">
+                                
+                                <div class="row">
+                                    <div class="col-md-12 subscribe-section">
+                                        <img src="/images/challange/subscribe.png" alt="">
+                                    </div>
+                                    
+                                </div>
                             </div>
-                        </div>
+                        </section>
+                        <hr>
+                        <section class="page-section">
+                            <div class="container relative">
+                                
+                                <div class="row">
+                                 
+                                    <div class="col-md-5">
+                                        
+                                        <div class="profile-info">
+                                            <div class="profile-pic"><img src="/images/challange/profile-pic.png"></div>
+                                            <div class="profile-title">
+                                                <span>Arvind Krishna</span><br>
+                                                @techadvisor
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="text">
+                                            <h3 class="font-alt mb-30 mb-xxs-10">LIFE<b> HACKS</b> 2020</h3>
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sed
+                                                egestas nunc. Curabitur dictum viverra magna quis congue. In ut nibh in nisl
+                                                pellentesque viverra. Duis gravida tortor id maximus pulvinar. Proin posuere
+                                                tortor felis, non placerat mauris eleifend a. Nam et nibh eu enim convallis
+                                                sodales. In porttitor erat sed nunc eleifend, in feugiat leo faucibus. Phasellus
+                                                mattis felis vestibulum elit suscipit, condimentum fringilla nibh efficitur.
+                                                Vivamus ac erat consectetur, maximus elit vel, suscipit nisl. Maecenas varius
+                                                ante rutrum sem sollicitudin tincidunt. In lobortis purus risus, a consequat
+                                                purus faucibus eget. Phasellus vel tristique magna. Vivamus sit amet finibus
+                                                nisi, a sodales dui. Nunc arcu augue, scelerisque id facilisis ac, iaculis quis
+                                                nunc.
+                                            </p>
+                                            
+                                        </div>
+                                        <!-- End About Project -->
+                                        
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <!-- Gallery -->
+                                        <div class="work-full-media mt-0 white-shadow wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+                                            <br><br><br><br><br><br><br><br>
+                                            <img src="/images/challange/video-img.png" alt="">
+                                        </div>
+                                        <br>
+                                        <!-- End Gallery -->
+                                        <ul class="social-links">
+                                            <li><a href="#"><img src="/images/challange/like-icon.png"></a></li>
+                                            <li><a href="#"><img src="/images/challange/share-icon.png"></a></li>
+                                            <li><a href="#"><img src="/images/challange/comment-icon.png"></a></li>
+                                            <li><input type="text" name="search" id="search" class="input-md round form-control" placeholder="Write your comment"></li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </section>
                     </div>
+    
                 </div>
             </section>
             <!-- End Services Section -->
         
         </div>
         <!-- End Page Wrap -->
+        
         
         
         <!-- JS -->

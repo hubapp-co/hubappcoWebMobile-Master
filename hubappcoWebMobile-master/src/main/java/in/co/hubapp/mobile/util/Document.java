@@ -22,6 +22,9 @@ public class Document {
 	@Column(name = "file_name")
 	String fileName;
 
+	@Column(name ="downloadUri")
+	String downloadUri;
+	
 	public Long getId() {
 		return id;
 	}
@@ -46,9 +49,19 @@ public class Document {
 		this.fileName = fileName;
 	}
 
-	@Override
-	public String toString() {
-		return "Document [id=" + id + ", filePath=" + filePath + ", fileName=" + fileName + "]";
+	public String getDownloadUri() {
+		return downloadUri;
 	}
 
+	public void setDownloadUri(String downloadUri) {
+		this.downloadUri = downloadUri;
+	}
+
+	@Override
+	public String toString() {
+		return "Document [id=" + id + ", filePath=" + filePath + ", fileName=" + fileName + ", downloadUri="
+				+ downloadUri + "]";
+	}
+
+	
 }

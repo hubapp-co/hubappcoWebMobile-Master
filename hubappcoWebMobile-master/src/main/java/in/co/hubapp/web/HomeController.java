@@ -2,6 +2,7 @@ package in.co.hubapp.web;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -18,23 +19,35 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
+import com.sun.javafx.geom.PickRay;
 
-import in.co.hubapp.mobile.channel.HubGenRes;
-import in.co.hubapp.mobile.channel.PostReq;
+import in.co.hubapp.mobile.channel.DocumentDetails;
 import in.co.hubapp.mobile.service.PostServiceMob;
 import in.co.hubapp.mobile.service.UserServiceMob;
 import in.co.hubapp.model.Category;
 import in.co.hubapp.model.OtpMail;
 import in.co.hubapp.model.Posts;
+import in.co.hubapp.model.ProfileImageModel;
 import in.co.hubapp.model.User;
+import in.co.hubapp.model.UserProfile;
+import in.co.hubapp.repository.UserProfileRepository;
 import in.co.hubapp.service.MailService;
+import in.co.hubapp.service.UserProfileService;
 import in.co.hubapp.service.UserService;
+
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 @Controller
 public class HomeController {
+
+	@Autowired
+	private UserProfileService userProfileService;
+
+	@Autowired
+	private UserProfileRepository userProfileRepository;
 
 	@Autowired
 	private MailService mailService;
@@ -81,7 +94,7 @@ public class HomeController {
 		} else if (result.getBody().equals("Invalid OTP")) {
 			model.addAttribute("otp_status", "Invalid OTP");
 			return "registration_success";
-		}else if (result.getBody().equals("Please provide OTP")) {
+		} else if (result.getBody().equals("Please provide OTP")) {
 			model.addAttribute("otp_status", "Please provide OTP");
 			return "registration_success";
 		}
@@ -120,7 +133,6 @@ public class HomeController {
 
 		System.out.println(user.getEmail() + user.getId() + " XXXXXXXXXX");
 		List<Posts> posts = postService.getPostsByUserId(user.getId());
-		System.out.println(posts + " XXXXXXXXXX");
 		List<Category> categories = userServiceMob.getCategory();
 		model.addAttribute("categories", categories);
 		if (posts != null) {
@@ -146,6 +158,85 @@ public class HomeController {
 		List<Category> categories = userServiceMob.getCategory();
 		model.addAttribute("categories", categories);
 		return "user/addposts";
+	}
+
+	@RequestMapping(value = "/user/edit-profile", method = RequestMethod.GET)
+	public String editProfile(Model model) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		User user = userService.findUserByUserName(auth.getName());
+
+		UserProfile userProfile = new UserProfile();
+		userProfile.setUser(user);
+
+		Optional<UserProfile> userProfileByUser = userProfileRepository.getByUser(user);
+
+		if (userProfileByUser.isPresent()) {
+			model.addAttribute("userProfile", userProfileByUser);
+			model.addAttribute("user", user);
+			System.out.println("IsPresent!!!!!!!!!"+userProfileByUser);
+		} else {
+			
+			
+			System.out.println("!!!!!!!!!"+userProfileByUser);
+			userProfileRepository.save(userProfile);
+			Optional<UserProfile> userProfileEdit = userProfileService.getUserProfileById(userProfile.getUserId());
+			
+			model.addAttribute("userProfile", userProfileEdit);
+			model.addAttribute("user", user);
+			return "user/edit-profile";
+		}
+		return "user/edit-profile";
+	}
+
+	@RequestMapping(value = "/user/edituserProfile", method = RequestMethod.POST, consumes = { "multipart/form-data" })
+	public String updateUserProfile(@ModelAttribute UserProfile req, MultipartFile profilepic,MultipartFile profilebanner, Model model,
+			BindingResult result) {
+
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		User user = userService.findUserByUserName(auth.getName());
+		req.setUser(user);
+		System.out.println(user.getFirstName());
+		if (userProfileRepository.findByUser(user) != null){
+            UserProfile existingUserPRofile = userProfileRepository.findByUser(user);
+            System.out.println(req.getAbout());
+            existingUserPRofile.setAbout(req.getAbout());
+            existingUserPRofile.setFromCity(req.getFromCity());
+            existingUserPRofile.setLivesIn(req.getLivesIn());
+            existingUserPRofile.setPhone(req.getPhone());
+            existingUserPRofile.setProfession(req.getProfession());
+            existingUserPRofile.setWorksFor(req.getWorksFor());
+            
+            ProfileImageModel pim = userProfileService.uploadProfileBanner(profilebanner, user.getFirstName());
+    			if(pim!=null) {
+    		DocumentDetails doc = new DocumentDetails();
+    		doc.setFileName(pim.getDoc().getFileName());
+    		doc.setFilePath(pim.getDoc().getFilePath());
+    		doc.setDownloadUri(pim.getDoc().getDownloadUri());
+    		existingUserPRofile.setBannerImage(doc.getFileName());
+    			System.out.println(doc.getFileName());
+    			}
+    			
+    		ProfileImageModel pimPic = userProfileService.uploadProfilePic(profilepic, user.getFirstName());
+    		if(pimPic!=null) {
+    		DocumentDetails docProfile = new DocumentDetails();
+    		docProfile.setFileName(pimPic.getDoc().getFileName());
+    		docProfile.setFilePath(pimPic.getDoc().getFilePath());
+    		docProfile.setDownloadUri(pimPic.getDoc().getDownloadUri());
+            existingUserPRofile.setProfilePic(docProfile.getFileName());
+            System.out.println(docProfile.getFileName());
+    		}
+
+            UserProfile updatedProfile = userProfileRepository.save(existingUserPRofile);
+            
+            System.out.println("updatedProfile.getBannerImage : "+updatedProfile.getBannerImage());
+
+            model.addAttribute("userProfile", updatedProfile);
+    		return "user/edit-profile";
+    		
+        }else{
+            return null;
+        }
+		
 	}
 
 	@GetMapping("/user/categories")

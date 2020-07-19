@@ -6596,11 +6596,11 @@ a { text-decoration: none; }
 .home-section-bg { color: #fff586; line-height:2em; }
 .home-section-bg .tpl-alt-tabs > li img { width: 50%; }
 .home-section-bg .tpl-alt-tabs > li a { padding-top: 30px; }
-.home-section-bg .tpl-alt-tabs > li:first-child { top: -90px; left: -29px; }
-.home-section-bg .tpl-alt-tabs > li:nth-child(2) { top: -40px; left: -19px; }
-.home-section-bg .tpl-alt-tabs > li:nth-child(3) { top: -20px;}
-.home-section-bg .tpl-alt-tabs > li:nth-child(4) { top: -40px; right: -19px; }
-.home-section-bg .tpl-alt-tabs > li:nth-child(5) { top: -90px; right: -29px; }
+.home-section-bg .tpl-alt-tabs > li:first-child { position: relative; margin-top: -8%; left: -29px; }
+.home-section-bg .tpl-alt-tabs > li:nth-child(2) { position: relative; margin-top: -3%; left: -9px; }
+.home-section-bg .tpl-alt-tabs > li:nth-child(3) { position: relative; margin-top: -1%; }
+.home-section-bg .tpl-alt-tabs > li:nth-child(4) { position: relative; margin-top: -3%; right: -9px; }
+.home-section-bg .tpl-alt-tabs > li:nth-child(5) { position: relative; margin-top: -8%; right: -29px; }
 .art { right: -7px; position: relative; }
 .dance { right: -10px; position: relative; }
 .tpl-alt-tabs > li { color: #fff; font-size: 20px; letter-spacing: 0em; }
@@ -6661,3 +6661,5 @@ a { text-decoration: none; }
 .profile-information .settings-btn { position: absolute; right: 10px; top:auto !important; bottom: 10px; }
 
 .event-section { color: #fff; background-image: url(/images/challange/challange-bg.png); background-position: top; background-size: 100% 100%; }
+
+

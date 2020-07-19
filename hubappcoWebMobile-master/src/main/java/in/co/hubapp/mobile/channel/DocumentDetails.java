@@ -7,6 +7,8 @@ public class DocumentDetails {
 	private String fileName;
 
 	private String filePath;
+	
+	private String downloadUri;
 
 	public Long getDocId() {
 		return docId;
@@ -32,9 +34,20 @@ public class DocumentDetails {
 		this.filePath = filePath;
 	}
 
+	public String getDownloadUri() {
+		return downloadUri;
+	}
+
+	public void setDownloadUri(String downloadUri) {
+		this.downloadUri = downloadUri;
+	}
+
 	@Override
 	public String toString() {
-		return "DocumentDetails [docId=" + docId + ", fileName=" + fileName + ", filePath=" + filePath + "]";
+		return "DocumentDetails [docId=" + docId + ", fileName=" + fileName + ", filePath=" + filePath
+				+ ", downloadUri=" + downloadUri + "]";
 	}
+
+	
 
 }

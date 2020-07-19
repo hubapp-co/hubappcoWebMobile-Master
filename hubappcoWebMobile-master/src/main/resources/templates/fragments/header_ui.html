@@ -62,7 +62,7 @@
                                     <div class="form-group">
                                         <input type="text" name="search" id="search" class="input-md round form-control">
                                         <a href="#"><img src="/images/categories/search.png" /></a>
-                                        <a href="#"><img src="/images/categories/lock.png" /></a>
+                                        <a sec:authorize="isAuthenticated()" href="#" th:href="@{/logout}"><img src="/images/categories/lock.png" /></a>
                                     </div>
                                 </a>
                             </li>

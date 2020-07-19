@@ -68,6 +68,7 @@ public class PostWebController {
   		
   		HubGenRes res = new HubGenRes();
   		res.setDoc(doc);
+  		
   		postService.post(req);
   		model.addAttribute("res", res);
   		return "user/index";

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Hubapp - Profile</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta charset="utf-8">
+<!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- Favicons -->
+<link rel="shortcut icon" th:href="@{../images/favicon.png}">
+
+<!-- CSS -->
+<link rel="stylesheet" th:href="@{../css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{../css/style.css}">
+<link rel="stylesheet" th:href="@{../css/style-responsive.css}">
+<link rel="stylesheet" th:href="@{../css/animate.min.css}">
+<link rel="stylesheet" th:href="@{../css/vertical-rhythm.min.css}">
+<link rel="stylesheet" th:href="@{../css/owl.carousel.css}">
+<link rel="stylesheet" th:href="@{../css/magnific-popup.css}">
+
+</head>
+<body class="appear-animate html-profile">
+	<!-- Page Loader -->
+	<div class="page-loader">
+		<div class="loader">Loading...</div>
+	</div>
+	<!-- End Page Loader -->
+
+	<!-- Page Wrap -->
+	<div class="page" id="top">
+
+		<!-- Navigation panel -->
+		<th:block th:replace="fragments/header_ui :: header" />
+		<!-- End Navigation panel -->
+
+		<!-- Services Section -->
+		<section class="profile-section bg-dark-lighter">
+			<div class="container relative profile-wrapper">
+				<form action="#" th:action="@{/user/edituserProfile}"
+					th:object="${userProfile}" method="POST" enctype="multipart/form-data" class="form contact-form"
+					id="contact_form">
+					<div class="profile-banner">
+						<img src="/images/profile/profile-banner.png" th:src="@ {${'/ uploads /' + bannerImage}}" > 
+						 <input class="settings-btn" type="file" id="profilebanner" name="profilebanner"> 
+					</div>
+
+					<div class="profile-sub-section">
+						<div class="row">
+							<div class="col-md-3">
+								<div class="profile-pic">
+									<img src="/images/profile/profile-pic.png"/> 
+									 <input  type="file" id="profilepic" name="profilepic"> 
+									 
+									<br>
+									<span class="profile-name">ARIJIT SUKLA</span> <span>|
+										@arijitsukla</span>
+								</div>
+
+
+
+
+
+							</div>
+							<div class="col-md-9">
+								<div class="row">
+									<div class="col-md-12 mb-sm-40 post-btns">
+										<!-- <br>
+                                        <a href="#" th:href="@{/user/addposts}"><img src="/images/profile/create-post-btn.png" alt=""></a>
+                                        <a href="#"><img src="/images/profile/manage-posts-btn.png" alt=""></a>
+                                        <br><br> -->
+									</div>
+									<div class="col-md-6 mb-sm-40">
+										<!-- Gallery -->
+										<br>
+										<br>
+										<p>
+											<b>ABOUT</b><br>
+											<textarea name="about" id="about"
+												th:field="*{about}" class="input-md round form-control"
+												style="height: 84px;" placeholder="Description">
+                                       </textarea>
+											<br>
+											<br>
+										</p>
+									</div>
+
+									<div class="col-md-5">
+										<!-- About Project -->
+										<div class="text">
+
+											<p>
+												<br> 
+												<label>Phone No</label> <input type="text"
+													th:field="*{phone}" name="phone" id="phone"
+													class="input-md round form-control" pattern=".{3,100}">
+												<br> <label>Profession</label>&nbsp;&nbsp;&nbsp; <input
+													type="text" th:field="*{profession}" name="profession"
+													id="profession" class="input-md round form-control"
+													pattern=".{3,100}"><br> <label>Works
+													For</label>&nbsp;&nbsp;&nbsp;<input type="text"
+													th:field="*{worksFor}" name="worksFor" id="worksFor"
+													class="input-md round form-control" pattern=".{3,100}">
+												<br> <label>Lives In</label>&nbsp;&nbsp;&nbsp;&nbsp;<input
+													type="text" th:field="*{livesIn}" name="livesIn"
+													id="livesIn" class="input-md round form-control"
+													pattern=".{3,100}"> <br> <label>Home
+													Town</label>&nbsp;&nbsp;&nbsp;<input type="text"
+													th:field="*{fromCity}" name="fromCity" id="fromCity"
+													class="input-md round form-control" pattern=".{3,100}">
+												<br> </br>
+											</p>
+
+										</div>
+										<!-- End About Project -->
+ <div class="align-right pt-10">
+                                        <button type="submit" class="submit_btn btn btn-mod btn-medium btn-round" id="login-btn">Update Profile</button>
+                                            <!-- <button type="submit" class="submit_btn btn btn-mod btn-medium btn-round" id="submit_btn">Save Post</button> -->
+                                        </div>
+									</div>
+								</div>
+							</div>
+						</div>
+<!-- Send Button -->
+                                       
+
+					</div>
+				</form>
+			</div>
+		</section>
+		<!-- End Services Section -->
+
+	</div>
+	<!-- End Page Wrap -->
+
+
+	<!-- JS -->
+	<script type="text/javascript" th:src="@{../js/jquery-1.11.2.min.js}"></script>
+	<script type="text/javascript" th:src="@{../js/jquery.easing.1.3.js}"></script>
+	<script type="text/javascript" th:src="@{../js/bootstrap.min.js}"></script>
+	<script type="text/javascript" th:src="@{../js/SmoothScroll.js}"></script>
+	<script type="text/javascript" th:src="@{../js/jquery.scrollTo.min.js}"></script>
+	<script type="text/javascript"
+		th:src="@{../js/jquery.localScroll.min.js}"></script>
+	<script type="text/javascript"
+		th:src="@{../js/jquery.viewport.mini.js}"></script>
+	<script type="text/javascript" th:src="@{../js/jquery.countTo.js}"></script>
+	<script type="text/javascript" th:src="@{../js/jquery.appear.js}"></script>
+	<script type="text/javascript" th:src="@{../js/jquery.sticky.js}"></script>
+	<script type="text/javascript"
+		th:src="@{../js/jquery.parallax-1.1.3.js}"></script>
+	<script type="text/javascript" th:src="@{../js/jquery.fitvids.js}"></script>
+	<script type="text/javascript" th:src="@{../js/owl.carousel.min.js}"></script>
+	<script type="text/javascript" th:src="@{../js/isotope.pkgd.min.js}"></script>
+	<script type="text/javascript"
+		th:src="@{../js/imagesloaded.pkgd.min.js}"></script>
+	<script type="text/javascript"
+		th:src="@{../js/jquery.magnific-popup.min.js}"></script>
+	<script type="text/javascript" th:src="@{../js/wow.min.js}"></script>
+	<script type="text/javascript" th:src="@{../js/masonry.pkgd.min.js}"></script>
+	<script type="text/javascript"
+		th:src="@{../js/jquery.simple-text-rotator.min.js}"></script>
+	<script type="text/javascript" th:src="@{../js/jquery.lazyload.min.js}"></script>
+	<script type="text/javascript" th:src="@{../js/all.js}"></script>
+	<script type="text/javascript" th:src="@{../js/contact-form.js}"></script>
+	<script type="text/javascript"
+		th:src="@{../js/jquery.ajaxchimp.min.js}"></script>
+	<!--[if lt IE 10]><script type="text/javascript" src="js/placeholder.js"></script><![endif]-->
+</body>
+</html>
