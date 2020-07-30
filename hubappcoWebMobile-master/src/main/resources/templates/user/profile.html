@@ -40,20 +40,21 @@
             <section class="page-section profile-section">
                 <div class="container relative profile-wrapper">
                     <div class="profile-banner">
-                        <img src="/images/profile/profile-banner.png"/>
-                        <a href="#" th:href="@{/user/edit-profile}" class="settings-btn"><img src="/images/profile/settings.png"/></a>
+                        <img src="/images/profile/profile-banner.png" th:src="${uploadfileResponseBanner}"/>
+                       
                     </div>
 
                     <div class="profile-sub-section">
                         <div class="row">
                             <div class="col-md-3">
                                <div class="profile-pic">
-                                    <img src="/images/profile/profile-pic.png" />
+                                    <img src="/images/profile/profile-pic.png" th:src="@{${uploadfileResponseProfile}}" />
                                </div>
                                <div class="profile-details">
-                                    <span class="profile-name">ARIJIT SUKLA</span> <span>| @arijitsukla</span><br><br>
-                                    <p>
-                                        <b>ABOUT</b><br>
+                                     <span class="profile-name" th:text="${firstName}">ARIJIT SUKLA</span><span class="profile-name" th:text="${lastName}"></span>| @arijitsukla</span><br><br>
+                                   <b>ABOUT</b><br>
+                                    <p th:text=${about}>
+                                        
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                                         Mauris porta lorem nec leo pretium maximus. Proin
                                         bibendum dolor nibh, at sollicitudin dui consectetur eu. Cras
@@ -81,10 +82,11 @@
                                </div>
                                <div class="profile-information">
                                     <p>
-                                        Professional photographer <br>
-                                        Photographer in NatGeo <br>
-                                        Lives in Bangalore <br>
-                                        From Rampur <br>
+                                    <label th:text="${phone}">Phone</label><br>
+                                        <span th:text="${profession}">Professional photographer </span><br>
+                                        <span th:text="${worksFor}">Photographer in NatGeo </span><br>
+                                        <span th:text="${livesIn}">Lives in Bangalore </span><br>
+                                        <span th:text="${fromCity}">From Rampur </span><br>
                                     </p>
                                     <a href="#" class="settings-btn"><img src="/images/profile/settings-1.png"/></a>
                                </div>
@@ -95,6 +97,7 @@
                                         <br>
                                         <a href="#" th:href="@{/user/addposts}"><img src="/images/profile/create-post-btn.png" alt=""></a>
                                         <a href="#"><img src="/images/profile/manage-posts-btn.png" alt=""></a>
+                                         <a href="#" th:href="@{/user/edit-profile}" ><img src="/images/profile/settings-1.png"/></a>
                                         <br><br>
                                     </div>
                                     <div class="col-md-6 mb-sm-40">

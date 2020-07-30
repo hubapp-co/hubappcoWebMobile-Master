@@ -51,7 +51,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                             "/posts/**",
                             "/send-mail/**",
                             "/mobilenumbers/**",
-                            "/uploads/**",
                             "/error/access-denied").permitAll()
                     .antMatchers("/user/**").hasAnyRole("USER")
                     .antMatchers("/user/postweb").hasAnyRole("USER")
@@ -60,6 +59,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/user/categories").hasAnyRole("USER")
                     .antMatchers("/user/edit-profile").hasAnyRole("USER")
                     .antMatchers("/user/edituserProfile").hasAnyRole("USER")
+                    .antMatchers("/user/downloadFile/**").hasAnyRole("USER")
+                    .antMatchers("/user/uploadFile").hasAnyRole("USER")
+                    .antMatchers("/user/uploads/**").hasAnyRole("USER")
                     .anyRequest().authenticated()
                 .and()
                 .formLogin()

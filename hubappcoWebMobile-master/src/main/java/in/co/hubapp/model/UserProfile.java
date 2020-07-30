@@ -7,8 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+
+import org.hibernate.validator.constraints.UniqueElements;
+
 
 @Entity
 public class UserProfile implements Serializable {
@@ -32,6 +34,11 @@ public class UserProfile implements Serializable {
 	private String profession;
 	private String worksFor;
 	
+	@OneToOne(cascade = CascadeType.ALL)
+	private FileUploadReponse uploadFileResponseProfile;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	private FileUploadReponse uploadFileResponseBanner;
 	
 	 @OneToOne(cascade = CascadeType.ALL)
 	 private User user;
@@ -117,14 +124,31 @@ public class UserProfile implements Serializable {
 	public void setUser(User user) {
 		this.user = user;
 	}
+	
+	public FileUploadReponse getUploadFileResponseProfile() {
+		return uploadFileResponseProfile;
+	}
+
+	public void setUploadFileResponseProfile(FileUploadReponse uploadFileResponseProfile) {
+		this.uploadFileResponseProfile = uploadFileResponseProfile;
+	}
+
+	public FileUploadReponse getUploadFileResponseBanner() {
+		return uploadFileResponseBanner;
+	}
+
+	public void setUploadFileResponseBanner(FileUploadReponse uploadFileResponseBanner) {
+		this.uploadFileResponseBanner = uploadFileResponseBanner;
+	}
 
 	public UserProfile() {
 
     }
-	
 
 	public UserProfile(Long id, String bannerImage, String profilePic, String phone, String about, String livesIn,
-			String fromCity, String profession, String worksFor, User user) {
+			String fromCity, String profession, String worksFor, FileUploadReponse uploadFileResponseProfile,
+			FileUploadReponse uploadFileResponseBanner, User user) {
+		super();
 		this.id = id;
 		this.bannerImage = bannerImage;
 		this.profilePic = profilePic;
@@ -134,6 +158,24 @@ public class UserProfile implements Serializable {
 		this.fromCity = fromCity;
 		this.profession = profession;
 		this.worksFor = worksFor;
+		this.uploadFileResponseProfile = uploadFileResponseProfile;
+		this.uploadFileResponseBanner = uploadFileResponseBanner;
 		this.user = user;
 	}
+
+	@Override
+	public String toString() {
+		return "UserProfile [id=" + id + ", bannerImage=" + bannerImage + ", profilePic=" + profilePic + ", phone="
+				+ phone + ", about=" + about + ", livesIn=" + livesIn + ", fromCity=" + fromCity + ", profession="
+				+ profession + ", worksFor=" + worksFor + ", uploadFileResponseProfile=" + uploadFileResponseProfile
+				+ ", uploadFileResponseBanner=" + uploadFileResponseBanner + ", user=" + user + "]";
+	}
+
+	
+
+
+	
+	
+
+	
 }

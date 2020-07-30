@@ -35,101 +35,85 @@
 		<!-- Navigation panel -->
 		<th:block th:replace="fragments/header_ui :: header" />
 		<!-- End Navigation panel -->
-
+		
+		
 		<!-- Services Section -->
-		<section class="profile-section bg-dark-lighter">
-			<div class="container relative profile-wrapper">
-				<form action="#" th:action="@{/user/edituserProfile}"
+            <section class="page-section profile-section">
+                <div class="container relative profile-wrapper">
+                <form action="#" th:action="@{/user/edituserProfile}"
 					th:object="${userProfile}" method="POST" enctype="multipart/form-data" class="form contact-form"
 					id="contact_form">
-					<div class="profile-banner">
-						<img src="/images/profile/profile-banner.png" th:src="@ {${'/ uploads /' + bannerImage}}" > 
-						 <input class="settings-btn" type="file" id="profilebanner" name="profilebanner"> 
-					</div>
+                    <div class="profile-banner">
+                        <img src="/images/profile/profile-banner1.png" th:src="${uploadfileResponseBanner}"/>
+						<input class="settings-btn" type="file" id="profilebanner" name="profilebanner">
+                    </div>
 
-					<div class="profile-sub-section">
-						<div class="row">
-							<div class="col-md-3">
-								<div class="profile-pic">
-									<img src="/images/profile/profile-pic.png"/> 
-									 <input  type="file" id="profilepic" name="profilepic"> 
-									 
-									<br>
-									<span class="profile-name">ARIJIT SUKLA</span> <span>|
-										@arijitsukla</span>
-								</div>
-
-
-
-
-
-							</div>
-							<div class="col-md-9">
-								<div class="row">
-									<div class="col-md-12 mb-sm-40 post-btns">
-										<!-- <br>
-                                        <a href="#" th:href="@{/user/addposts}"><img src="/images/profile/create-post-btn.png" alt=""></a>
-                                        <a href="#"><img src="/images/profile/manage-posts-btn.png" alt=""></a>
-                                        <br><br> -->
-									</div>
-									<div class="col-md-6 mb-sm-40">
-										<!-- Gallery -->
-										<br>
-										<br>
-										<p>
-											<b>ABOUT</b><br>
-											<textarea name="about" id="about"
-												th:field="*{about}" class="input-md round form-control"
-												style="height: 84px;" placeholder="Description">
-                                       </textarea>
-											<br>
-											<br>
-										</p>
-									</div>
-
-									<div class="col-md-5">
-										<!-- About Project -->
-										<div class="text">
-
-											<p>
+                    <div class="profile-sub-section">
+                        <div class="row">
+                            <div class="col-md-3">
+                               <div class="profile-pic">
+									<img src="/images/profile/profile-pic1.png"  th:src="@{${uploadfileResponseProfile}}"/>
+									<input class="profile-pic-upload" type="file" id="profilepic" name="profilepic">
+                               </div>
+                               <div class="profile-details">
+                                    <span class="profile-name" th:text="${firstName}">ARIJIT SUKLA</span><span th:text="${lastName}"></span><span>| @arijitsukla</span><br><br>
+                                    <p>
+                                        <b>ABOUT</b><br>
+                                        <textarea name="about" id="about" th:field="*{about}" class="form-control" style="height: 200px;" placeholder="Description"></textarea>
+                                    </p>
+                               </div>
+                            </div>
+                            <div class="col-md-9">
+								<br><br><br>
+                               <div class="row">
+                                    <div class="col-md-6">
+                                        <!-- About Project -->
+                                        <div class="text edit-profile">
+                                            <p>
 												<br> 
-												<label>Phone No</label> <input type="text"
-													th:field="*{phone}" name="phone" id="phone"
-													class="input-md round form-control" pattern=".{3,100}">
-												<br> <label>Profession</label>&nbsp;&nbsp;&nbsp; <input
-													type="text" th:field="*{profession}" name="profession"
-													id="profession" class="input-md round form-control"
-													pattern=".{3,100}"><br> <label>Works
-													For</label>&nbsp;&nbsp;&nbsp;<input type="text"
-													th:field="*{worksFor}" name="worksFor" id="worksFor"
-													class="input-md round form-control" pattern=".{3,100}">
-												<br> <label>Lives In</label>&nbsp;&nbsp;&nbsp;&nbsp;<input
-													type="text" th:field="*{livesIn}" name="livesIn"
-													id="livesIn" class="input-md round form-control"
-													pattern=".{3,100}"> <br> <label>Home
-													Town</label>&nbsp;&nbsp;&nbsp;<input type="text"
-													th:field="*{fromCity}" name="fromCity" id="fromCity"
-													class="input-md round form-control" pattern=".{3,100}">
-												<br> </br>
+												<label>Phone No</label> <input type="text" th:field="*{phone}" name="phone" id="phone" class="input-md round form-control" pattern=".{3,100}">
+												<br> 
+												<label>Profession</label>&nbsp;&nbsp;&nbsp; <input type="text" th:field="*{profession}" name="profession" id="profession" class="input-md round form-control" pattern=".{3,100}">
+												<br> 
+												<label>Works For</label>&nbsp;&nbsp;&nbsp;<input type="text" th:field="*{worksFor}" name="worksFor" id="worksFor" class="input-md round form-control" pattern=".{3,100}">
 											</p>
-
-										</div>
-										<!-- End About Project -->
- <div class="align-right pt-10">
+                                            
+                                        </div>
+                                        <!-- End About Project -->
+                                    </div>
+                                    
+                                    <div class="col-md-6">
+                                        <!-- About Project -->
+                                        <div class="text edit-profile">
+                                            
+                                            <p>
+												<br> 
+												<label>Lives In</label>&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" th:field="*{livesIn}" name="livesIn" id="livesIn" class="input-md round form-control" pattern=".{3,100}">
+												<br> 
+												<label>Home Town</label>&nbsp;&nbsp;&nbsp;<input type="text" th:field="*{fromCity}" name="fromCity" id="fromCity" class="input-md round form-control" pattern=".{3,100}">
+											</p>
+                                            
+                                        </div>
+                                        <!-- End About Project -->
+                                         
+                                    </div>
+                               </div>
+                               <div class="align-right pt-10">
                                         <button type="submit" class="submit_btn btn btn-mod btn-medium btn-round" id="login-btn">Update Profile</button>
                                             <!-- <button type="submit" class="submit_btn btn btn-mod btn-medium btn-round" id="submit_btn">Save Post</button> -->
                                         </div>
-									</div>
-								</div>
-							</div>
-						</div>
-<!-- Send Button -->
-                                       
+                            </div>
+                        </div>
+                   
+                    </div>
+                     
+    </form>
+                </div>
+            </section>
+            <!-- End Services Section -->
 
-					</div>
-				</form>
-			</div>
-		</section>
+		<!-- Services Section -->
+		
 		<!-- End Services Section -->
 
 	</div>

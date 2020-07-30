@@ -66,7 +66,7 @@ public class UserProfileServiceImpl implements UserProfileService {
 					String fileName = convertFile.getName();
 					
 					String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-							.path("/uploads/")
+							.path("/user/uploads/")
 							.path(fileName)
 							.toUriString();
 					System.out.println("UserProfileServiceImplDocument : "+fileDownloadUri);
@@ -129,7 +129,7 @@ public class UserProfileServiceImpl implements UserProfileService {
 					String filePath = convertFile.getAbsolutePath();
 					String fileName = convertFile.getName();
 					String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-							.path("/uploads/")
+							.path("/user/uploads/")
 							.path(fileName)
 							.toUriString();
 					try {
@@ -162,6 +162,13 @@ public class UserProfileServiceImpl implements UserProfileService {
 		}
 
 		return pim;
+	}
+
+
+	@Override
+	public UserProfile getUserProfile(Long userId) {
+		UserProfile userProfile = userProfileRepository.getOne(userId);
+		return userProfile;
 	}
 
 

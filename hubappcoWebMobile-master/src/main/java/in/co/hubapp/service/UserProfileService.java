@@ -18,6 +18,8 @@ public interface UserProfileService {
 
 	public ProfileImageModel uploadProfilePic(MultipartFile profilepic,String firstName);
 
+	public UserProfile getUserProfile(Long userId);
+
 
 
 

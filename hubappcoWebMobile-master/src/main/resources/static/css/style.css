@@ -6659,7 +6659,29 @@ a { text-decoration: none; }
 .profile-information { padding: 10px; border-radius: 10px; box-shadow: 0 0px 10px #ddd; margin: 20px !important; position: relative; }
 .settings-btn { position: absolute; right: 20px; top: 250px; }
 .profile-information .settings-btn { position: absolute; right: 10px; top:auto !important; bottom: 10px; }
-
+.profile-banner{max-height:400px; overflow: hidden;}
+.profile-banner img{width:100%}
+.profile-pic{max-height:363px; max-width:316px;}
 .event-section { color: #fff; background-image: url(/images/challange/challange-bg.png); background-position: top; background-size: 100% 100%; }
+
+
+.explore-section { color: #fff; background-image: url(/images/explore/explore-bg.png); background-position: top; background-size: 100% 100%; }
+.explore-sub-section { background-color: rgba(0,0,0, 0.4); color: #333; border-radius: 50px; }
+.explore-sub-section section { padding: 15px 0; }
+.tpl-alt-tabs.explore-icons > li { width: auto; }
+.explore-icons .btn-mod.btn-medium { padding: 2px 20px; font-size: 12px; width: 200px; }
+.explore-wrapper { padding: 10px 0 0 0; }
+.explore-connect-options, .explore-ad-options { margin: 0; padding: 0; }
+.explore-connect-options { padding-left: 10px; padding-top: 10px; }
+.explore-ad-options { padding-right: 10px; padding-top: 10px; }
+.explore-connect-options li { list-style: none; width:300px; height: 39px; margin-bottom: 10px; }
+.explore-connect-options li img { height: 100%; }
+.explore-ad-options li { list-style: none; margin-bottom: 10px; text-align: right; }
+.ad-img { width: 207px; }
+.ad-links { width: 30px; }
+.jobs-hub .btn-mod { background: #fff; border: 2px solid #fff; color:#333; }
+.jobs-hub { background-color: rgba(0,0,0, 0.4); padding: 15px 0; border-radius: 50px; }
+
+.edit-profile { padding-right: 50px;}
 
 
