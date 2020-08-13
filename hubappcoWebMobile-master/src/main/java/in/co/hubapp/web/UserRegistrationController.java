@@ -1,6 +1,7 @@
 package in.co.hubapp.web;
 
 import javax.mail.MessagingException;
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,7 @@ public class UserRegistrationController {
     }
 
     @PostMapping
+    @Transactional
     public String registerUserAccount(@ModelAttribute("user") @Valid UserRegistrationDto userDto,
                                       BindingResult result) throws Exception{
 

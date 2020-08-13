@@ -27,7 +27,7 @@ public class MailController {
 	@Autowired
 	private JavaMailSender javaMailSender;
 
-	@RequestMapping(value="/send-mail", method=RequestMethod.POST)
+	@RequestMapping(value="/user/send-mail", method=RequestMethod.POST)
 	public void sendMail() throws MessagingException {
 		
 		
@@ -51,6 +51,7 @@ public class MailController {
 		helper = new MimeMessageHelper(message, true); // true indicates
 													   // multipart message
 		helper.setSubject(subject);
+		helper.setFrom("info@hubapp.co.in");
 		helper.setTo(to);
 		helper.setText(body, true); // true indicates html
 		// continue using helper object for more functionalities like adding attachments, etc.  
@@ -60,7 +61,7 @@ public class MailController {
 		javaMailSender.send(message);
 	}
 
-	@RequestMapping(value = "/send-mail/{emailId}", method = RequestMethod.PUT)
+	@RequestMapping(value = "/user/send-mail/{emailId}", method = RequestMethod.PUT)
 	public ResponseEntity<Object> verifyOTP(@PathVariable("emailId") String email, @RequestBody OtpSystemMail requestBodyOTPSystem) {
 		
 		if(requestBodyOTPSystem.getOtp()==null || requestBodyOTPSystem.getOtp().trim().length()<=0) {

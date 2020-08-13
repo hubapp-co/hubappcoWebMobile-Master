@@ -6684,4 +6684,73 @@ a { text-decoration: none; }
 
 .edit-profile { padding-right: 50px;}
 
+/*------------Responsive CSS-----------*/
+@media (max-width: 992px) {
+    .main-nav.dark .mobile-nav {
+        z-index: 1111;
+        position: relative;
+    }
+    .mobile-on .full-wrapper .desktop-nav {
+        display: none;
+    }
+    .main-nav.transparent .inner-nav ul{
+        background: rgba(18,18,18, .97);
+    }
+    .home-content {
+        padding-top: 20px;
+    }
+    .home-content.mg-top {
+        margin-top: 212px;
+    }
+    .home-section-bg {
+        background-image: url(/images/landing/main-bg-res.png);
+        background-color: #0C0C0C;
+    }
+    .home-section-bg .tpl-alt-tabs > li:first-child,
+    .home-section-bg .tpl-alt-tabs > li:nth-child(2),
+    .home-section-bg .tpl-alt-tabs > li:nth-child(3),
+    .home-section-bg .tpl-alt-tabs > li:nth-child(4),
+    .home-section-bg .tpl-alt-tabs > li:nth-child(5) {
+        position: relative;
+        margin-top: 0;
+        left: 0px;
+        right: 0px;
+    }
+    .home-section-bg .tpl-alt-tabs > li a {
+        padding-top: 30px;
+        background-color: #fff !important;
+        border-radius: 4em;
+        width: 112px;
+        height: 112px;
+        margin-bottom: 40px;
+    }
+    .tpl-alt-tabs > li span {
+        margin-bottom: 5px;
+    }
+    .tpl-alt-tabs > li {
+        width: 112px !important;
+        margin: 0 12px;
+    }
+    .art {
+        right: 0px;
+    }
+    .dance {
+        right: -5px;    
+    }
+    .hs-line-1 {
+        letter-spacing: 6px !important;
+    }
+    .contact-item {
+        padding-left: 0px;
+    }
+    .footer-section-bg {
+        background-position: 47.9% -64px;
+    }
+    .footer-social-links a {
+        margin: 0 6px;
+    }
+}
+
+
+
 

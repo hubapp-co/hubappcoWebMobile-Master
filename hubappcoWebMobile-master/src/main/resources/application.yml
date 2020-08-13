@@ -15,6 +15,16 @@ spring:
     # excluded-view-names:
     # template-resolver-order:
     # view-names:
+  mail:
+    host: smtpout.secureserver.net
+    port: 465
+    username: info@hubapp.co.in
+    password: Info@Hub12345
+    protocol: smtp
+    properties.mail.smtp:
+      auth: true
+      ssl.enable: true
+      ssl.trust: "*"  
 
 logging:
   level:
@@ -22,6 +32,8 @@ logging:
     in.co.hubapp: DEBUG
     org.springframework.web: INFO
     org.springframework.security: INFO
-    
+ 
+
+   
     
  

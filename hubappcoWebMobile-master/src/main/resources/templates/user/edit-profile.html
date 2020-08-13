@@ -43,17 +43,26 @@
                 <form action="#" th:action="@{/user/edituserProfile}"
 					th:object="${userProfile}" method="POST" enctype="multipart/form-data" class="form contact-form"
 					id="contact_form">
-                    <div class="profile-banner">
-                        <img src="/images/profile/profile-banner1.png" th:src="${uploadfileResponseBanner}"/>
-						<input class="settings-btn" type="file" id="profilebanner" name="profilebanner">
+                    <div class="profile-banner" th:if="${uploadfileResponseBanner}">
+                         <img src="/images/profile/profile-banner.png" th:src="@{${uploadfileResponseBanner}}"/> 
+                      	<input class="settings-btn" type="file" id="profilebanner" name="profilebanner">
+                    </div>
+                    <div class="profile-banner" th:unless="${uploadfileResponseBanner}">
+                         <img src="/images/profile/profile-banner.png" /> 
+                         <input class="settings-btn" type="file" id="profilebanner" name="profilebanner">
                     </div>
 
                     <div class="profile-sub-section">
                         <div class="row">
                             <div class="col-md-3">
-                               <div class="profile-pic">
-									<img src="/images/profile/profile-pic1.png"  th:src="@{${uploadfileResponseProfile}}"/>
+                               <div class="profile-pic" th:if="${uploadfileResponseBanner}">
+									<img src="/images/profile/profile-pic.png"  th:src="${uploadfileResponseProfile}"/>
 									<input class="profile-pic-upload" type="file" id="profilepic" name="profilepic">
+                               </div>
+                                <div class="profile-pic" th:unless="${uploadfileResponseProfile}">
+									<img src="/images/profile/profile-pic.png" />
+									<input class="profile-pic-upload" type="file" id="profilepic" name="profilepic">
+									
                                </div>
                                <div class="profile-details">
                                     <span class="profile-name" th:text="${firstName}">ARIJIT SUKLA</span><span th:text="${lastName}"></span><span>| @arijitsukla</span><br><br>

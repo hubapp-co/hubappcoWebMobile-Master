@@ -5,6 +5,10 @@ public class OtpSystemMail {
 	private String otp;
 	private long exiryTime;
 	
+	
+	
+	public OtpSystemMail() {
+	}
 	public String getMailId() {
 		return mailId;
 	}

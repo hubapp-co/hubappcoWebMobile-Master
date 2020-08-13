@@ -62,6 +62,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/user/downloadFile/**").hasAnyRole("USER")
                     .antMatchers("/user/uploadFile").hasAnyRole("USER")
                     .antMatchers("/user/uploads/**").hasAnyRole("USER")
+                    .antMatchers("/user/send-mail/**").hasAnyRole("USER")
+                    
+                    
                     .anyRequest().authenticated()
                 .and()
                 .formLogin()

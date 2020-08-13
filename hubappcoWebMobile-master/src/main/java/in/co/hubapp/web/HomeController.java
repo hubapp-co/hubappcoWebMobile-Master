@@ -3,6 +3,7 @@ package in.co.hubapp.web;
 import java.util.List;
 import java.util.Optional;
 
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.twilio.rest.api.v2010.account.incomingphonenumber.MobileCreator;
 
 import in.co.hubapp.fileupload.FileStorageService;
 import in.co.hubapp.fileupload.UploadFileResponse;
@@ -42,11 +44,11 @@ import org.springframework.security.core.context.SecurityContextHolder;
 
 @Controller
 public class HomeController {
-	
-	 private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
-	    @Autowired
-	    private FileStorageService fileStorageService;
+	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+
+	@Autowired
+	private FileStorageService fileStorageService;
 
 	@Autowired
 	private UserProfileService userProfileService;
@@ -65,8 +67,9 @@ public class HomeController {
 
 	@Autowired
 	private UserService userService;
-	
-	@Autowired UploadResponseFileRepository uploadResponseFileRepository;
+
+	@Autowired
+	UploadResponseFileRepository uploadResponseFileRepository;
 
 	@GetMapping("/")
 	public String root() {
@@ -93,8 +96,7 @@ public class HomeController {
 	public String otp_verify(@ModelAttribute OtpMail otpMail, Model model) {
 
 		ResponseEntity<Object> result = mailService.mailOtpVerify(otpMail);
-
-		System.out.println(result);
+logger.info("mailService" + result.getBody());
 
 		if (result.getBody().equals("OTP is verified successfully")) {
 			return "login";
@@ -174,114 +176,108 @@ public class HomeController {
 
 		UserProfile userProfile = new UserProfile();
 		userProfile.setUser(user);
-
+		FileUploadReponse profileImage = new FileUploadReponse();
+		FileUploadReponse bannerImage = new FileUploadReponse();
+		userProfile.setUploadFileResponseProfile(profileImage);
+		userProfile.setUploadFileResponseBanner(bannerImage);
 		Optional<UserProfile> userProfileByUser = userProfileRepository.getByUser(user);
-		
 
 		if (userProfileByUser.isPresent()) {
-			System.out.println("!!!!!!!!!183"+userProfileByUser.get().getUploadFileResponseProfile().getFileDownloadUri());
 			model.addAttribute("userProfile", userProfileByUser);
-			model.addAttribute("firstName",user.getFirstName());
-            model.addAttribute("lastName", user.getLastName());
-			model.addAttribute("uploadfileResponseProfile", userProfileByUser.get().getUploadFileResponseProfile().getFileDownloadUri());
-            model.addAttribute("uploadfileResponseBanner", userProfileByUser.get().getUploadFileResponseBanner().getFileDownloadUri());
+			model.addAttribute("firstName", user.getFirstName());
+			model.addAttribute("lastName", user.getLastName());
+			model.addAttribute("uploadfileResponseProfile",
+					userProfileByUser.get().getUploadFileResponseProfile().getFileDownloadUri());
+			model.addAttribute("uploadfileResponseBanner",
+					userProfileByUser.get().getUploadFileResponseBanner().getFileDownloadUri());
 			model.addAttribute("user", user);
-			System.out.println("IsPresent!!!!!!!!!"+userProfileByUser);
+			System.out.println("IsPresent!!!!!!!!!" + userProfileByUser);
 		} else {
-			
-			
-			System.out.println("!!!!!!!!!192"+userProfileByUser);
+
+			System.out.println("!!!!!!!!!192" + userProfileByUser);
 			userProfileRepository.save(userProfile);
 			Optional<UserProfile> userProfileEdit = userProfileService.getUserProfileById(userProfile.getUserId());
-			
-			System.out.println("!!!!!!!!!197"+userProfileEdit.get().getUploadFileResponseProfile().getFileDownloadUri());
-			
+
+			System.out.println(
+					"!!!!!!!!!197" + userProfileEdit.get().getUploadFileResponseProfile().getFileDownloadUri());
+
 			model.addAttribute("userProfile", userProfileEdit);
-			model.addAttribute("firstName",user.getFirstName());
-            model.addAttribute("lastName", user.getLastName());
-			model.addAttribute("uploadfileResponseProfile", userProfileEdit.get().getUploadFileResponseProfile().getFileDownloadUri());
-            model.addAttribute("uploadfileResponseBanner", userProfileEdit.get().getUploadFileResponseBanner().getFileDownloadUri());
-    		model.addAttribute("user", user);
+			model.addAttribute("firstName", user.getFirstName());
+			model.addAttribute("lastName", user.getLastName());
+			model.addAttribute("uploadfileResponseProfile",
+					userProfileEdit.get().getUploadFileResponseProfile().getFileDownloadUri());
+			model.addAttribute("uploadfileResponseBanner",
+					userProfileEdit.get().getUploadFileResponseBanner().getFileDownloadUri());
+			model.addAttribute("user", user);
 			return "user/edit-profile";
 		}
 		return "user/edit-profile";
 	}
 
 	@RequestMapping(value = "/user/edituserProfile", method = RequestMethod.POST, consumes = { "multipart/form-data" })
-	public String updateUserProfile(@ModelAttribute UserProfile req, MultipartFile profilepic,MultipartFile profilebanner, Model model,
-			BindingResult result) {
+	public String updateUserProfile(@ModelAttribute UserProfile req, MultipartFile profilepic,
+			MultipartFile profilebanner, Model model, BindingResult result) {
 
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User user = userService.findUserByUserName(auth.getName());
 		req.setUser(user);
-		
-		
-		
-		 String profileImage = fileStorageService.storeFile(profilepic);
 
-	        String profileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-	                .path("/user/uploads/")
-	                .path(profileImage)
-	                .toUriString();
-	        
-	        
-	        
-		UploadFileResponse profileUri =	 new UploadFileResponse(profileImage, profileDownloadUri,
-					 profilepic.getContentType(), profilepic.getSize());
-		
+		String profileImage = fileStorageService.storeFile(profilepic);
+
+		String profileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/user/uploads/")
+				.path(profileImage).toUriString();
+
+		UploadFileResponse profileUri = new UploadFileResponse(profileImage, profileDownloadUri,
+				profilepic.getContentType(), profilepic.getSize());
+
 		FileUploadReponse fileUploadReponseProfile = new FileUploadReponse();
 		fileUploadReponseProfile.setFileDownloadUri(profileDownloadUri);
-		fileUploadReponseProfile.setFileName(profileImage);	
+		fileUploadReponseProfile.setFileName(profileImage);
 		fileUploadReponseProfile.setFileType(profilepic.getContentType());
 		fileUploadReponseProfile.setSize(profilepic.getSize());
-		
-		uploadResponseFileRepository.save(fileUploadReponseProfile);
-		
 
-		  String profileBan = fileStorageService.storeFile(profilebanner);
-		  String profileBannerUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-		                .path("/user/uploads/")
-		                .path(profileBan)
-		                .toUriString();
-		  
-		 UploadFileResponse bannerUri =  new UploadFileResponse(profileBan, profileBannerUri,
-				  profilebanner.getContentType(), profilebanner.getSize());
-    
-		 FileUploadReponse fileUploadReponseBanner = new FileUploadReponse();
-		 fileUploadReponseBanner.setFileDownloadUri(profileBannerUri);
-		 fileUploadReponseBanner.setFileName(profileBan);
-		 fileUploadReponseBanner.setFileType(profilebanner.getContentType());
-		 fileUploadReponseBanner.setSize(profilebanner.getSize());
-		 
-		 uploadResponseFileRepository.save(fileUploadReponseBanner);
+		uploadResponseFileRepository.save(fileUploadReponseProfile);
+
+		String profileBan = fileStorageService.storeFile(profilebanner);
+		String profileBannerUri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/user/uploads/")
+				.path(profileBan).toUriString();
+
+		UploadFileResponse bannerUri = new UploadFileResponse(profileBan, profileBannerUri,
+				profilebanner.getContentType(), profilebanner.getSize());
+
+		FileUploadReponse fileUploadReponseBanner = new FileUploadReponse();
+		fileUploadReponseBanner.setFileDownloadUri(profileBannerUri);
+		fileUploadReponseBanner.setFileName(profileBan);
+		fileUploadReponseBanner.setFileType(profilebanner.getContentType());
+		fileUploadReponseBanner.setSize(profilebanner.getSize());
+
+		uploadResponseFileRepository.save(fileUploadReponseBanner);
 
 		System.out.println(user.getFirstName());
-		if (userProfileRepository.findByUser(user) != null){
-            UserProfile existingUserPRofile = userProfileRepository.findByUser(user);
-            System.out.println(req.getAbout());
-            existingUserPRofile.setAbout(req.getAbout());
-            existingUserPRofile.setFromCity(req.getFromCity());
-            existingUserPRofile.setLivesIn(req.getLivesIn());
-            existingUserPRofile.setPhone(req.getPhone());
-            existingUserPRofile.setProfession(req.getProfession());
-            existingUserPRofile.setWorksFor(req.getWorksFor());
-            existingUserPRofile.setUploadFileResponseProfile(fileUploadReponseProfile);
-            existingUserPRofile.setUploadFileResponseBanner(fileUploadReponseBanner);
-            
-            if(profileUri != null) {
-            existingUserPRofile.setBannerImage(fileUploadReponseBanner.getFileDownloadUri());
-            }else {
-            	existingUserPRofile.setBannerImage(req.getBannerImage());
-            	}
-            
-            if(bannerUri != null) {
-            	existingUserPRofile.setProfilePic(bannerUri.getFileDownloadUri());
-            }else {
-            	existingUserPRofile.setProfilePic(req.getProfilePic());
-            }
-            
-            
-			
+		if (userProfileRepository.findByUser(user) != null) {
+			UserProfile existingUserPRofile = userProfileRepository.findByUser(user);
+			System.out.println(req.getAbout());
+			existingUserPRofile.setAbout(req.getAbout());
+			existingUserPRofile.setFromCity(req.getFromCity());
+			existingUserPRofile.setLivesIn(req.getLivesIn());
+			existingUserPRofile.setPhone(req.getPhone());
+			existingUserPRofile.setProfession(req.getProfession());
+			existingUserPRofile.setWorksFor(req.getWorksFor());
+			existingUserPRofile.setUploadFileResponseProfile(fileUploadReponseProfile);
+			existingUserPRofile.setUploadFileResponseBanner(fileUploadReponseBanner);
+
+			if (profileUri != null) {
+				existingUserPRofile.setBannerImage(fileUploadReponseBanner.getFileDownloadUri());
+			} else {
+				existingUserPRofile.setBannerImage(req.getBannerImage());
+			}
+
+			if (bannerUri != null) {
+				existingUserPRofile.setProfilePic(bannerUri.getFileDownloadUri());
+			} else {
+				existingUserPRofile.setProfilePic(req.getProfilePic());
+			}
+
 			/*
 			 * ProfileImageModel pim = userProfileService.uploadProfileBanner(profilebanner,
 			 * user.getFirstName()); if(pim!=null) { DocumentDetails doc = new
@@ -291,9 +287,7 @@ public class HomeController {
 			 * existingUserPRofile.setBannerImage(fileUploadReponseProfile.
 			 * getFileDownloadUri()); System.out.println(doc.getFileName()); }
 			 */
-			 
-    			
-			
+
 			/*
 			 * ProfileImageModel pimPic = userProfileService.uploadProfilePic(profilepic,
 			 * user.getFirstName()); if(pimPic!=null) { DocumentDetails docProfile = new
@@ -304,23 +298,22 @@ public class HomeController {
 			 * existingUserPRofile.setProfilePic(docProfile.getDownloadUri());
 			 * System.out.println(docProfile.getFileName()); }
 			 */
-			 
 
-            UserProfile updatedProfile = userProfileRepository.save(existingUserPRofile);
-            
-            System.out.println("updatedProfile.getBannerImage : "+updatedProfile.getBannerImage());
+			UserProfile updatedProfile = userProfileRepository.save(existingUserPRofile);
 
-            model.addAttribute("userProfile", updatedProfile);
-            model.addAttribute("firstName",user.getFirstName());
-            model.addAttribute("lastName", user.getLastName());
-            model.addAttribute("uploadfileResponseProfile", fileUploadReponseProfile.getFileDownloadUri());
-            model.addAttribute("uploadfileResponseBanner", fileUploadReponseBanner.getFileDownloadUri());
-    		return "user/edit-profile";
-    		
-        }else{
-            return null;
-        }
-		
+			System.out.println("updatedProfile.getBannerImage : " + updatedProfile.getBannerImage());
+
+			model.addAttribute("userProfile", updatedProfile);
+			model.addAttribute("firstName", user.getFirstName());
+			model.addAttribute("lastName", user.getLastName());
+			model.addAttribute("uploadfileResponseProfile", fileUploadReponseProfile.getFileDownloadUri());
+			model.addAttribute("uploadfileResponseBanner", fileUploadReponseBanner.getFileDownloadUri());
+			return "user/edit-profile";
+
+		} else {
+			return null;
+		}
+
 	}
 
 	@GetMapping("/user/categories")
@@ -335,26 +328,51 @@ public class HomeController {
 
 	@GetMapping("/user/profile")
 	public String userProfile(Model model) {
+
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User user = userService.findUserByUserName(auth.getName());
-		UserProfile existingUserPRofile = userProfileRepository.findByUser(user);
+		UserProfile userProfile = new UserProfile();
+		FileUploadReponse uploadFileResponseProfile = new FileUploadReponse();
+		FileUploadReponse uploadFileReponseBanner = new FileUploadReponse();
 		
 		
-		
-		
-		
-		
-		
-		model.addAttribute("about", existingUserPRofile.getAbout());
-		model.addAttribute("fromCity",existingUserPRofile.getFromCity());
-		model.addAttribute("livesIn",existingUserPRofile.getLivesIn());
-		model.addAttribute("worksFor", existingUserPRofile.getWorksFor());
-        model.addAttribute("phone",existingUserPRofile.getPhone());
-        model.addAttribute("profession",existingUserPRofile.getProfession());
-        model.addAttribute("firstName",user.getFirstName());
-        model.addAttribute("lastName", user.getLastName());
-        model.addAttribute("uploadfileResponseProfile", existingUserPRofile.getUploadFileResponseProfile().getFileDownloadUri());
-        model.addAttribute("uploadfileResponseBanner", existingUserPRofile.getUploadFileResponseBanner().getFileDownloadUri());
+		userProfile.setUser(user);
+		userProfile.setUploadFileResponseProfile(uploadFileResponseProfile);
+		userProfile.setUploadFileResponseBanner(uploadFileReponseBanner);
+
+		Optional<UserProfile> userProfileByUser = userProfileRepository.getByUser(user);
+
+		if (userProfileByUser.isPresent()) {
+			model.addAttribute("about", userProfileByUser.get().getAbout());
+			model.addAttribute("fromCity", userProfileByUser.get().getFromCity());
+			model.addAttribute("livesIn", userProfileByUser.get().getLivesIn());
+			model.addAttribute("worksFor", userProfileByUser.get().getWorksFor());
+			model.addAttribute("phone", userProfileByUser.get().getPhone());
+			model.addAttribute("profession", userProfileByUser.get().getProfession());
+			model.addAttribute("firstName", user.getFirstName());
+			model.addAttribute("lastName", user.getLastName());
+			model.addAttribute("uploadfileResponseProfile",userProfileByUser.get().getUploadFileResponseProfile().getFileDownloadUri());
+			model.addAttribute("uploadfileResponseBanner",userProfileByUser.get().getUploadFileResponseBanner().getFileDownloadUri());
+		} else {
+
+			userProfileRepository.save(userProfile);
+			Optional<UserProfile> userProfileEdit = userProfileService.getUserProfileById(userProfile.getUserId());
+
+			model.addAttribute("userProfile", userProfileEdit);
+			model.addAttribute("about", userProfileEdit.get().getAbout());
+			model.addAttribute("fromCity", userProfileEdit.get().getFromCity());
+			model.addAttribute("livesIn", userProfileEdit.get().getLivesIn());
+			model.addAttribute("worksFor", userProfileEdit.get().getWorksFor());
+			model.addAttribute("phone", userProfileEdit.get().getPhone());
+			model.addAttribute("profession", userProfileEdit.get().getProfession());
+			model.addAttribute("firstName", user.getFirstName());
+			model.addAttribute("lastName", user.getLastName());
+			model.addAttribute("uploadfileResponseProfile",userProfileEdit.get().getUploadFileResponseProfile().getFileDownloadUri());
+			model.addAttribute("uploadfileResponseBanner",userProfileEdit.get().getUploadFileResponseBanner().getFileDownloadUri());
+
+			return "user/profile";
+		}
+
 		return "user/profile";
 	}
 
@@ -372,7 +390,5 @@ public class HomeController {
 	public String error() {
 		return "/error/access-denied";
 	}
-	
-	
 
 }

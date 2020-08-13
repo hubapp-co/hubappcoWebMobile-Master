@@ -39,16 +39,20 @@
             <!-- Services Section -->
             <section class="page-section profile-section">
                 <div class="container relative profile-wrapper">
-                    <div class="profile-banner">
-                        <img src="/images/profile/profile-banner.png" th:src="${uploadfileResponseBanner}"/>
-                       
+                    <div class="profile-banner" th:if="${uploadfileResponseBanner}">
+                        <img src="/images/profile/profile-banner.png" th:src="${uploadfileResponseBanner}"/> 
                     </div>
-
+<div class="profile-banner" th:unless="${uploadfileResponseBanner}">
+                        <img src="/images/profile/profile-banner.png"/> 
+                    </div>
                     <div class="profile-sub-section">
                         <div class="row">
                             <div class="col-md-3">
-                               <div class="profile-pic">
-                                    <img src="/images/profile/profile-pic.png" th:src="@{${uploadfileResponseProfile}}" />
+                               <div class="profile-pic" th:if="${uploadfileResponseProfile}">
+                                    <img src="/images/profile/profile-pic.png" th:src="${uploadfileResponseProfile}" /> 
+                               </div>
+                               <div class="profile-pic" th:unless="${uploadfileResponseProfile}">
+                                    <img src="/images/profile/profile-pic.png" /> 
                                </div>
                                <div class="profile-details">
                                      <span class="profile-name" th:text="${firstName}">ARIJIT SUKLA</span><span class="profile-name" th:text="${lastName}"></span>| @arijitsukla</span><br><br>
